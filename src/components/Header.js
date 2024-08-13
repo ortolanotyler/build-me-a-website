@@ -32,7 +32,7 @@ const linkStyle = {
   textDecoration: 'none',
   color: '#3A3A3A', // Text color
   fontFamily: 'Nunito, sans-serif', // Font family
-  fontSize: '1.25rem',
+  fontSize: '1.35rem',
   fontWeight: '700',
   display: 'flex',
   alignItems: 'center',
@@ -95,7 +95,7 @@ const Header = () => {
 
   const navContainerStyle = {
     display: 'flex',
-    marginRight: '3rem', // Add some margin to the left for navigation links
+    marginRight: '5rem', // Add some margin to the left for navigation links
     justifyContent: 'right', // Center navigation links
     flex: '1', // Take up remaining space
   };

@@ -88,7 +88,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: '#3a3a3a',
   color: '#F4E1D2',
   textAlign: 'center',
-  width: '200px',
+  width: '170px',
   borderRadius: '10px',
   fontSize: '1rem',
   padding: '10px 20px',
@@ -197,7 +197,7 @@ const Hero = () => {
     <ParentContainer>
       <HeroContainer container spacing={1}>
         <TextContainer item xs={12} md={6}>
-          <Title>Building more than a website. Build a brand</Title>
+          <Title>Build a website that grows with your business</Title>
           <StyledButton onClick={handleOpenPopup}>Get Started</StyledButton>
         </TextContainer>
         <ImageContainer item xs={12} md={6}>

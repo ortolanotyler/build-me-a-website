@@ -3,9 +3,9 @@ import { Typography, Box } from '@mui/material';
 import { styled } from '@mui/system';
 
 const FooterContainer = styled(Box)({
-  backgroundColor: '#3A3A3A', // Dark background color for the footer
-  color: '#F4E1D2', // Light text color
-  padding: '20px 0', // Padding for the footer
+  backgroundColor: '#BBD7EC', // Dark background color for the footer
+  color: '#3a3a3a', // Light text color
+  padding: '40px 0', // Padding for the footer
   display: 'flex',
   justifyContent: 'center', // Center the content
   alignItems: 'center',

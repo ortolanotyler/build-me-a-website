@@ -1,8 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import SkillsBanner from '../components/SkillsBanner';
-import Header from '../components/Header';
-import Laptops from '../components/Laptop';
+import Laptops from '../components/SiteExamples';
 import Footer from '../components/Footer';
 import AboutAndReviews from '../components/AboutAndReviewsContainer';
 
@@ -17,7 +16,6 @@ const Home = () => {
 
   return (
     <div style={containerStyle}>
-      <Header /> {/* Include the Header component here */}
       <Hero />
       <SkillsBanner />
       <Laptops/>

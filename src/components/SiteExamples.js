@@ -3,7 +3,6 @@ import { styled, keyframes } from '@mui/system';
 
 // Import images
 const Image1 = `${process.env.PUBLIC_URL}/Images/laptop.png`;
-const Image2 = `${process.env.PUBLIC_URL}/Images/laptop.png`;
 
 // Keyframes for sliding animations
 const slideInLeft = keyframes`
@@ -62,7 +61,6 @@ const Laptops = () => {
   return (
     <Container>
       <Image src={Image1} alt="Image 1" animation={slideInLeft} />
-      <Image src={Image2} alt="Image 2" animation={slideInRight} />
     </Container>
   );
 };

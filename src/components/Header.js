@@ -127,16 +127,16 @@ const Header = () => {
               transformOrigin={{ vertical: 'top', horizontal: 'left' }}
             >
               <StyledMenuItem onClick={handleMenuClose}>
-                <Link to="/web-development">Web Development</Link>
+                <Link to="/services">Web Development</Link>
               </StyledMenuItem>
               <StyledMenuItem onClick={handleMenuClose}>
-                <Link to="/ui-ux-design">UI/UX Design</Link>
+                <Link to="/services">UI/UX Design</Link>
               </StyledMenuItem>
               <StyledMenuItem onClick={handleMenuClose}>
-                <Link to="/seo-optimization">SEO Optimization</Link>
+                <Link to="/services">SEO Optimization</Link>
               </StyledMenuItem>
               <StyledMenuItem onClick={handleMenuClose}>
-                <Link to="/content-creation">Content Creation</Link>
+                <Link to="/services">Content Creation</Link>
               </StyledMenuItem>
             </StyledMenu>
             <Link to="/portfolio" style={linkStyle}>Portfolio</Link>

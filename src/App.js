@@ -4,10 +4,12 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import Header from './components/Header';
 
 function App() {
   return (
     <Router>
+      <Header/>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,26 +1,77 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { styled } from '@mui/system';
 
 const logo = `${process.env.PUBLIC_URL}/Images/logo.png`;
 
+const StyledMenu = styled(Menu)({
+  '& .MuiPaper-root': {
+    backgroundColor: '#bbd7ec', // Dropdown menu background color
+    color: '#3A3A3A',
+    fontSize: '1.2rem', // Font size for dropdown menu
+    fontFamily: 'Nunito, sans-serif', // Font family for dropdown text
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)', // Add text shadow
+  },
+});
+
+const StyledMenuItem = styled(MenuItem)({
+  fontFamily: 'Nunito, sans-serif', // Font family for each menu item
+  '& a': {
+    textDecoration: 'none',
+    color: '#3A3A3A', // Text color for links
+    width: '100%',
+    display: 'block',
+    padding: '8px 16px',
+  },
+});
+
+const linkStyle = {
+  textDecoration: 'none',
+  color: '#3A3A3A', // Text color
+  fontFamily: 'Nunito, sans-serif', // Font family
+  fontSize: '1.25rem',
+  fontWeight: '700',
+  display: 'flex',
+  alignItems: 'center',
+  padding: '8px 16px', // Add some padding to the links
+};
+
 const Header = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [servicesAnchorEl, setServicesAnchorEl] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 950);
+      setIsMobile(window.innerWidth <= 800);
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleLogoClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    setServicesAnchorEl(null);
+  };
+
+  const handleServicesClick = (event) => {
+    setServicesAnchorEl(event.currentTarget);
+  };
+
   const headerStyle = {
     display: 'flex',
-    justifyContent: 'center', // Center all content horizontally
+    justifyContent: 'space-between', // Space between logo and navigation
     alignItems: 'center',
-    padding: isMobile ? '20px' : '20px',
-    backgroundColor: '#f5f5dc', // Beige background to match the page
+    padding: '20px 40px',
+    backgroundColor: '#bbd7ec', // Background color to match the page
     position: 'fixed', // Fix the header to the top of the screen
     top: '0',
     left: '0',
@@ -29,86 +80,116 @@ const Header = () => {
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // Add a subtle shadow for depth
   };
 
-  const logoStyle = {
-    width: '250px', // Set the logo width
-    height: 'auto', // Maintain aspect ratio
-    position: 'absolute',
-    left: '50px', // Adjust left margin
-    top: '50%', // Align vertically in the center of the header
-    transform: 'translateY(-50%)', // Adjust for accurate vertical centering
-    display: isMobile ? 'none' : 'block', // Hide the logo on screens smaller than 900px
-  };
-
-  const navStyle = {
+  const logoContainerStyle = {
+    flex: '0', // Only take up as much space as needed for the logo
     display: 'flex',
-    gap: '10px', // Increased gap for better spacing
-    justifyContent: 'center', // Center the nav links
-    margin: '0 auto', // Center the nav links within the header
-    padding: isMobile ? '10px 0' : '0', // Add padding on mobile
+    justifyContent: isMobile ? 'center' : 'flex-start', // Center logo on mobile, left-align on larger screens
+    alignItems: 'center',
   };
 
-  const linkStyle = {
-    textDecoration: 'none',
-    color: 'black', // Text color
-    fontFamily: 'Nunito, sans-serif', // Correctly specify the font family
-    fontSize: isMobile ? '1.25rem' : '1.25rem', // Adjust font size for mobile
-    fontWeight: '700',
-    padding: isMobile ? '10px' : '8px', // Adjust padding for mobile
-    borderRadius: '4px',
-    transition: 'transform 0.3s ease', // Transition for the transform effect
-    textAlign: 'center', // Center text alignment on mobile
+  const logoStyle = {
+    width: isMobile ? '125px' : '250px', // Adjust logo width for mobile
+    height: 'auto', // Maintain aspect ratio
+    cursor: 'pointer',
   };
 
-  const handleMouseEnter = (e) => {
-    e.currentTarget.style.transform = 'translateY(-2px)'; // Shift up on hover
+  const navContainerStyle = {
+    display: 'flex',
+    marginRight: '3rem', // Add some margin to the left for navigation links
+    justifyContent: 'right', // Center navigation links
+    flex: '1', // Take up remaining space
   };
 
-  const handleMouseLeave = (e) => {
-    e.currentTarget.style.transform = 'translateY(0)'; // Reset position when not hovered
+  const navLinksWrapperStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexGrow: 1, // Allow this section to grow and take up space
   };
 
   return (
     <header style={headerStyle}>
-      <Link to="/">
+      <div style={logoContainerStyle} onClick={handleLogoClick}>
         <img src={logo} alt="Logo" style={logoStyle} />
-      </Link>
-      <nav style={navStyle}>
-        <Link 
-          to="/" 
-          style={linkStyle} 
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Home
-        </Link>
-        <Link 
-          to="/services" 
-          style={linkStyle} 
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Services
-        </Link>
-        <Link 
-          to="/portfolio" 
-          style={linkStyle} 
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Portfolio
-        </Link>
-        <Link 
-          to="/contact" 
-          style={linkStyle} 
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Contact
-        </Link>
-      </nav>
+        {isMobile && <ArrowDropDownIcon />}
+      </div>
+      <div style={navLinksWrapperStyle}>
+        {!isMobile && (
+          <nav style={navContainerStyle}>
+            <Link to="/" style={linkStyle}>Home</Link>
+            <div onClick={handleServicesClick} style={linkStyle}>
+              Services <ArrowDropDownIcon />
+            </div>
+            <StyledMenu
+              anchorEl={servicesAnchorEl}
+              open={Boolean(servicesAnchorEl)}
+              onClose={handleMenuClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+            >
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/web-development">Web Development</Link>
+              </StyledMenuItem>
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/ui-ux-design">UI/UX Design</Link>
+              </StyledMenuItem>
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/seo-optimization">SEO Optimization</Link>
+              </StyledMenuItem>
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/content-creation">Content Creation</Link>
+              </StyledMenuItem>
+            </StyledMenu>
+            <Link to="/portfolio" style={linkStyle}>Portfolio</Link>
+            <Link to="/contact" style={linkStyle}>Contact</Link>
+          </nav>
+        )}
+        {isMobile && (
+          <StyledMenu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
+            <StyledMenuItem onClick={handleMenuClose}>
+              <Link to="/">Home</Link>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleServicesClick}>
+              Services <ArrowDropDownIcon />
+            </StyledMenuItem>
+            <StyledMenu
+              anchorEl={servicesAnchorEl}
+              open={Boolean(servicesAnchorEl)}
+              onClose={handleMenuClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/web-development">Web Development</Link>
+              </StyledMenuItem>
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/ui-ux-design">UI/UX Design</Link>
+              </StyledMenuItem>
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/seo-optimization">SEO Optimization</Link>
+              </StyledMenuItem>
+              <StyledMenuItem onClick={handleMenuClose}>
+                <Link to="/content-creation">Content Creation</Link>
+              </StyledMenuItem>
+            </StyledMenu>
+            <StyledMenuItem onClick={handleMenuClose}>
+              <Link to="/portfolio">Portfolio</Link>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleMenuClose}>
+              <Link to="/contact">Contact</Link>
+            </StyledMenuItem>
+          </StyledMenu>
+        )}
+      </div>
     </header>
   );
 };
 
 export default Header;
+
 

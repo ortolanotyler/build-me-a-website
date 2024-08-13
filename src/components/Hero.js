@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
 
 // Import the image
-const heroImage = `${process.env.PUBLIC_URL}/Images/hero.webp`;
+const heroImage = `${process.env.PUBLIC_URL}/Images/hero-1.png`;
 
 const ParentContainer = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: '100vh', // Full viewport height
-  backgroundColor: '#f5f5dc', // Ensure background color covers the entire viewport
+  backgroundColor: '#F4E1D2', // Ensure background color covers the entire viewport
 });
 
 const HeroContainer = styled(Grid)(({ theme }) => ({
-  backgroundColor: '#f5f5dc',
+  backgroundColor: '#F4E1D2',
   padding: '100px 200px',
   maxWidth: '1200px',
   display: 'flex',
@@ -82,12 +83,13 @@ const Title = styled('h1')(({ theme }) => ({
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
+  fontFamily: 'Nunito, sans-serif',
   font: 'inherit',
-  backgroundColor: 'black',
-  color: '#f5f5dc',
+  backgroundColor: '#3a3a3a',
+  color: '#F4E1D2',
   textAlign: 'center',
-  width: '150px',
-  borderRadius: '0.5em',
+  width: '200px',
+  borderRadius: '10px',
   fontSize: '1rem',
   padding: '10px 20px',
   fontWeight: '600',
@@ -97,14 +99,14 @@ const StyledButton = styled(Button)(({ theme }) => ({
   '&:hover': {
     transform: 'scale(1.05)', // Slightly increase size on hover
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)', // Add a shadow for more depth
-    backgroundColor: 'black', // Ensure background color stays black
-    color: '#f5f5dc', // Ensure text color stays beige
+    backgroundColor: '#F2784B', // Ensure background color stays black
+    color: '#F4E1D2', // Ensure text color stays beige
   },
   '&:active': {
     transform: 'scale(0.95)', // Slightly squish on click
     boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)', // Reduce shadow on click
-    backgroundColor: 'black', // Ensure background color stays black
-    color: '#f5f5dc', // Ensure text color stays beige
+    backgroundColor: '#3A3A3A', // Ensure background color stays black
+    color: '#3a3a3a', // Ensure text color stays beige
   },
   [theme.breakpoints.down(800)]: {
     fontSize: '0.875rem', // Make button font smaller on small screens
@@ -113,18 +115,129 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+const PopupOverlay = styled('div')({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark transparent background
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 1000, // Ensure it's above other content
+});
+
+const PopupContent = styled('div')({
+  backgroundColor: '#f5f5dc', // Same beige background
+  fontFamily: 'Nunito, sans-serif',
+
+  padding: '30px',
+  borderRadius: '10px',
+  width: '400px',
+  maxWidth: '90%',
+  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
+  zIndex: 1001,
+});
+
+const PopupTitle = styled('h2')({
+  
+  fontFamily: 'Nunito, sans-serif',
+  color: 'black',
+  textAlign: 'center',
+  marginBottom: '20px',
+});
+
+const StyledTextField = styled(TextField)({
+  fontFamily: 'Nunito, sans-serif',
+
+  marginBottom: '20px',
+  '& label.Mui-focused': {
+    color: 'black',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'black',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      fontFamily: 'Nunito, sans-serif',
+
+      borderColor: 'black',
+    },
+    '&:hover fieldset': {
+      fontFamily: 'Nunito, sans-serif',
+
+      borderColor: 'black',
+    },
+    '&.Mui-focused fieldset': {
+      fontFamily: 'Nunito, sans-serif',
+
+      borderColor: 'black',
+    },
+  },
+});
+
 const Hero = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
   return (
     <ParentContainer>
       <HeroContainer container spacing={1}>
         <TextContainer item xs={12} md={6}>
           <Title>Building more than a website. Build a brand</Title>
-          <StyledButton>Get Started</StyledButton>
+          <StyledButton onClick={handleOpenPopup}>Get Started</StyledButton>
         </TextContainer>
         <ImageContainer item xs={12} md={6}>
           <img src={heroImage} alt="People working together" style={{ marginLeft: '30px', width: '80%', borderRadius: '10px' }} />
         </ImageContainer>
       </HeroContainer>
+      {isPopupOpen && (
+        <PopupOverlay onClick={handleClosePopup}>
+          <PopupContent onClick={(e) => e.stopPropagation()}>
+            <PopupTitle>Get Started</PopupTitle>
+            <StyledTextField
+              label="Full Name"
+              variant="outlined"
+              fullWidth
+            />
+            <StyledTextField
+              label="Email Address"
+              variant="outlined"
+              fullWidth
+            />
+            <StyledTextField
+              label="Message"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+            />
+           
+            <Button 
+              variant="contained" 
+              
+              style={{ backgroundColor: '#3A3A3A', color: '#f5f5dc', marginTop: '20px' }} 
+              fullWidth
+              onClick={handleClosePopup} // For now, just close the popup on submit
+            >
+              Submit
+            </Button>
+          </PopupContent>
+        </PopupOverlay>
+      )}
     </ParentContainer>
   );
 };

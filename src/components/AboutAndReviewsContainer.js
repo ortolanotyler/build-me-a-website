@@ -22,7 +22,7 @@ const AboutCard = styled('div')(({ theme }) => ({
   backgroundColor: '#f5f5f4',
   padding: '20px',
   width: '100%',
-  maxWidth: '1000px',
+  maxWidth: '800px',
   margin: '0 auto 20px auto', // Auto margin for left and right centering, margin-bottom of 20px
   borderRadius: '10px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -42,7 +42,7 @@ const CardsContainer = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',
     alignItems: 'center',
-    width: '90%', // Match the width to the About card on smaller screens
+    width: '80%', // Match the width to the About card on smaller screens
   },
 }));
 

@@ -8,7 +8,7 @@ const ServicesContainer = styled('div')(({ theme }) => ({
   padding: '150px 60px 60px',
   background: '-webkit-linear-gradient(to left, #F4E1D2, #ECE7E3)',
   background: 'linear-gradient(to left, #F4E1D2, #ECE7E3)',
-  minHeight: '80vh',
+  minHeight: '100vh',
   overflow: 'hidden',
   zIndex: 0,
   '& .circles': {

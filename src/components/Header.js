@@ -98,6 +98,13 @@ const Header = () => {
       {/* Only show individual service links on smaller screens */}
       {isMobile && (
         <>
+       
+         <ListItem button component={Link} to="/services" onClick={closeDrawerOnClick}>
+            <ListItemText primary="Services" />
+          </ListItem>
+          <ListItem button component={Link} to="/contact" onClick={closeDrawerOnClick}>
+            <ListItemText primary="Contact" />
+          </ListItem>
           <ListItem button component={Link} to="/web-development" onClick={closeDrawerOnClick}>
             <ListItemText primary="Web Development" />
           </ListItem>
@@ -116,21 +123,23 @@ const Header = () => {
           <ListItem button component={Link} to="/dns-migration" onClick={closeDrawerOnClick}>
             <ListItemText primary="DNS Migration" />
           </ListItem>
+         
+          <ListItem button component={Link} to="/consultation" onClick={closeDrawerOnClick}>
+            <ListItemText primary="Free Consultation" />
+          </ListItem>
         </>
       )}
-      <ListItem button component={Link} to="/contact" onClick={closeDrawerOnClick}>
-        <ListItemText primary="Contact" />
-      </ListItem>
-      <ListItem button component={Link} to="/consultation" onClick={closeDrawerOnClick}>
-        <ListItemText primary="Free Consultation" />
-      </ListItem>
+    
     </List>
   );
 
   return (
     <header style={headerStyle}>
       <div style={logoContainerStyle}>
+        <a href="/" style={linkStyle}>
         <img src={logo} alt="Logo" style={logoStyle} />
+
+        </a>
       </div>
       <nav style={navContainerStyle}>
         <Link to="/" style={linkStyle}>Home</Link>

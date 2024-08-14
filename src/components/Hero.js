@@ -299,42 +299,41 @@ const Hero = () => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Grid container spacing={2} justifyContent="center" alignItems="center">
                 <Grid item xs={12} sm={6}>
-                  <DatePicker
-                    label="Select Date"
-                    value={formValues.selectedDate}
-                    onChange={(newValue) => handleChange('selectedDate', newValue)}
-                    renderInput={(params) => (
-                      <StyledTextField
-                        {...params}
-                        fullWidth
-                        variant="outlined"
-                        sx={{
-                          display: 'flex', // Ensure the input is a block-level element
-                          justifyContent: 'center', // Center the content horizontally
-                          textAlign: 'center', // Center the text
-                        }}
-                      />
-                    )}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TimePicker
-                    label="Select Time"
-                    value={formValues.selectedTime}
-                    onChange={(newValue) => handleChange('selectedTime', newValue)}
-                    renderInput={(params) => (
-                      <StyledTextField
-                        {...params}
-                        fullWidth
-                        variant="outlined"
-                        sx={{
-                          display: 'flex', // Ensure the input is a block-level element
-                          justifyContent: 'center', // Center the content horizontally
-                          textAlign: 'center', // Center the text
-                        }}
-                      />
-                    )}
-                  />
+                <DatePicker
+  label="Select Date"
+  value={formValues.selectedDate}
+  onChange={(newValue) => handleChange('selectedDate', newValue)}
+  slotProps={{
+    textField: {
+      fullWidth: true,
+      variant: "outlined",
+      sx: {
+        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
+      },
+    },
+  }}
+/>
+
+<TimePicker
+  label="Select Time"
+  value={formValues.selectedTime}
+  onChange={(newValue) => handleChange('selectedTime', newValue)}
+  slotProps={{
+    textField: {
+      fullWidth: true,
+      variant: "outlined",
+      sx: {
+        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
+      },
+    },
+  }}
+/>
+
+
                 </Grid>
               </Grid>
               <Button 

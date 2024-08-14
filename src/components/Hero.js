@@ -81,7 +81,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#3a3a3a',
   color: '#F4E1D2',
-  width: '180px', // Set a fixed width for the button
+  width: '200px', // Set a fixed width for the button
   borderRadius: '10px',
   fontSize: '1rem',
   textTransform: 'none', // Prevent text from being capitalized
@@ -99,7 +99,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     backgroundColor: '#3A3A3A', // Ensure background color stays black
   },
   [theme.breakpoints.down('md')]: {
-    marginTop: '10px', // Add some spacing above the button on small screens
+    marginTop: '20px', // Add some spacing above the button on small screens
   },
 }));
 
@@ -116,6 +116,9 @@ const ImageContainer = styled(Grid)(({ theme }) => ({
     width: '100%',
     maxHeight: '500px', // Limit the maximum height of the image
     borderRadius: '10px',
+    marginLeft: '20px',
+    marginTop: '-20px'
+
   },
 }));
 
@@ -222,7 +225,7 @@ const Hero = () => {
             />
             <Button 
               variant="contained" 
-              style={{ borderRadius: '10px', backgroundColor: '#3A3A3A', color: '#f5f5dc', marginTop: '20px' }} 
+              style={{ borderRadius: '10px', backgroundColor: '#3A3A3A', color: '#f5f5dc', marginTop: '10px' }} 
               fullWidth
               onClick={handleClosePopup} // For now, just close the popup on submit
             >

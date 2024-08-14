@@ -52,7 +52,7 @@ const HeroContainer = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',
     textAlign: 'center',
-    padding: '75px 25px', // Adjust padding for medium screens
+    padding: '50px 25px', // Adjust padding for medium screens
   },
 }));
 

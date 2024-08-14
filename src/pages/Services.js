@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Grid, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
 
-// Styled container for the Services section with the background effect
 const ServicesContainer = styled('div')(({ theme }) => ({
   position: 'relative',
   color: '#3A3A3A',
-  padding: '125px 60px 60px', // Added top padding to ensure it is below the header
-  background: '-webkit-linear-gradient(to left, #F4E1D2, #ECE7E3)',  // Gradient background
-  background: 'linear-gradient(to left, #F4E1D2, #ECE7E3)',  // Fallback for other browsers
-  minHeight: '100vh', // Ensure full viewport height
-  overflow: 'hidden', // Ensure overflow is hidden
-  zIndex: 0, // Ensure the container is beneath other elements
+  padding: '150px 60px 60px',
+  background: '-webkit-linear-gradient(to left, #F4E1D2, #ECE7E3)',
+  background: 'linear-gradient(to left, #F4E1D2, #ECE7E3)',
+  minHeight: '80vh',
+  overflow: 'hidden',
+  zIndex: 0,
   '& .circles': {
     position: 'absolute',
     top: 0,
@@ -19,7 +18,7 @@ const ServicesContainer = styled('div')(({ theme }) => ({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    zIndex: -1, // Set circles to be behind the container content
+    zIndex: -1,
   },
   '& .circles li': {
     position: 'absolute',
@@ -27,8 +26,8 @@ const ServicesContainer = styled('div')(({ theme }) => ({
     listStyle: 'none',
     width: '20px',
     height: '20px',
-    background: '#6DA3CD', // Light blue color for circles
-    animation: 'animate 10s linear infinite', // Faster animation
+    background: '#6DA3CD',
+    animation: 'animate 10s linear infinite',
     bottom: '-100px',
   },
   '& .circles li:nth-of-type(1)': {
@@ -42,7 +41,7 @@ const ServicesContainer = styled('div')(({ theme }) => ({
     width: '20px',
     height: '20px',
     animationDelay: '3s',
-    animationDuration: '10s', // Adjusted duration for faster movement
+    animationDuration: '10s',
   },
   '& .circles li:nth-of-type(3)': {
     left: '70%',
@@ -55,7 +54,7 @@ const ServicesContainer = styled('div')(({ theme }) => ({
     width: '60px',
     height: '60px',
     animationDelay: '0s',
-    animationDuration: '12s', // Adjusted duration for faster movement
+    animationDuration: '12s',
   },
   '& .circles li:nth-of-type(5)': {
     left: '65%',
@@ -80,21 +79,21 @@ const ServicesContainer = styled('div')(({ theme }) => ({
     width: '25px',
     height: '25px',
     animationDelay: '15s',
-    animationDuration: '25s', // Adjusted duration for faster movement
+    animationDuration: '25s',
   },
   '& .circles li:nth-of-type(9)': {
     left: '20%',
     width: '15px',
     height: '15px',
     animationDelay: '2s',
-    animationDuration: '20s', // Adjusted duration for faster movement
+    animationDuration: '20s',
   },
   '& .circles li:nth-of-type(10)': {
     left: '85%',
     width: '10px',
     height: '10px',
     animationDelay: '0s',
-    animationDuration: '15s', // Adjusted duration for faster movement
+    animationDuration: '15s',
   },
   '@keyframes animate': {
     '0%': {
@@ -110,7 +109,6 @@ const ServicesContainer = styled('div')(({ theme }) => ({
   },
 }));
 
-// Keyframes for sliding in from the left and right
 const slideInLeft = keyframes`
   from {
     opacity: 0;
@@ -133,54 +131,71 @@ const slideInRight = keyframes`
   }
 `;
 
-// Styled card for each service
 const ServiceCard = styled(Card)(({ theme, animationDirection }) => ({
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-  color: '#3a3a3a', // Dark grey color for card text
+  color: '#3a3a3a',
   fontFamily: 'Nunito, sans-serif',
-  width: '100%', // Full width within grid item
-  borderRadius: '10px', // Add rounded corners
-  margin: '20px 0', // Vertical margin to create spacing between cards
-  zIndex: 2, // Ensure cards are above the background effect
-  opacity: 0, // Start with 0 opacity for animation
-  animation: `${animationDirection} 1s ease-out forwards`, // Apply the animation
+  width: '100%',
+  borderRadius: '10px',
+  margin: '20px 0',
+  zIndex: 2,
+  opacity: 0,
+  animation: `${animationDirection} 1s ease-out forwards`,
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '&:hover': {
+    transform: 'translateY(-10px)',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+  },
   [theme.breakpoints.up('md')]: {
-    width: '80%', // Adjust width for larger screens
-    margin: '20px auto', // Center the cards on larger screens
+    width: '80%',
+    margin: '20px auto',
   },
 }));
 
-// Data for services
+const CardContentStyled = styled(CardContent)(({ theme }) => ({
+  minHeight: '150px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  padding: '16px',
+}));
+
 const services = [
   {
     title: 'Web Development',
     description: 'We create stunning and responsive websites that help your business grow.',
     image: `${process.env.PUBLIC_URL}/Images/webdev.jpg`,
+    link: '/web-development',
   },
   {
     title: 'Search Engine Optimization',
     description: 'Optimize your site to rank higher in search engines and attract more visitors.',
     image: `${process.env.PUBLIC_URL}/Images/google.png`,
+    link: '/search-engine-optimization',
   },
   {
     title: 'Web Hosting',
     description: 'Designing user-friendly interfaces that provide an exceptional user experience.',
     image: `${process.env.PUBLIC_URL}/Images/webhosting.jpg`,
+    link: '/web-hosting',
   },
   {
     title: 'Web Design',
     description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
     image: `${process.env.PUBLIC_URL}/Images/webdesign.jpg`,
+    link: '/web-design',
   },
   {
     title: 'Search Engine Marketing',
     description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
     image: `${process.env.PUBLIC_URL}/Images/SEM.jpg`,
+    link: '/search-engine-marketing',
   },
   {
     title: 'DNS Migration',
     description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
     image: `${process.env.PUBLIC_URL}/Images/dns.jpg`,
+    link: '/dns-migration',
   },
 ];
 
@@ -217,37 +232,39 @@ const Services = () => {
       <Grid container spacing={3} justifyContent="center">
         {services.map((service, index) => (
           <Grid item xs={12} sm={6} md={5} key={index}>
-            <ServiceCard
-              animationDirection={index % 2 === 0 ? slideInLeft : slideInRight}
-              style={{
-                backgroundColor: '#BBD7EC',
-              }}
-            >
-              <CardMedia
-                component="img"
-                alt={service.title}
-                height="200"
-                image={service.image}
-                title={service.title}
-              />
-              <CardContent>
-                <Typography
-                  style={{ fontFamily: 'Nunito, sans-serif' }}
-                  variant="h6"
-                  component="div"
-                  gutterBottom
-                >
-                  {service.title}
-                </Typography>
-                <Typography
-                  style={{ fontFamily: 'Nunito, sans-serif' }}
-                  variant="body2"
-                  color="textSecondary"
-                >
-                  {service.description}
-                </Typography>
-              </CardContent>
-            </ServiceCard>
+            <a href={service.link} style={{ textDecoration: 'none' }}>
+              <ServiceCard
+                animationDirection={index % 2 === 0 ? slideInLeft : slideInRight}
+                style={{
+                  backgroundColor: '#BBD7EC',
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  alt={service.title}
+                  height="200"
+                  image={service.image}
+                  title={service.title}
+                />
+                <CardContentStyled>
+                  <Typography
+                    style={{ fontFamily: 'Nunito, sans-serif', marginBottom: '8px' }}
+                    variant="h6"
+                    component="div"
+                    gutterBottom
+                  >
+                    {service.title}
+                  </Typography>
+                  <Typography
+                    style={{ fontFamily: 'Nunito, sans-serif' }}
+                    variant="body2"
+                    color="textSecondary"
+                  >
+                    {service.description}
+                  </Typography>
+                </CardContentStyled>
+              </ServiceCard>
+            </a>
           </Grid>
         ))}
       </Grid>

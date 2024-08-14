@@ -38,6 +38,10 @@ const Header = () => {
     setDrawerOpen(open);
   };
 
+  const closeDrawerOnClick = () => {
+    setDrawerOpen(false);
+  };
+
   const headerStyle = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -80,15 +84,26 @@ const Header = () => {
 
   const drawerListStyle = {
     width: '250px',
+    color: '#3A3A3A', // Grey text color
   };
 
   const renderDrawerList = () => (
     <List style={drawerListStyle}>
-      {['Home', 'Services', 'Portfolio', 'Contact', 'Free Consultation'].map((text, index) => (
-        <ListItem button key={text} component={Link} to={`/${text.toLowerCase().replace(' ', '')}`}>
-          <ListItemText primary={text} />
-        </ListItem>
-      ))}
+      <ListItem button component={Link} to="/" onClick={closeDrawerOnClick}>
+        <ListItemText primary="Home" />
+      </ListItem>
+      <ListItem button component={Link} to="/about" onClick={closeDrawerOnClick}>
+        <ListItemText primary="About" />
+      </ListItem>
+      <ListItem button component={Link} to="/services" onClick={closeDrawerOnClick}>
+        <ListItemText primary="Services" />
+      </ListItem>
+      <ListItem button component={Link} to="/contact" onClick={closeDrawerOnClick}>
+        <ListItemText primary="Contact" />
+      </ListItem>
+      <ListItem button component={Link} to="/consultation" onClick={closeDrawerOnClick}>
+        <ListItemText primary="Free Consultation" />
+      </ListItem>
     </List>
   );
 
@@ -99,15 +114,25 @@ const Header = () => {
       </div>
       <nav style={navContainerStyle}>
         <Link to="/" style={linkStyle}>Home</Link>
+        <Link to="/about" style={linkStyle}>About</Link>
         <Link to="/services" style={linkStyle}>Services</Link>
-        <Link to="/portfolio" style={linkStyle}>Portfolio</Link>
         <Link to="/contact" style={linkStyle}>Contact</Link>
         <Link to="/consultation" style={linkStyle}>Free Consultation</Link>
       </nav>
       <IconButton edge="start" color="inherit" aria-label="menu" sx={mobileMenuIconStyle} onClick={toggleDrawer(true)}>
         <MenuIcon />
       </IconButton>
-      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        PaperProps={{
+          style: {
+            backgroundColor: '#bbd7ec', // Light blue background
+            color: '#3A3A3A', // Grey text color
+          },
+        }}
+      >
         {renderDrawerList()}
       </Drawer>
     </header>

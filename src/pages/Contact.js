@@ -1,35 +1,43 @@
 import React, { useState } from 'react';
-import { Box, TextField, Typography, Button, Grid } from '@mui/material';
+import { TextField, Checkbox, FormControlLabel, Button, Typography, Grid } from '@mui/material';
 import { styled } from '@mui/system';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-const CalendarContainer = styled('div')(({ theme }) => ({
+const Contact = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
-  padding: '150px 20px',
+  padding: '150px 40px', // Adjusted padding
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   minHeight: '100vh', // Ensure full viewport height
+  [theme.breakpoints.down('sm')]: {
+    padding: '80px 10px', // Reduce padding for smaller screens
+  },
 }));
 
 const FormContainer = styled('form')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   width: '100%',
-  maxWidth: '400px', // Reduce the width of the form container
+  maxWidth: '600px',
   backgroundColor: '#bbd7ec',
   padding: '30px',
   borderRadius: '10px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   marginTop: '20px',
   border: '3px solid #F4E1D2', // Add blue border around the form
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '90%', // Decrease form width on smaller screens
+    padding: '20px', // Reduce padding on smaller screens
+  },
 }));
 
 const FieldContainer = styled('div')({
   marginBottom: '20px', // Space around each text field
+});
+
+const CheckboxContainer = styled('div')({
+  fontFamily: 'Nunito, sans-serif',
+  marginTop: '20px',
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -55,21 +63,38 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const CalendarComponent = () => {
+const ContactForm = () => {
   const [formValues, setFormValues] = useState({
-    selectedDate: null,
-    selectedTime: null,
     name: '',
-    businessName: '',
-    phoneNumber: '',
-    email: ''
+    email: '',
+    message: '',
+    services: {
+      webDevelopment: false,
+      seoOptimization: false,
+      uiUxDesign: false,
+      digitalMarketing: false,
+      webDesign: false,
+      dnsMigration: false,
+    },
   });
 
-  const handleChange = (field, value) => {
-    setFormValues((prevState) => ({
-      ...prevState,
-      [field]: value
-    }));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setFormValues({
+      ...formValues,
+      services: {
+        ...formValues.services,
+        [name]: checked,
+      },
+    });
   };
 
   const handleSubmit = (event) => {
@@ -79,102 +104,169 @@ const CalendarComponent = () => {
   };
 
   return (
-    <CalendarContainer>
-      <Typography variant="h4" align="center" gutterBottom sx={{ fontFamily: 'Nunito, sans-serif' }}>
-        Schedule an Appointment
+    <Contact>
+      <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif' }}>
+        Contact Us
       </Typography>
-      <Typography variant="body1" align="center" gutterBottom sx={{ fontFamily: 'Nunito, sans-serif' }}>
-        Select a date and time that works for you.
+      <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif' }}>
+        Fill out the form below to get in touch with us and let us know how we can assist you.
       </Typography>
       <FormContainer onSubmit={handleSubmit}>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} sm={6}>
-              <DatePicker
-                label="Select Date"
-                value={formValues.selectedDate}
-                onChange={(newValue) => handleChange('selectedDate', newValue)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    fullWidth
-                    variant="outlined"
-                    sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TimePicker
-                label="Select Time"
-                value={formValues.selectedTime}
-                onChange={(newValue) => handleChange('selectedTime', newValue)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    fullWidth
-                    variant="outlined"
-                    sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-                  />
-                )}
-              />
-            </Grid>
-          </Grid>
-        </LocalizationProvider>
         <FieldContainer>
           <TextField
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
             label="Full Name"
             name="name"
             variant="outlined"
             fullWidth
-            margin="normal"
             value={formValues.name}
-            onChange={(e) => handleChange('name', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+            onChange={handleChange}
+            InputLabelProps={{
+              style: { fontFamily: 'Nunito, sans-serif' },
+            }}
           />
         </FieldContainer>
         <FieldContainer>
           <TextField
-            label="Business Name"
-            name="businessName"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.businessName}
-            onChange={(e) => handleChange('businessName', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-            label="Phone Number"
-            name="phoneNumber"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.phoneNumber}
-            onChange={(e) => handleChange('phoneNumber', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
             label="Email Address"
             name="email"
             variant="outlined"
             fullWidth
-            margin="normal"
             value={formValues.email}
-            onChange={(e) => handleChange('email', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+            onChange={handleChange}
+            InputLabelProps={{
+              style: { fontFamily: 'Nunito, sans-serif' },
+            }}
           />
         </FieldContainer>
+        <FieldContainer>
+          <TextField
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+            label="Business Number"
+            name="businessNumber"
+            variant="outlined"
+            fullWidth
+            value={formValues.businessNumber}
+            onChange={handleChange}
+            InputLabelProps={{
+              style: { fontFamily: 'Nunito, sans-serif' },
+            }}
+          />
+        </FieldContainer>
+        <FieldContainer>
+          <TextField
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+            label="Business Name"
+            name="businessName"
+            variant="outlined"
+            fullWidth
+            value={formValues.businessName}
+            onChange={handleChange}
+            InputLabelProps={{
+              style: { fontFamily: 'Nunito, sans-serif' },
+            }}
+          />
+        </FieldContainer>
+        <FieldContainer>
+          <TextField
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+            label="Message"
+            name="message"
+            variant="outlined"
+            fullWidth
+            multiline
+            rows={4}
+            value={formValues.message}
+            onChange={handleChange}
+            InputLabelProps={{
+              style: { fontFamily: 'Nunito, sans-serif' },
+            }}
+          />
+        </FieldContainer>
+        <CheckboxContainer>
+          <Typography variant="h6" gutterBottom style={{ fontFamily: 'Nunito, sans-serif' }}>
+            What services are you interested in?
+          </Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formValues.services.webDevelopment}
+                    onChange={handleCheckboxChange}
+                    name="webDevelopment"
+                  />
+                }
+                label="Web Development"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formValues.services.seoOptimization}
+                    onChange={handleCheckboxChange}
+                    name="seoOptimization"
+                  />
+                }
+                label="Search Engine Optimization"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formValues.services.webDesign}
+                    onChange={handleCheckboxChange}
+                    name="webDesign"
+                  />
+                }
+                label="Web Design"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formValues.services.uiUxDesign}
+                    onChange={handleCheckboxChange}
+                    name="uiUxDesign"
+                  />
+                }
+                label="Search Engine Marketing"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formValues.services.digitalMarketing}
+                    onChange={handleCheckboxChange}
+                    name="digitalMarketing"
+                  />
+                }
+                label="Web Hosting"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formValues.services.dnsMigration}
+                    onChange={handleCheckboxChange}
+                    name="dnsMigration"
+                  />
+                }
+                label="DNS Migration"
+                style={{ fontFamily: 'Nunito, sans-serif' }}
+              />
+            </Grid>
+          </Grid>
+        </CheckboxContainer>
         <StyledButton type="submit" fullWidth>
           Submit
         </StyledButton>
       </FormContainer>
-    </CalendarContainer>
+    </Contact>
   );
 };
 
-export default CalendarComponent;
+export default ContactForm;

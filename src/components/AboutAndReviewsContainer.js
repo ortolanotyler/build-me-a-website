@@ -12,7 +12,7 @@ const AboutContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '20px',
+  padding: '100px',
   [theme.breakpoints.down('md')]: {
     padding: '10px',
   },
@@ -26,12 +26,12 @@ const AboutCard = styled('div')(({ theme }) => ({
   backgroundColor: '#F4E1D2',
   padding: '20px',
   width: '100%',
-  maxWidth: '1000px',
+  maxWidth: '800px',
   margin: '0 auto 20px auto', // Auto margin for left and right centering, margin-bottom of 20px
   borderRadius: '10px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   fontFamily: 'Nunito, sans-serif',
-  textAlign: 'center', // Center the title and text
+  textAlign: 'left', // Center the title and text
   [theme.breakpoints.down('md')]: {
     width: '90%', // Match the width to the cards below on smaller screens
     marginBottom: '10px',
@@ -46,6 +46,7 @@ const CardsContainer = styled('div')(({ theme }) => ({
     color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
   display: 'flex',
+  padding: '50px',
   justifyContent: 'space-between',
   gap: '20px', // Add spacing between the cards
   width: '100%',
@@ -102,7 +103,7 @@ const BulletListItem = styled('li')({
 const BulletPointsCard = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
-  padding: '10px',
+  padding: '50px 25px',
   flex: 1, // Allow the card to take up available space
   borderRadius: '10px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -169,8 +170,21 @@ const AboutAndReviews = () => {
       <AboutCard>
         <h2>About Us</h2>
         <p>
-          Welcome to our company! We are dedicated to providing top-notch web design, SEO, and digital marketing services. Our team of experts works tirelessly to ensure that our clients achieve their business goals and stand out in the digital landscape.
-        </p>
+Welcome to Build Me A Website, where creativity meets technology to bring your digital vision to life. We're not just another web development agency; we're your partners in crafting online experiences that grow with your business. Founded with a passion for helping businesses thrive in the digital world, our team of dedicated professionals is committed to delivering websites that are not only beautiful but also functional and scalable.
+</p>
+
+<p>
+
+At Build Me A Website, we believe in building lasting relationships with our clients. We don’t just create a site and disappear—we’re here for the long haul, ready to help you adapt and evolve your online presence as your business grows. Whether it's integrating new features, optimizing for search engines, or simply giving your site a fresh look, we’ve got you covered.
+</p>
+
+<p>
+Our approach is simple: we listen to your needs, understand your goals, and work closely with you to create a digital solution that’s tailored to your unique business. We take pride in our attention to detail and our commitment to delivering projects on time and within budget. And because we know that your website is a critical part of your business, we’re always available to provide ongoing support and ensure that your site remains a valuable asset.
+</p>
+<p>
+Thank you for considering us as your digital partner. We’re excited to work with you and help you achieve your online goals!       
+
+</p>
       </AboutCard>
       <CardsContainer>
         <BulletPointsCard>

@@ -94,7 +94,7 @@ const ImageContainer = styled(Grid)(({ theme }) => ({
 const Title = styled('h1')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   fontSize: '3rem',
-  color: 'black',
+  color: '#3A3A3A',
   fontWeight: 'normal',
   marginBottom: '30px',
   [theme.breakpoints.down(1000)]: {
@@ -113,17 +113,19 @@ const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: '#3a3a3a',
   color: '#F4E1D2',
   textAlign: 'center',
-  width: '170px',
+  width: '150px',
   borderRadius: '10px',
   fontSize: '1rem',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Add a shadow for more depth
+
   padding: '10px 20px',
-  fontWeight: '600',
+  fontWeight: 'normal',
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
   cursor: 'pointer',
   alignSelf: 'center', // Center button on mobile
   '&:hover': {
     transform: 'scale(1.05)', // Slightly increase size on hover
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)', // Add a shadow for more depth
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)', // Add a shadow for more depth
     backgroundColor: '#F2784B', // Ensure background color goes orange
     color: '#F4E1D2', // Ensure text color stays beige
   },
@@ -135,7 +137,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
   [theme.breakpoints.down(800)]: {
     fontSize: '0.875rem', // Make button font smaller on small screens
-    width: '100px', // Reduce button width on small screens
+    width: '125px', // Reduce button width on small screens
     marginTop: '15px', // Add some spacing above the button on small screens
   },
 }));

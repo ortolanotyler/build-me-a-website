@@ -30,14 +30,16 @@ const slideInRight = keyframes`
   }
 `;
 
-const ParentContainer = styled('div')({
+const ParentContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: '#F4E1D2', // Ensure background color covers the entire viewport
-  padding: '125px 50px', // Add some padding to the container
- 
-});
+  padding: '125px 50px', // Default padding for larger screens
+  [theme.breakpoints.down('sm')]: {
+    padding: '100px 50px', // Half the padding on smaller screens
+  },
+}));
 
 const HeroContainer = styled(Grid)(({ theme }) => ({
   backgroundColor: '#F4E1D2',
@@ -45,6 +47,7 @@ const HeroContainer = styled(Grid)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  marginTop: '50px', // Add some margin at the top
   padding: '100px', // Add some padding inside the container
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',

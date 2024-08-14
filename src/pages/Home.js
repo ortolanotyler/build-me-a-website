@@ -4,6 +4,7 @@ import SkillsBanner from '../components/SkillsBanner';
 import Laptops from '../components/SiteExamples';
 import Footer from '../components/Footer';
 import AboutAndReviews from '../components/AboutAndReviewsContainer';
+import Header from '../components/Header';
 
 const Home = () => {
   const containerStyle = {

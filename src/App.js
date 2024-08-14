@@ -19,8 +19,9 @@ import ScrollToTop from './components/ScrollToTop';  // Import the ScrollToTop c
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* Add the ScrollToTop component here */}
       <Header/>
+      <ScrollToTop /> {/* Add the ScrollToTop component here */}
+      
       <div>
         <Routes>
           <Route path="/" element={<Home />} />

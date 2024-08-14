@@ -41,11 +41,12 @@ const ParentContainer = styled('div')({
 const HeroContainer = styled(Grid)(({ theme }) => ({
   backgroundColor: '#F4E1D2',
   padding: '100px 200px',
-  maxWidth: '1200px',
+  maxWidth: '100%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   margin: '0 auto', // Center horizontally
+  paddingTop: 'calc(100px + 20px)', // Adjust padding to account for the fixed header
   [theme.breakpoints.down(1000)]: {
     flexDirection: 'column',
     padding: '80px 100px',
@@ -116,9 +117,10 @@ const StyledButton = styled(Button)(({ theme }) => ({
   width: '150px',
   borderRadius: '10px',
   fontSize: '1rem',
+  textTransform: 'none', // Prevent text from being capitalized
   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Add a shadow for more depth
 
-  padding: '10px 20px',
+  padding: '10px',
   fontWeight: 'normal',
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
   cursor: 'pointer',
@@ -141,6 +143,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     marginTop: '15px', // Add some spacing above the button on small screens
   },
 }));
+
 
 const PopupOverlay = styled('div')({
   position: 'fixed',
@@ -223,7 +226,7 @@ const Hero = () => {
 
   return (
     <ParentContainer>
-      <HeroContainer container spacing={1}>
+      <HeroContainer container spacing={3}>
         <TextContainer item xs={12} md={6}>
           <Title>Build a website that grows with your business</Title>
           <StyledButton onClick={handleOpenPopup}>Free Consultation</StyledButton>

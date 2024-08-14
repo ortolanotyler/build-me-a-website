@@ -12,13 +12,13 @@ const logo = `${process.env.PUBLIC_URL}/Images/logo.png`;
 
 const linkStyle = {
   textDecoration: 'none',
-  color: '#3A3A3A', // Text color
-  fontFamily: 'Nunito, sans-serif', // Font family
+  color: '#3A3A3A',
+  fontFamily: 'Nunito, sans-serif',
   fontSize: '1.35rem',
   fontWeight: '700',
   display: 'flex',
   alignItems: 'center',
-  padding: '8px', // Removed padding from the left and right to prevent overflow
+  padding: '8px',
 };
 
 const Header = () => {
@@ -46,45 +46,45 @@ const Header = () => {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '20px', // Removed extra padding on the sides
-    backgroundColor: '#bbd7ec', // Background color to match the page
-    position: 'fixed', // Fix the header to the top of the screen
+    padding: '20px',
+    backgroundColor: '#bbd7ec',
+    position: 'fixed',
     top: '0',
     left: '0',
     right: '0',
-    maxWidth: '100vw', // Ensure the header spans the full width of the screen
-    zIndex: '1000', // Ensure the header stays on top of other content
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // Add a subtle shadow for depth
-    overflow: 'hidden', // Prevents overflow beyond the viewport
+    maxWidth: '100vw',
+    zIndex: '1000',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    overflow: 'hidden',
   };
 
   const logoContainerStyle = {
-    flex: '0', // Only take up as much space as needed for the logo
+    flex: '0',
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
   };
 
   const logoStyle = {
-    width: isMobile ? '180px' : '250px', // Adjust logo width for mobile
-    height: 'auto', // Maintain aspect ratio
+    width: isMobile ? '180px' : '250px',
+    height: 'auto',
     cursor: 'pointer',
   };
 
   const navContainerStyle = {
-    display: isMobile ? 'none' : 'flex', // Hide navigation links on mobile screens
+    display: isMobile ? 'none' : 'flex',
     justifyContent: 'flex-end',
     flex: '1',
-    gap: '1rem', // Add gap between navigation links
+    gap: '1rem',
   };
 
   const mobileMenuIconStyle = {
-    display: isMobile ? 'block' : 'none', // Show hamburger menu on mobile
+    display: isMobile ? 'block' : 'none',
   };
 
   const drawerListStyle = {
     width: '250px',
-    color: '#3A3A3A', // Grey text color
+    color: '#3A3A3A',
   };
 
   const renderDrawerList = () => (
@@ -95,9 +95,29 @@ const Header = () => {
       <ListItem button component={Link} to="/about" onClick={closeDrawerOnClick}>
         <ListItemText primary="About" />
       </ListItem>
-      <ListItem button component={Link} to="/services" onClick={closeDrawerOnClick}>
-        <ListItemText primary="Services" />
-      </ListItem>
+      {/* Only show individual service links on smaller screens */}
+      {isMobile && (
+        <>
+          <ListItem button component={Link} to="/web-development" onClick={closeDrawerOnClick}>
+            <ListItemText primary="Web Development" />
+          </ListItem>
+          <ListItem button component={Link} to="/search-engine-optimization" onClick={closeDrawerOnClick}>
+            <ListItemText primary="SEO" />
+          </ListItem>
+          <ListItem button component={Link} to="/web-design" onClick={closeDrawerOnClick}>
+            <ListItemText primary="Web Design" />
+          </ListItem>
+          <ListItem button component={Link} to="/web-hosting" onClick={closeDrawerOnClick}>
+            <ListItemText primary="Web Hosting" />
+          </ListItem>
+          <ListItem button component={Link} to="/search-engine-marketing" onClick={closeDrawerOnClick}>
+            <ListItemText primary="Search Engine Marketing" />
+          </ListItem>
+          <ListItem button component={Link} to="/dns-migration" onClick={closeDrawerOnClick}>
+            <ListItemText primary="DNS Migration" />
+          </ListItem>
+        </>
+      )}
       <ListItem button component={Link} to="/contact" onClick={closeDrawerOnClick}>
         <ListItemText primary="Contact" />
       </ListItem>
@@ -128,8 +148,8 @@ const Header = () => {
         onClose={toggleDrawer(false)}
         PaperProps={{
           style: {
-            backgroundColor: '#bbd7ec', // Light blue background
-            color: '#3A3A3A', // Grey text color
+            backgroundColor: '#bbd7ec',
+            color: '#3A3A3A',
           },
         }}
       >
@@ -140,3 +160,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

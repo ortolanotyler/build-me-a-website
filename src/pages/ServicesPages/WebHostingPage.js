@@ -11,7 +11,7 @@ const PageContainer = styled('div')(({ theme }) => ({
   alignItems: 'center',
   minHeight: '100vh', // Ensure full viewport height
   [theme.breakpoints.down('sm')]: {
-    padding: '100px 50px', // Reduce padding for smaller screens
+    padding: '125px 50px', // Reduce padding for smaller screens
   },
 }));
 

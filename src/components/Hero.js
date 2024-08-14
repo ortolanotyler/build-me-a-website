@@ -216,33 +216,33 @@ const Hero = () => {
     }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-  
-    try {
-      const response = await fetch('https://buildmywebsite-server.herokuapp.com/api/form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formValues),
-      });
-  
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Form Submitted:', result);
-        // Handle success (e.g., show a thank you message)
-      } else {
-        console.error('Form submission failed:', response.statusText);
-        // Handle error (e.g., show an error message)
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      // Handle network errors or unexpected issues
+ const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  try {
+    const response = await fetch('https://buildmywebsite-server.herokuapp.com/api/form', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formValues),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log('Form Submitted:', result);
+      // Handle success (e.g., show a thank you message)
+    } else {
+      console.error('Form submission failed:', response.statusText);
+      // Handle error (e.g., show an error message)
     }
-  
-    handleClosePopup();
-  };
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    // Handle network errors or unexpected issues
+  }
+
+  handleClosePopup();
+};
 
   return (
     <ParentContainer>

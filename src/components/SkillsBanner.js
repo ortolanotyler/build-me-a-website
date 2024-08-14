@@ -3,6 +3,7 @@ import { HiCode, HiSearch, HiSpeakerphone, HiDesktopComputer, HiDatabase } from 
 import { FaServer } from 'react-icons/fa'; // Import additional icons
 import { styled, keyframes } from '@mui/system';
 
+// Slide-in animation
 const slideInRight = keyframes`
   from {
     transform: translateX(100%);
@@ -15,13 +16,27 @@ const slideInRight = keyframes`
 `;
 
 const Wrapper = styled('div')(({ theme }) => ({
-  backgroundColor: '#bbd7ec', // Match the background color of the hero section
+  position: 'relative',
   minHeight: '20vh',
   padding: '50px 0', // Padding around the skills section
   width: '100%', // Make sure it spans the full width
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundImage: `url(${process.env.PUBLIC_URL}/Images/toronto.jpg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    opacity: 0.75, // Adjust the opacity for the fade effect
+   // Ensure the overlay is behind the content
+  },
 }));
 
 const SkillsBannerContainer = styled('div')(({ theme, isVisible }) => ({
@@ -42,19 +57,31 @@ const SkillsBannerContainer = styled('div')(({ theme, isVisible }) => ({
 
 const Skill = styled('div')(({ theme }) => ({
   textAlign: 'center',
-  color: '#3A3A3A',
+  color: '#f8f8f8',
   fontFamily: 'Nunito, sans-serif', // Correctly specify the font family
   fontWeight: '600',
-  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
+  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
+
+  textShadow: '3px 2px 1px rgba(0, 0, 0, 0.35)', // Add text shadow
   maxWidth: '200px', // Limit the width of each icon box
 }));
 
 const Icon = styled('div')(({ theme }) => ({
   fontSize: '3rem', // Adjust icon size
-  color: '#F2784B', // Ensure background color goes orange
+  color: '#F4E1D2', // Ensure background color goes orange
   marginBottom: '10px',
-  textShadow: '2px 2px 2px rgba(0, 0, 0, 0.05)', // Add text shadow
+  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
+  transition: 'transform 0.3s ease', // Smooth transition for hover effect
+  '&:hover': {
+    transform: 'scale(1.2)', // Slightly enlarge icon on hover
+  },
 }));
+
+const Link = styled('a')({
+  textDecoration: 'none',
+  color: '#F4E1D2',
+  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
+});
 
 const SkillsBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -89,39 +116,63 @@ const SkillsBanner = () => {
       <SkillsBannerContainer ref={containerRef} isVisible={isVisible}>
         <Skill>
           <Icon>
-            <HiDesktopComputer />
+            <Link href='/web-development'>
+              <HiDesktopComputer />
+            </Link>
           </Icon>
-          <p>Websites</p>
+          <Link href='/web-development'>
+            <p>Websites</p>
+          </Link>
         </Skill>
         <Skill>
           <Icon>
-            <HiSearch />
+            <Link href='/search-engine-optimization'>
+              <HiSearch />
+            </Link>
           </Icon>
-          <p>SEO</p>
+          <Link href='/search-engine-optimization'>
+            <p>SEO</p>
+          </Link>
         </Skill>
         <Skill>
           <Icon>
-            <HiCode />
+            <Link href='/web-design'>
+              <HiCode />
+            </Link>
           </Icon>
-          <p>Web Design</p>
+          <Link href='/web-design'>
+            <p>Web Design</p>
+          </Link>
         </Skill>
         <Skill>
           <Icon>
-            <FaServer />
+            <Link href='/web-hosting'>
+              <FaServer />
+            </Link>
           </Icon>
-          <p>Web Hosting</p>
+          <Link href='/web-hosting'>
+            <p>Web Hosting</p>
+          </Link>
         </Skill>
         <Skill>
           <Icon>
-            <HiDatabase />
+            <Link href='/dns-migration'>
+              <HiDatabase />
+            </Link>
           </Icon>
-          <p>DNS Migration</p>
+          <Link href='/dns-migration'>
+            <p>DNS Migration</p>
+          </Link>
         </Skill>
         <Skill>
           <Icon>
-            <HiSpeakerphone />
+            <Link href='/search-engine-marketing'>
+              <HiSpeakerphone />
+            </Link>
           </Icon>
-          <p>Search Marketing</p>
+          <Link href='/search-engine-marketing'>
+            <p>Search Marketing</p>
+          </Link>
         </Skill>
       </SkillsBannerContainer>
     </Wrapper>

@@ -68,7 +68,6 @@ const Header = () => {
   const logoStyle = {
     width: isMobile ? '180px' : '250px',
     height: 'auto',
-    cursor: 'pointer',
   };
 
   const navContainerStyle = {

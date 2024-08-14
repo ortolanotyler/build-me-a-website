@@ -1,9 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import SkillsBanner from '../components/SkillsBanner';
-import Footer from '../components/Footer';
 import AboutAndReviews from '../components/AboutAndReviewsContainer';
-import Header from '../components/Header';
 
 const Home = () => {
   const containerStyle = {
@@ -22,7 +20,7 @@ const Home = () => {
       <main>
         {/* Additional content can be added here */}
       </main>
-      
+
     </div>
   );
 };

@@ -42,7 +42,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
   borderRadius: '10px',
   marginTop: '20px',
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-  cursor: 'pointer',
   '&:hover': {
     transform: 'scale(1.05)',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',

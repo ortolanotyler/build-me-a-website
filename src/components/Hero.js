@@ -37,7 +37,7 @@ const ParentContainer = styled('div')(({ theme }) => ({
   backgroundColor: '#F4E1D2', // Ensure background color covers the entire viewport
   padding: '125px 50px', // Default padding for larger screens
   [theme.breakpoints.down('sm')]: {
-    padding: '75px 50px', // Half the padding on smaller screens
+    padding: '50px 25px', // Half the padding on smaller screens
   },
 }));
 
@@ -90,7 +90,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
   textTransform: 'none', // Prevent text from being capitalized
   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Add a shadow for more depth
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-  cursor: 'pointer',
   alignSelf: 'center', // Center the button horizontally
   '&:hover': {
     transform: 'scale(1.05)', // Slightly increase size on hover

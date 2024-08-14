@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, Box, Grid, Rating } from '@mui/material'
 import { styled, keyframes } from '@mui/system';
 
 // Import image
-const AboutImage = `${process.env.PUBLIC_URL}/Images/about-image.jpg`;
+const AboutImage = `${process.env.PUBLIC_URL}/Images/digital-marketing.jpg`;
 
 // Slide-in keyframe animation from below
 const slideInUp = keyframes`
@@ -26,12 +26,13 @@ const AboutContainer = styled('div')(({ theme }) => ({
   alignItems: 'center',
   padding: '100px',
   [theme.breakpoints.down('md')]: {
-    padding: '10px',
+    padding: '10px 30px',
   },
 }));
 
 // Main horizontal card for the About text
 const AboutCard = styled('div')(({ theme, isVisible }) => ({
+  border: '3px solid #ECE7E3', // Add border to match other components
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
@@ -40,7 +41,7 @@ const AboutCard = styled('div')(({ theme, isVisible }) => ({
   maxWidth: '800px',
   margin: '0 auto 20px auto',
   borderRadius: '10px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
   textAlign: 'left',
   opacity: isVisible ? 1 : 0,
   animation: isVisible ? `${slideInUp} 1s ease-out forwards` : 'none',
@@ -78,12 +79,13 @@ const CardsContainer = styled('div')(({ theme, isVisible }) => ({
 
 // Styled card for the image
 const ImageCard = styled('div')(({ theme }) => ({
+  border: '3px solid #ECE7E3', // Add border to match other components
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
   padding: '20px',
   flex: 1,
   borderRadius: '10px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
   [theme.breakpoints.down('md')]: {
     width: '100%',
     marginBottom: '10px',
@@ -96,41 +98,23 @@ const Image = styled('img')({
   borderRadius: '10px',
 });
 
-// Bullet points list
-const BulletList = styled('ul')({
+// FAQ list
+const FAQList = styled('div')({
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
-  listStyleType: 'disc',
-  margin: '0 auto',
-  padding: '0',
-  textAlign: 'center',
-  width: 'fit-content',
+  marginTop: '20px',
 });
 
-const BulletListItem = styled('li')({
-  fontFamily: 'Nunito, sans-serif',
-  textAlign: 'left',
+// FAQ item style
+const FAQItem = styled('div')({
+  marginBottom: '20px',
+  fontSize: '1rem',
 });
-
-// Styled card for the bullet points
-const BulletPointsCard = styled('div')(({ theme }) => ({
-  fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#F4E1D2',
-  padding: '50px 25px',
-  flex: 1,
-  borderRadius: '10px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-  textAlign: 'center',
-  [theme.breakpoints.down('md')]: {
-    width: '100%',
-    marginBottom: '10px',
-  },
-}));
 
 // Container for the reviews section
 const ReviewsContainer = styled('div')(({ isVisible }) => ({
   borderRadius: '10px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -147,7 +131,7 @@ const ReviewCard = styled(Card)(({ theme }) => ({
   borderRadius: '10px',
   width: '100%',
   margin: '10px 10px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
   [theme.breakpoints.down('sm')]: {
     maxWidth: '100%',
     marginBottom: '20px',
@@ -223,19 +207,72 @@ const AboutAndReviews = () => {
         </p>
       </AboutCard>
       <CardsContainer isVisible={isVisible}>
-        <BulletPointsCard>
-          <h3>Why Choose Us?</h3>
-          <BulletList>
-            <BulletListItem>Experienced professionals</BulletListItem>
-            <BulletListItem>Customer-focused approach</BulletListItem>
-            <BulletListItem>Innovative solutions</BulletListItem>
-            <BulletListItem>Proven track record</BulletListItem>
-            <BulletListItem>Competitive pricing</BulletListItem>
-          </BulletList>
-        </BulletPointsCard>
-        <ImageCard>
-          <Image src={AboutImage} alt="About Us" />
-        </ImageCard>
+        <FAQList>
+         
+  
+          <h3>Frequently Asked Questions</h3>
+          <FAQItem>
+            <strong>What services does your web development business offer?</strong>
+            <p>
+              At Build Me A Website, we offer a comprehensive range of services tailored to help your business thrive online. Our core offerings include custom web design and development, SEO, digital marketing, and web hosting. Whether you need a visually stunning website, want to improve your search engine rankings, or require a complete digital marketing strategy, we’ve got you covered. For example, our SEO services involve a detailed keyword analysis, on-page optimization, and ongoing content creation to ensure your website ranks high on search engines like Google.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>How long does it take to build a website?</strong>
+            <p>
+              The timeline for building a website varies depending on the project's complexity and your specific requirements. On average, a standard business website takes about 4-6 weeks from initial consultation to launch. This includes time for design, development, revisions, and testing. For example, a basic brochure site might take less time, while an e-commerce site with custom features could take longer. We always keep you informed throughout the process, ensuring timely delivery without compromising on quality.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>Do you offer custom website designs, or do you use templates?</strong>
+            <p>
+              We believe every business is unique, so we offer fully custom website designs tailored to your brand and goals. While templates can be a starting point for some, we prefer to create designs from scratch to ensure your site stands out and aligns perfectly with your vision. For instance, if you’re in the fashion industry, we might design a visually rich, mobile-responsive site that highlights your products in a sleek, modern layout, reflecting the essence of your brand.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>What platforms do you build websites on?</strong>
+            <p>
+              We’re versatile in the platforms we use, tailoring our approach based on your needs. We have expertise in building custom solutions using platforms like WordPress for content-driven sites, Shopify for e-commerce, and custom-coded websites using React for more complex requirements. For example, if you need an e-commerce store, we might recommend Shopify for its robust, user-friendly platform that scales with your business.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>What is your pricing structure?</strong>
+            <p>
+              Our pricing is transparent and tailored to the specific needs of your project. We offer both fixed-price packages for standard services, like a basic business website or SEO audit, and custom quotes for more complex or unique projects. For instance, a standard 5-page business website might start at $2,500, while a fully custom e-commerce platform with advanced integrations could be priced higher. We’re always upfront about costs, so there are no surprises.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>Do you offer ongoing maintenance and support?</strong>
+            <p>
+              Absolutely! We offer various maintenance and support packages to ensure your website stays updated, secure, and running smoothly. This includes regular updates, security monitoring, backups, and content updates. For example, we can take care of everything from updating your site’s content and plugins to ensuring your SSL certificate is always up to date, giving you peace of mind to focus on your business.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>How do you ensure my website will be SEO-friendly?</strong>
+            <p>
+              SEO is integrated into our development process from the start. We conduct thorough keyword research, optimize your website’s architecture, ensure mobile responsiveness, and implement clean, fast-loading code. For instance, we’ll optimize your site’s meta tags, headings, and image alt texts to align with your targeted keywords. We also ensure your site is set up for Google Analytics and Search Console, so you can track your SEO performance.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>Can you integrate e-commerce functionality into my website?</strong>
+            <p>
+              Yes, we specialize in integrating e-commerce functionality, whether you need a simple online store or a full-fledged e-commerce platform. We can set up secure payment gateways, manage product inventory, and design user-friendly checkout processes. For instance, if you’re a retailer, we can build an online store using Shopify or WooCommerce, complete with product variations, discount codes, and customer reviews, all tailored to your brand.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>What information do you need from me to get started?</strong>
+            <p>
+              To get started, we typically need an overview of your business, your goals for the website, and any specific features you’d like to include. If you have branding materials like a logo, color scheme, or content, that’s also helpful. For example, if you’re launching a new product, we’ll need product descriptions, images, and any promotional materials you want to feature on the site. The more detailed the information, the better we can tailor the site to your needs.
+            </p>
+          </FAQItem>
+          <FAQItem>
+            <strong>Can you provide examples of past projects?</strong>
+            <p>
+              Certainly! We’re proud of the work we’ve done and happy to share examples of past projects that demonstrate our expertise. You can view our portfolio on our website, where we showcase a variety of websites across different industries. For example, we recently designed a custom website for a boutique fashion brand that includes an integrated e-commerce platform, social media feeds, and a blog—all optimized for SEO and mobile devices.
+            </p>
+          </FAQItem>
+        </FAQList>
+     
       </CardsContainer>
       <ReviewsContainer isVisible={isVisible}>
         <Grid container spacing={1} justifyContent="center">

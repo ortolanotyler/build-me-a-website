@@ -50,16 +50,17 @@ const StyledButton = styled(Button)(({ theme }) => ({
   borderRadius: '10px',
   marginTop: '20px',
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-  cursor: 'pointer',
   '&:hover': {
     transform: 'scale(1.05)',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
     backgroundColor: '#F2784B',
+
   },
   '&:active': {
     transform: 'scale(0.95)',
     boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
     backgroundColor: '#3A3A3A',
+
   },
 }));
 

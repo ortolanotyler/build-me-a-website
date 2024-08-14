@@ -20,6 +20,8 @@ const AboutContainer = styled('div')(({ theme }) => ({
 
 // Main horizontal card for the About text
 const AboutCard = styled('div')(({ theme }) => ({
+    color: '#3A3A3A',
+
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
   padding: '20px',
@@ -41,12 +43,13 @@ const AboutCard = styled('div')(({ theme }) => ({
 
 // Container for the two cards below the main card
 const CardsContainer = styled('div')(({ theme }) => ({
+    color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
   display: 'flex',
   justifyContent: 'space-between',
   gap: '20px', // Add spacing between the cards
   width: '100%',
-  maxWidth: '1000px', // Match the maxWidth to the About card
+  maxWidth: '900px', // Match the maxWidth to the About card
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',
     alignItems: 'center',
@@ -80,6 +83,8 @@ const Image = styled('img')({
 
 // Bullet points list
 const BulletList = styled('ul')({
+    color: '#3A3A3A',
+
   fontFamily: 'Nunito, sans-serif',
   listStyleType: 'disc',
   margin: '0 auto', // Center the list horizontally
@@ -111,12 +116,15 @@ const BulletPointsCard = styled('div')(({ theme }) => ({
 
 // Container for the reviews section
 const ReviewsContainer = styled('div')({
+    borderRadius: '10px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: '#F4E1D2', // Light background to match a Google review feel
-  padding: '40px',
-  marginTop: '20px', // Add some margin to separate from the previous section
+  padding: '40px 20px',
+  marginTop: '50px', // Add some margin to separate from the previous section
 });
 
 // Custom style for each review card

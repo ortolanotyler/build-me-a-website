@@ -1,11 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { styled } from '@mui/system';
+import { styled, keyframes } from '@mui/system';
 
 // Import the image
 const heroImage = `${process.env.PUBLIC_URL}/Images/hero-1.png`;
+
+// Animations for the text and image
+const slideInLeft = keyframes`
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideInRight = keyframes`
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
 
 const ParentContainer = styled('div')({
   display: 'flex',
@@ -41,6 +64,7 @@ const TextContainer = styled(Grid)(({ theme }) => ({
   marginTop: '100px',
   justifyContent: 'center',
   textAlign: 'left',
+  animation: `${slideInLeft} 1s ease-out`, // Apply the left slide-in animation
   [theme.breakpoints.down(1000)]: {
     textAlign: 'center',
     marginBottom: '20px',
@@ -56,6 +80,7 @@ const ImageContainer = styled(Grid)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   marginTop: '100px',
+  animation: `${slideInRight} 1s ease-out`, // Apply the right slide-in animation
   [theme.breakpoints.down(1000)]: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -99,7 +124,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   '&:hover': {
     transform: 'scale(1.05)', // Slightly increase size on hover
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)', // Add a shadow for more depth
-    backgroundColor: '#F2784B', // Ensure background color stays black
+    backgroundColor: '#F2784B', // Ensure background color goes orange
     color: '#F4E1D2', // Ensure text color stays beige
   },
   '&:active': {
@@ -129,13 +154,13 @@ const PopupOverlay = styled('div')({
 });
 
 const PopupContent = styled('div')({
-  backgroundColor: '#f5f5dc', // Same beige background
+  backgroundColor: '#bbd7ec', // Same beige background
   fontFamily: 'Nunito, sans-serif',
 
   padding: '30px',
   borderRadius: '10px',
   width: '400px',
-  maxWidth: '90%',
+  maxWidth: '70%',
   boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
   zIndex: 1001,
 });
@@ -143,36 +168,37 @@ const PopupContent = styled('div')({
 const PopupTitle = styled('h2')({
   
   fontFamily: 'Nunito, sans-serif',
-  color: 'black',
+  color: '#3a3a3a',
   textAlign: 'center',
   marginBottom: '20px',
 });
 
 const StyledTextField = styled(TextField)({
   fontFamily: 'Nunito, sans-serif',
-
+  backgroundColor: '#F4E1D2',
+  borderRadius: '10px',
   marginBottom: '20px',
   '& label.Mui-focused': {
-    color: 'black',
+    color: '#3a3a3a',
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: 'black',
+    borderBottomColor: '#3a3a3a',
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       fontFamily: 'Nunito, sans-serif',
 
-      borderColor: 'black',
+      borderColor: '#3a3a3a',
     },
     '&:hover fieldset': {
       fontFamily: 'Nunito, sans-serif',
 
-      borderColor: 'black',
+      borderColor: '#3a3a3a',
     },
     '&.Mui-focused fieldset': {
       fontFamily: 'Nunito, sans-serif',
 
-      borderColor: 'black',
+      borderColor: '#3a3a3a',
     },
   },
 });
@@ -198,7 +224,7 @@ const Hero = () => {
       <HeroContainer container spacing={1}>
         <TextContainer item xs={12} md={6}>
           <Title>Build a website that grows with your business</Title>
-          <StyledButton onClick={handleOpenPopup}>Get Started</StyledButton>
+          <StyledButton onClick={handleOpenPopup}>Free Consultation</StyledButton>
         </TextContainer>
         <ImageContainer item xs={12} md={6}>
           <img src={heroImage} alt="People working together" style={{ marginLeft: '30px', width: '80%', borderRadius: '10px' }} />
@@ -207,7 +233,7 @@ const Hero = () => {
       {isPopupOpen && (
         <PopupOverlay onClick={handleClosePopup}>
           <PopupContent onClick={(e) => e.stopPropagation()}>
-            <PopupTitle>Get Started</PopupTitle>
+            <PopupTitle>Free Consulation</PopupTitle>
             <StyledTextField
               label="Full Name"
               variant="outlined"
@@ -229,7 +255,7 @@ const Hero = () => {
             <Button 
               variant="contained" 
               
-              style={{ backgroundColor: '#3A3A3A', color: '#f5f5dc', marginTop: '20px' }} 
+              style={{ borderRadius: '10px',backgroundColor: '#3A3A3A', color: '#f5f5dc', marginTop: '20px' }} 
               fullWidth
               onClick={handleClosePopup} // For now, just close the popup on submit
             >

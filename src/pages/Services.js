@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Card, CardContent, Typography, CardMedia } from '@mui/material';
-import { styled } from '@mui/system';
+import { styled, keyframes } from '@mui/system';
 
 // Styled container for the Services section with the background effect
 const ServicesContainer = styled('div')(({ theme }) => ({
   position: 'relative',
-  padding: '120px 40px 40px', // Added top padding to ensure it is below the header
+  color: '#3A3A3A',
+  padding: '125px 60px 60px', // Added top padding to ensure it is below the header
   background: '-webkit-linear-gradient(to left, #F4E1D2, #ECE7E3)',  // Gradient background
   background: 'linear-gradient(to left, #F4E1D2, #ECE7E3)',  // Fallback for other browsers
   minHeight: '100vh', // Ensure full viewport height
@@ -90,8 +91,8 @@ const ServicesContainer = styled('div')(({ theme }) => ({
   },
   '& .circles li:nth-of-type(10)': {
     left: '85%',
-    width: '150px',
-    height: '150px',
+    width: '10px',
+    height: '10px',
     animationDelay: '0s',
     animationDuration: '15s', // Adjusted duration for faster movement
   },
@@ -102,19 +103,47 @@ const ServicesContainer = styled('div')(({ theme }) => ({
       borderRadius: 0,
     },
     '100%': {
-      transform: 'translateY(-1000px) rotate(720deg)',
+      transform: 'translateY(-2000px) rotate(720deg)',
       opacity: 0,
       borderRadius: '50%',
     },
   },
 }));
 
+// Keyframes for sliding in from the left and right
+const slideInLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const slideInRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
 // Styled card for each service
-const ServiceCard = styled(Card)(({ theme }) => ({
+const ServiceCard = styled(Card)(({ theme, animationDirection }) => ({
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  color: '#3a3a3a', // Dark grey color for card text
+  fontFamily: 'Nunito, sans-serif',
   width: '100%', // Full width within grid item
   borderRadius: '10px', // Add rounded corners
   margin: '20px 0', // Vertical margin to create spacing between cards
   zIndex: 2, // Ensure cards are above the background effect
+  opacity: 0, // Start with 0 opacity for animation
+  animation: `${animationDirection} 1s ease-out forwards`, // Apply the animation
   [theme.breakpoints.up('md')]: {
     width: '80%', // Adjust width for larger screens
     margin: '20px auto', // Center the cards on larger screens
@@ -129,19 +158,29 @@ const services = [
     image: `${process.env.PUBLIC_URL}/Images/webdev.jpg`,
   },
   {
-    title: 'SEO Optimization',
+    title: 'Search Engine Optimization',
     description: 'Optimize your site to rank higher in search engines and attract more visitors.',
-    image: `${process.env.PUBLIC_URL}/Images/seo-optimization.jpg`,
+    image: `${process.env.PUBLIC_URL}/Images/google.png`,
   },
   {
-    title: 'UI/UX Design',
+    title: 'Web Hosting',
     description: 'Designing user-friendly interfaces that provide an exceptional user experience.',
-    image: `${process.env.PUBLIC_URL}/Images/ui-ux-design.jpg`,
+    image: `${process.env.PUBLIC_URL}/Images/webhosting.jpg`,
   },
   {
-    title: 'Digital Marketing',
+    title: 'Web Design',
     description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
-    image: `${process.env.PUBLIC_URL}/Images/digital-marketing.jpg`,
+    image: `${process.env.PUBLIC_URL}/Images/webdesign.jpg`,
+  },
+  {
+    title: 'Search Engine Marketing',
+    description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
+    image: `${process.env.PUBLIC_URL}/Images/SEM.jpg`,
+  },
+  {
+    title: 'DNS Migration',
+    description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
+    image: `${process.env.PUBLIC_URL}/Images/dns.jpg`,
   },
 ];
 
@@ -164,14 +203,25 @@ const Services = () => {
         <li></li>
         <li></li>
       </ul>
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography
+        style={{
+          fontWeight: '600',
+          fontFamily: 'Nunito, sans-serif',
+        }}
+        variant="h4"
+        align="center"
+        gutterBottom
+      >
         Our Services
       </Typography>
       <Grid container spacing={3} justifyContent="center">
         {services.map((service, index) => (
-          <Grid item xs={12} sm={6} md={5} key={index}> {/* Adjust grid item width */}
+          <Grid item xs={12} sm={6} md={5} key={index}>
             <ServiceCard
-            style = {{backgroundColor: '#F4E1D2'}}
+              animationDirection={index % 2 === 0 ? slideInLeft : slideInRight}
+              style={{
+                backgroundColor: '#BBD7EC',
+              }}
             >
               <CardMedia
                 component="img"
@@ -181,10 +231,19 @@ const Services = () => {
                 title={service.title}
               />
               <CardContent>
-                <Typography variant="h6" component="div" gutterBottom>
+                <Typography
+                  style={{ fontFamily: 'Nunito, sans-serif' }}
+                  variant="h6"
+                  component="div"
+                  gutterBottom
+                >
                   {service.title}
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
+                <Typography
+                  style={{ fontFamily: 'Nunito, sans-serif' }}
+                  variant="body2"
+                  color="textSecondary"
+                >
                   {service.description}
                 </Typography>
               </CardContent>

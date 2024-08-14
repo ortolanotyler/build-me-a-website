@@ -46,6 +46,7 @@ const Container = styled('div')(({ theme }) => ({
 
 // Styled components for each image
 const Image = styled('img')(({ theme, animation }) => ({
+  borderRadius: '10px',
   width: 'auto',
   height: '400px', // Set a fixed height for the images
   animation: `${animation} 1.5s ease-out forwards`,

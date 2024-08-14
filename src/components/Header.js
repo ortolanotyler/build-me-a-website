@@ -14,11 +14,11 @@ const linkStyle = {
   textDecoration: 'none',
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
-  fontSize: '1.35rem',
-  fontWeight: '700',
+  fontSize: '1.25rem',
+  fontWeight: '500',
   display: 'flex',
   alignItems: 'center',
-  padding: '8px',
+  padding: '10px',
 };
 
 const Header = () => {
@@ -46,7 +46,7 @@ const Header = () => {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '20px',
+    padding: '25px',
     backgroundColor: '#bbd7ec',
     position: 'fixed',
     top: '0',
@@ -54,7 +54,7 @@ const Header = () => {
     right: '0',
     maxWidth: '100vw',
     zIndex: '1000',
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     overflow: 'hidden',
   };
 

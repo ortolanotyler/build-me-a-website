@@ -36,6 +36,7 @@ function App() {
           <Route path="/web-design" element={<WebDesignPage />} />
           <Route path="/web-hosting" element={<WebHostingPage />} />
           <Route path="/dns-migration" element={<DNSMigrationPage />} />
+        
         </Routes>
       </div>
       <Footer/>

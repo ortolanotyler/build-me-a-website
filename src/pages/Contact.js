@@ -3,17 +3,20 @@ import { TextField, Checkbox, FormControlLabel, Button, Typography, Grid } from 
 import { styled } from '@mui/system';
 
 const Contact = styled('div')(({ theme }) => ({
-  fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#F4E1D2',
-  padding: '150px 100px', // Adjusted padding
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  minHeight: '100vh', // Ensure full viewport height
-  [theme.breakpoints.down('sm')]: {
-    padding: '150px 50px', // Reduce padding for smaller screens
-  },
-}));
+    fontFamily: 'Nunito, sans-serif',
+    backgroundColor: '#F4E1D2',
+    padding: '175px 50px 50px', // Adjusted padding
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minHeight: '100vh', // Ensure full viewport height
+    [theme.breakpoints.down('md')]: {
+      padding: '150px 50px', // Adjusted padding for smaller screens
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '150px 50px 50px', // Adjusted padding for smaller screens
+    },
+  }));
 
 const FormContainer = styled('form')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
@@ -24,7 +27,7 @@ const FormContainer = styled('form')(({ theme }) => ({
   borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   marginTop: '20px',
-  border: '3px solid #F4E1D2', // Add blue border around the form
+  border: '1px solid #ECE7E3',
   [theme.breakpoints.down('sm')]: {
     maxWidth: '90%', // Decrease form width on smaller screens
     padding: '20px', // Reduce padding on smaller screens

@@ -3,116 +3,19 @@ import { Grid, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
 
 const ServicesContainer = styled('div')(({ theme }) => ({
-  position: 'relative',
   color: '#3A3A3A',
-  padding: '150px 60px 60px',
-  background: '-webkit-linear-gradient(to left, #F4E1D2, #ECE7E3)',
-  background: 'linear-gradient(to left, #F4E1D2, #ECE7E3)',
+  padding: '150px 50px 50px',
+  background: '-webkit-linear-gradient(to left, #F4E1D2, #F4E1D2)',
+  background: 'linear-gradient(to left, #F4E1D2, #F4E1D2)',
   minHeight: '100vh',
   overflow: 'hidden',
   zIndex: 0,
-  '& .circles': {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden',
-    zIndex: -1,
-  },
-  '& .circles li': {
-    position: 'absolute',
-    display: 'block',
-    listStyle: 'none',
-    width: '20px',
-    height: '20px',
-    background: '#6DA3CD',
-    animation: 'animate 10s linear infinite',
-    bottom: '-100px',
-  },
-  '& .circles li:nth-of-type(1)': {
-    left: '25%',
-    width: '80px',
-    height: '80px',
-    animationDelay: '0s',
-  },
-  '& .circles li:nth-of-type(2)': {
-    left: '10%',
-    width: '20px',
-    height: '20px',
-    animationDelay: '3s',
-    animationDuration: '10s',
-  },
-  '& .circles li:nth-of-type(3)': {
-    left: '70%',
-    width: '20px',
-    height: '20px',
-    animationDelay: '2s',
-  },
-  '& .circles li:nth-of-type(4)': {
-    left: '40%',
-    width: '60px',
-    height: '60px',
-    animationDelay: '0s',
-    animationDuration: '12s',
-  },
-  '& .circles li:nth-of-type(5)': {
-    left: '65%',
-    width: '20px',
-    height: '20px',
-    animationDelay: '0s',
-  },
-  '& .circles li:nth-of-type(6)': {
-    left: '75%',
-    width: '110px',
-    height: '110px',
-    animationDelay: '6s',
-  },
-  '& .circles li:nth-of-type(7)': {
-    left: '35%',
-    width: '150px',
-    height: '150px',
-    animationDelay: '7s',
-  },
-  '& .circles li:nth-of-type(8)': {
-    left: '50%',
-    width: '25px',
-    height: '25px',
-    animationDelay: '15s',
-    animationDuration: '25s',
-  },
-  '& .circles li:nth-of-type(9)': {
-    left: '20%',
-    width: '15px',
-    height: '15px',
-    animationDelay: '2s',
-    animationDuration: '20s',
-  },
-  '& .circles li:nth-of-type(10)': {
-    left: '85%',
-    width: '10px',
-    height: '10px',
-    animationDelay: '0s',
-    animationDuration: '15s',
-  },
-  '@keyframes animate': {
-    '0%': {
-      transform: 'translateY(0) rotate(0deg)',
-      opacity: 1,
-      borderRadius: 0,
-    },
-    '100%': {
-      transform: 'translateY(-2000px) rotate(720deg)',
-      opacity: 0,
-      borderRadius: '50%',
-    },
-  },
 }));
 
 const slideInLeft = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-50px);
   }
   to {
     opacity: 1;
@@ -123,7 +26,7 @@ const slideInLeft = keyframes`
 const slideInRight = keyframes`
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
@@ -137,6 +40,7 @@ const ServiceCard = styled(Card)(({ theme, animationDirection, animate }) => ({
   fontFamily: 'Nunito, sans-serif',
   width: '100%',
   borderRadius: '20px',
+  border: '1.25px solid #ECE7E3',
   margin: '20px 0',
   zIndex: 2,
   opacity: animate ? 1 : 0,
@@ -153,11 +57,11 @@ const ServiceCard = styled(Card)(({ theme, animationDirection, animate }) => ({
 }));
 
 const CardContentStyled = styled(CardContent)(({ theme }) => ({
-  minHeight: '150px',
+  minHeight: '125px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: '16px',
+  padding: '10px',
 }));
 
 const services = [
@@ -212,31 +116,10 @@ const Services = () => {
 
   return (
     <ServicesContainer>
-      <ul className="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-      <Typography
-        style={{
-          fontWeight: '600',
-          fontFamily: 'Nunito, sans-serif',
-        }}
-        variant="h4"
-        align="center"
-        gutterBottom
-      >
+       <Typography variant="h3" align="center" gutterBottom style={{ 
+          textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
+
+        fontFamily: 'Nunito, sans-serif' }}>   
         Our Services
       </Typography>
       <Grid container spacing={3} justifyContent="center">

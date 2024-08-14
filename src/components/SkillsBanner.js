@@ -68,7 +68,7 @@ const Skill = styled('div')(({ theme }) => ({
 
 const Icon = styled('div')(({ theme }) => ({
   fontSize: '3rem', // Adjust icon size
-  color: '#F4E1D2', // Ensure background color goes orange
+  color: '#f8f8f8', // Ensure background color goes orange
   marginBottom: '10px',
   cursor: 'pointer', // Ensure the cursor changes to pointer on hover
   transition: 'transform 0.3s ease', // Smooth transition for hover effect
@@ -79,7 +79,7 @@ const Icon = styled('div')(({ theme }) => ({
 
 const Link = styled('a')({
   textDecoration: 'none',
-  color: '#F4E1D2',
+  color: '#f8f8f8', // Ensure background color goes orange
   cursor: 'pointer', // Ensure the cursor changes to pointer on hover
 });
 

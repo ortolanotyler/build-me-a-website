@@ -63,13 +63,15 @@ const HeroContainer = styled(Grid)(({ theme }) => ({
 const TextContainer = styled(Grid)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
-  textAlign: 'left', // Align text to the left
-  animation: `${slideInLeft} 1s ease-out`, // Apply the left slide-in animation
-  marginBottom: '20px', // Add some margin at the bottom
+  justifyContent: 'flex-start', // Align text to the top
+  textAlign: 'left',
+  animation: `${slideInLeft} 1s ease-out`,
+  marginBottom: '20px',
   [theme.breakpoints.down('md')]: {
-    textAlign: 'center', // Center text on smaller screens
-    marginBottom: '20px', // Keep some margin at the bottom
+    textAlign: 'center',
+    alignItems: 'center',
+    marginBottom: '20px',
+    justifyContent: 'center', // Center content on smaller screens
   },
 }));
 
@@ -89,24 +91,26 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#3a3a3a',
   color: '#F4E1D2',
-  width: '200px', // Set a fixed width for the button
+  width: '200px',
   borderRadius: '20px',
+  textAlign: 'right', // Align text to the right
   fontSize: '1rem',
-  textTransform: 'none', // Prevent text from being capitalized
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Add a shadow for more depth
+  textTransform: 'none',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-  alignSelf: 'center', // Center the button horizontally
+  alignSelf: 'flex-end', // Align the button to the right
   '&:hover': {
-    transform: 'scale(1.05)', // Slightly increase size on hover
-    backgroundColor: '#F2784B', // Change background color on hover
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)', // Add a shadow for more depth
+    transform: 'scale(1.05)',
+    backgroundColor: '#F2784B',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
   },
   '&:active': {
-    transform: 'scale(0.95)', // Slightly squish on click
-    backgroundColor: '#3A3A3A', // Ensure background color stays black
+    transform: 'scale(0.95)',
+    backgroundColor: '#3A3A3A',
   },
   [theme.breakpoints.down('md')]: {
-    marginTop: '20px', // Add some spacing above the button on small screens
+    alignSelf: 'center', // Center the button on smaller screens
+    marginTop: '20px',
   },
 }));
 
@@ -114,7 +118,7 @@ const ImageContainer = styled(Grid)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  animation: `${slideInRight} 1s ease-out`, // Apply the right slide-in animation
+  animation: `${slideInRight} 1s ease-out`,
   [theme.breakpoints.up('md')]: {
     width: '50%', // Limit the image container width on large screens
     alignSelf: 'flex-end', // Align image to the right
@@ -162,7 +166,6 @@ const PopupTitle = styled('h2')({
 const StyledTextField = styled(TextField)({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#f8f8f8',
- 
   marginBottom: '10px',
   '& label.Mui-focused': {
     color: '#3a3a3a',
@@ -194,7 +197,8 @@ const Hero = () => {
     name: '',
     businessName: '',
     phoneNumber: '',
-    email: ''
+    email: '',
+    message: ''
   });
 
   const handleOpenPopup = () => {
@@ -212,10 +216,31 @@ const Hero = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Form Submitted:', formValues);
-    // Handle form submission logic (e.g., send to API, clear form, etc.)
+  
+    try {
+      const response = await fetch('https://buildmywebsite-server.herokuapp.com/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues),
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Form Submitted:', result);
+        // Handle success (e.g., show a thank you message)
+      } else {
+        console.error('Form submission failed:', response.statusText);
+        // Handle error (e.g., show an error message)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Handle network errors or unexpected issues
+    }
+  
     handleClosePopup();
   };
 
@@ -231,12 +256,9 @@ const Hero = () => {
         </ImageContainer>
       </HeroContainer>
       {isPopupOpen && (
-        <PopupOverlay
-        style = {{textAlign: 'center', justifyContent: 'center'}}
-        onClick={handleClosePopup}>
+        <PopupOverlay onClick={handleClosePopup}>
           <PopupContent onClick={(e) => e.stopPropagation()}>
             <PopupTitle>Free Consultation</PopupTitle>
-          
             <StyledTextField
               label="Your Name"
               variant="outlined"
@@ -274,57 +296,56 @@ const Hero = () => {
               value={formValues.message}
               onChange={(e) => handleChange('message', e.target.value)}
             />
-           
-           <LocalizationProvider dateAdapter={AdapterDayjs}>
-  <Grid container spacing={2} justifyContent="center" alignItems="center">
-    <Grid item xs={12} sm={6}>
-      <DatePicker
-        label="Select Date"
-        value={formValues.selectedDate}
-        onChange={(newValue) => handleChange('selectedDate', newValue)}
-        renderInput={(params) => (
-          <StyledTextField
-            {...params}
-            fullWidth
-            variant="outlined"
-            sx={{
-              display: 'flex', // Ensure the input is a block-level element
-              justifyContent: 'center', // Center the content horizontally
-              textAlign: 'center', // Center the text
-            }}
-          />
-        )}
-      />
-    </Grid>
-    <Grid item xs={12} sm={6}>
-      <TimePicker
-        label="Select Time"
-        value={formValues.selectedTime}
-        onChange={(newValue) => handleChange('selectedTime', newValue)}
-        renderInput={(params) => (
-          <StyledTextField
-            {...params}
-            fullWidth
-            variant="outlined"
-            sx={{
-              display: 'flex', // Ensure the input is a block-level element
-              justifyContent: 'center', // Center the content horizontally
-              textAlign: 'center', // Center the text
-            }}
-          />
-        )}
-      />
-    </Grid>
-  </Grid>
-  <Button 
-    variant="contained" 
-    style={{ borderRadius: '20px', backgroundColor: '#3A3A3A', color: '#f5f5dc', marginTop: '10px' }} 
-    fullWidth
-    onClick={handleSubmit} // For now, just close the popup on submit
-  >
-    Submit
-  </Button>
-</LocalizationProvider>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <Grid container spacing={2} justifyContent="center" alignItems="center">
+                <Grid item xs={12} sm={6}>
+                  <DatePicker
+                    label="Select Date"
+                    value={formValues.selectedDate}
+                    onChange={(newValue) => handleChange('selectedDate', newValue)}
+                    renderInput={(params) => (
+                      <StyledTextField
+                        {...params}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          display: 'flex', // Ensure the input is a block-level element
+                          justifyContent: 'center', // Center the content horizontally
+                          textAlign: 'center', // Center the text
+                        }}
+                      />
+                    )}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TimePicker
+                    label="Select Time"
+                    value={formValues.selectedTime}
+                    onChange={(newValue) => handleChange('selectedTime', newValue)}
+                    renderInput={(params) => (
+                      <StyledTextField
+                        {...params}
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          display: 'flex', // Ensure the input is a block-level element
+                          justifyContent: 'center', // Center the content horizontally
+                          textAlign: 'center', // Center the text
+                        }}
+                      />
+                    )}
+                  />
+                </Grid>
+              </Grid>
+              <Button 
+                variant="contained" 
+                style={{ borderRadius: '20px', backgroundColor: '#3A3A3A', color: '#f5f5dc', marginTop: '10px' }} 
+                fullWidth
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </LocalizationProvider>
           </PopupContent>
         </PopupOverlay>
       )}

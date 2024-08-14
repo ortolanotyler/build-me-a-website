@@ -1,52 +1,104 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 import { styled } from '@mui/system';
+import FAQs from '../components/FAQ';
 
-// Styled container for the About section with a similar background effect
-const AboutContainer = styled('div')(({ theme }) => ({
+const PageContainer = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
-  color: '#3A3A3A',
-  padding: '150px 60px 60px', // Added top padding to ensure it is below the header
-  background: '-webkit-linear-gradient(to left, #F4E1D2, #ECE7E3)',  // Gradient background
-  background: 'linear-gradient(to left, #F4E1D2, #ECE7E3)',  // Fallback for other browsers
-  minHeight: '80vh', // Ensure full viewport height
+  backgroundColor: '#F4E1D2',
+  padding: '175px 50px 50px', // Adjusted padding
   display: 'flex',
-  justifyContent: 'center',
+  flexDirection: 'column',
   alignItems: 'center',
+  minHeight: '100vh', // Ensure full viewport height
+  [theme.breakpoints.down('md')]: {
+    padding: '150px 50px', // Adjusted padding for smaller screens
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '150px 50px 50px', // Adjusted padding for smaller screens
+  },
 }));
 
-// Styled box for content wrapping and text alignment
-const ContentBox = styled(Box)(({ theme }) => ({
-  maxWidth: '800px',
-  textAlign: 'left',
-  padding: '50px',
+const ContentContainer = styled('div')(({ theme }) => ({
+  fontFamily: 'Nunito, sans-serif',
+  width: '100%',
+  maxWidth: '600px', // Reduced maxWidth to match image width
   backgroundColor: '#bbd7ec',
+  padding: '30px', // Adjusted padding for better spacing
   borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-  border: '3px solid #F4E1D2',
+  marginTop: '5px',
+  border: '1px solid #ECE7E3',
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100%', // Decrease content width on smaller screens
+  },
+}));
+
+const SectionTitle = styled(Typography)({
+  fontFamily: 'Nunito, sans-serif',
+  margin: '10px auto', // Increase margin to create more space before section
+  fontWeight: 'normal',
+  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
+  textAlign: 'left', // Align the title text to the left
+});
+
+const SectionContent = styled('div')({
+  fontFamily: 'Nunito, sans-serif',
+  marginBottom: '10px', // Add margin to the bottom for consistent spacing
+  lineHeight: '1.5',
+  maxWidth: '100%', // Adjust maximum width for better readability
+  justifyContent: 'center', // Center the content within the container
+  textAlign: 'left', // Align text and image to the left
+});
+
+const FAQListContainer = styled('div')(({ theme }) => ({
+  fontFamily: 'Nunito, sans-serif',
+  width: '100%',
+  maxWidth: '600px', // Reduced maxWidth to match content width
+  backgroundColor: '#bbd7ec', // Matching the background color of the content
+  padding: '30px', // Adjusted padding for consistency
+  borderRadius: '20px',
+  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+  marginTop: '20px', // Spacing between content and FAQ
+  border: '1px solid #ECE7E3',
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100%', // Decrease content width on smaller screens
+  },
 }));
 
 const AboutPage = () => {
   return (
-    <AboutContainer>
-      <ContentBox>
-        <Typography variant="h4" gutterBottom style={{ fontWeight: '600', fontFamily: 'Nunito, sans-serif' }}>
-          About Us
-        </Typography>
-        <Typography variant="body1" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', lineHeight: '1.6' }}>
+    <PageContainer>
+      <Typography 
+        variant="h3" 
+        align="center" 
+        gutterBottom 
+        style={{ 
+          textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
+          fontFamily: 'Nunito, sans-serif' 
+        }}>
+        About Us
+      </Typography>
+      <ContentContainer>
+        <SectionTitle variant="h6" gutterBottom>
+          Welcome to Build Me A Website
+        </SectionTitle>
+        <SectionContent variant="body1" paragraph>
           Welcome to Build Me A Website, where creativity meets technology to bring your digital vision to life. We're not just another web development agency; we're your partners in crafting online experiences that grow with your business. Founded with a passion for helping businesses thrive in the digital world, our team of dedicated professionals is committed to delivering websites that are not only beautiful but also functional and scalable.
-        </Typography>
-        <Typography variant="body1" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', lineHeight: '1.6' }}>
-          At Build Me A Website, we believe in building lasting relationships with our clients. We don’t just create a site and disappear—we’re here for the long haul, ready to help you adapt and evolve your online presence as your business grows. Whether it's integrating new features, optimizing for search engines, or simply giving your site a fresh look, we’ve got you covered.
-        </Typography>
-        <Typography variant="body1" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', lineHeight: '1.6' }}>
+        </SectionContent>
+        
+        <SectionTitle variant="h6" gutterBottom>
+          Our Approach
+        </SectionTitle>
+        <SectionContent variant="body1" paragraph>
           Our approach is simple: we listen to your needs, understand your goals, and work closely with you to create a digital solution that’s tailored to your unique business. We take pride in our attention to detail and our commitment to delivering projects on time and within budget. And because we know that your website is a critical part of your business, we’re always available to provide ongoing support and ensure that your site remains a valuable asset.
-        </Typography>
-        <Typography variant="body1" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', lineHeight: '1.6' }}>
-          Thank you for considering us as your digital partner. We’re excited to work with you and help you achieve your online goals!
-        </Typography>
-      </ContentBox>
-    </AboutContainer>
+        </SectionContent>
+      </ContentContainer>
+      
+      <FAQListContainer>
+        <FAQs />
+      </FAQListContainer>
+    </PageContainer>
   );
 };
 

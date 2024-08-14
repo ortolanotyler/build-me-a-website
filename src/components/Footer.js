@@ -121,10 +121,10 @@ const Footer = () => {
             key={i}
             className="bubble"
             style={{
-              '--size': `${2 + Math.random() * 6}rem`,
-              '--distance': `${6 + Math.random() * 4}rem`,
+              '--size': `${3 + Math.random() * 6}rem`,
+              '--distance': `${5 + Math.random() * 4}rem`,
               '--position': `${-5 + Math.random() * 110}%`,
-              '--time': `${5 + Math.random() * 2}s`,
+              '--time': `${10 + Math.random() * 3}s`,
               '--delay': `${-1 * (2 + Math.random() * 2)}s`
             }}
           />

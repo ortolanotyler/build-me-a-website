@@ -5,16 +5,16 @@ import { styled } from '@mui/system';
 const PageContainer = styled('div')(({ theme }) => ({
     fontFamily: 'Nunito, sans-serif',
     backgroundColor: '#F4E1D2',
-    padding: '175px 50px', // Adjusted padding
+    padding: '175px 50px 50px', // Adjusted padding
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     minHeight: '100vh', // Ensure full viewport height
     [theme.breakpoints.down('md')]: {
-      padding: '175px 125px', // Adjusted padding for smaller screens
+      padding: '150px 50px', // Adjusted padding for smaller screens
     },
     [theme.breakpoints.down('sm')]: {
-      padding: '150px 50px', // Adjusted padding for smaller screens
+      padding: '150px 50px 50px', // Adjusted padding for smaller screens
     },
   }));
 
@@ -27,7 +27,7 @@ const ContentContainer = styled('div')(({ theme }) => ({
   borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   marginTop: '5px',
-  border: '3px solid #F4E1D2', // Add blue border around the content
+  border: '1px solid #ECE7E3',
   [theme.breakpoints.down('sm')]: {
     maxWidth: '100%', // Decrease content width on smaller screens
   },
@@ -37,13 +37,13 @@ const SectionTitle = styled(Typography)({
   fontFamily: 'Nunito, sans-serif',
   margin: '10px auto', // Increase margin to create more space before section
   fontWeight: 'normal',
-  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.15)', // Add text shadow
+  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
   textAlign: 'left', // Align the title text to the left
 });
 
 const SectionContent = styled('div')({
   fontFamily: 'Nunito, sans-serif',
-  marginBottom: '20px', // Add margin to the bottom for consistent spacing
+  marginBottom: '10px', // Add margin to the bottom for consistent spacing
   lineHeight: '1.5',
   maxWidth: '100%', // Adjust maximum width for better readability
   justifyContent: 'center', // Center the content within the container
@@ -52,20 +52,20 @@ const SectionContent = styled('div')({
 
 const StyledImage = styled('img')(({ theme }) => ({
   width: '100%', // Ensure the image is responsive
-  maxWidth: '600px', // Limit the max width of the image
+  maxWidth: '650px', // Limit the max width of the image
   height: 'auto', // Maintain aspect ratio
   borderRadius: '20px', // Add some border radius for style
-  marginTop: '20px', // Add some space between the text and the image
-  marginBottom: '20px', // Add some space between the text and the image
-  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+  marginTop: '10px', // Add some space between the text and the image
+  marginBottom: '10px', // Add some space between the text and the image
+  boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.5)',
 
 }));
 
 const SeoPage = () => {
   return (
     <PageContainer>
-      <Typography variant="h3" align="center" gutterBottom style={{ 
-          textShadow: '1px 1px 1px rgba(0, 0, 0, 0.15)', // Add text shadow
+  <Typography variant="h3" align="center" gutterBottom style={{ 
+          textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
 
         fontFamily: 'Nunito, sans-serif' }}>
         SEO Services

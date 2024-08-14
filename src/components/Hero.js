@@ -75,6 +75,7 @@ const TextContainer = styled(Grid)(({ theme }) => ({
 
 const Title = styled('h1')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
+  textAlign: 'left',
   fontSize: '2.5rem',
   color: '#3A3A3A',
   fontWeight: 'normal',
@@ -230,7 +231,9 @@ const Hero = () => {
         </ImageContainer>
       </HeroContainer>
       {isPopupOpen && (
-        <PopupOverlay onClick={handleClosePopup}>
+        <PopupOverlay
+        style = {{textAlign: 'center', justifyContent: 'center'}}
+        onClick={handleClosePopup}>
           <PopupContent onClick={(e) => e.stopPropagation()}>
             <PopupTitle>Free Consultation</PopupTitle>
           

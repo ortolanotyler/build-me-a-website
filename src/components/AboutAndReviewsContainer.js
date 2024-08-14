@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Card, CardContent, Typography, Box, Grid, Rating } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
 
 // Import image
@@ -17,7 +16,6 @@ const slideInUp = keyframes`
   }
 `;
 
-// Styled container for the About section
 const AboutContainer = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#bbd7ec',
@@ -30,15 +28,14 @@ const AboutContainer = styled('div')(({ theme }) => ({
   },
 }));
 
-// Main horizontal card for the About text
 const AboutCard = styled('div')(({ theme, isVisible }) => ({
-  border: '3px solid #ECE7E3', // Add border to match other components
+  border: '3px solid #ECE7E3',
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
   padding: '20px',
   width: '100%',
-  maxWidth: '600px',
+  maxWidth: '700px',
   margin: '0 auto 20px auto',
   borderRadius: '20px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
@@ -52,11 +49,9 @@ const AboutCard = styled('div')(({ theme, isVisible }) => ({
   [theme.breakpoints.down('sm')]: {
     width: '80%',
     marginBottom: '10px',
-
   },
 }));
 
-// Container for the two cards below the main card
 const CardsContainer = styled('div')(({ theme, isVisible }) => ({
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
@@ -79,82 +74,22 @@ const CardsContainer = styled('div')(({ theme, isVisible }) => ({
   },
 }));
 
-
-
-
-
-// FAQ list
 const FAQList = styled('div')({
-    maxWidth: '800px',
+  maxWidth: '800px',
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
   margin: '0 auto',
   marginTop: '20px',
 });
 
-// FAQ item style
 const FAQItem = styled('div')({
   marginBottom: '10px',
   fontSize: '1rem',
 });
 
-// Container for the reviews section
-const ReviewsContainer = styled('div')(({ isVisible }) => ({
-    color: '#3A3A3A',
-  fontFamily: 'Nunito, sans-serif',
-  borderRadius: '20px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#F4E1D2',
-  padding: '20px 10px',
-  marginTop: '10px',
-  opacity: isVisible ? 1 : 0,
-  animation: isVisible ? `${slideInUp} 1s ease-out forwards` : 'none',
-}));
-
-// Custom style for each review card
-const ReviewCard = styled(Card)(({ theme }) => ({
-    color: '#3A3A3A',
-  fontFamily: 'Nunito, sans-serif',
-  maxWidth: '300px',
-  borderRadius: '20px',
-  width: '100%',
-  margin: '10px 10px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
-  [theme.breakpoints.down('sm')]: {
-    maxWidth: '100%',
-    marginBottom: '20px',
-  },
-}));
-
 const AboutAndReviews = () => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
-
-  const reviews = [
-    {
-      name: 'John Doe',
-      review: 'Excellent service and support. Highly recommended!',
-      rating: 5,
-    },
-    {
-      name: 'Jane Smith',
-      review: 'Professional and timely delivery. Great experience overall.',
-      rating: 5,
-    },
-    {
-      name: 'Michael Johnson',
-      review: 'Fantastic work! The team exceeded our expectations.',
-      rating: 5,
-    },
-    {
-      name: 'Emily Davis',
-      review: 'Very satisfied with the final product. Great job!',
-      rating: 5,
-    },
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -165,7 +100,7 @@ const AboutAndReviews = () => {
         }
       },
       {
-        threshold: 0.1, // Trigger when 10% of the container is visible
+        threshold: 0.1,
       }
     );
 
@@ -198,9 +133,7 @@ const AboutAndReviews = () => {
         </p>
       </AboutCard>
       <CardsContainer isVisible={isVisible}>
-        <FAQList>
-         
-  
+      <FAQList>
           <h3>Frequently Asked Questions</h3>
           <FAQItem>
             <strong>What services does your web development business offer?</strong>
@@ -262,30 +195,9 @@ const AboutAndReviews = () => {
               Certainly! We’re proud of the work we’ve done and happy to share examples of past projects that demonstrate our expertise. You can view our portfolio on our website, where we showcase a variety of websites across different industries. For example, we recently designed a custom website for a boutique fashion brand that includes an integrated e-commerce platform, social media feeds, and a blog—all optimized for SEO and mobile devices.
             </p>
           </FAQItem>
+          {/* Add other FAQItems here */}
         </FAQList>
-     
       </CardsContainer>
-      <ReviewsContainer isVisible={isVisible}>
-        <Grid container spacing={1} justifyContent="center">
-          {reviews.map((review, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index} container justifyContent="center">
-              <ReviewCard>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom align="center">
-                    {review.name}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" gutterBottom>
-                    {review.review}
-                  </Typography>
-                  <Box display="flex" justifyContent="center" mt={1}>
-                    <Rating value={review.rating} readOnly />
-                  </Box>
-                </CardContent>
-              </ReviewCard>
-            </Grid>
-          ))}
-        </Grid>
-      </ReviewsContainer>
     </AboutContainer>
   );
 };

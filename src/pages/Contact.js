@@ -5,13 +5,13 @@ import { styled } from '@mui/system';
 const Contact = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
-  padding: '150px 40px', // Adjusted padding
+  padding: '150px 100px', // Adjusted padding
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   minHeight: '100vh', // Ensure full viewport height
   [theme.breakpoints.down('sm')]: {
-    padding: '160px 50px', // Reduce padding for smaller screens
+    padding: '150px 50px', // Reduce padding for smaller screens
   },
 }));
 
@@ -186,10 +186,10 @@ const ContactForm = () => {
           />
         </FieldContainer>
         <CheckboxContainer>
-          <Typography variant="h6" gutterBottom style={{ fontFamily: 'Nunito, sans-serif' }}>
-            What services are you interested in?
+          <Typography variant="h5" gutterBottom style={{ fontFamily: 'Nunito, sans-serif' }}>
+            What can we do for you?
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={1}>
             <Grid item xs={12} sm={6}>
               <FormControlLabel
                 control={

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -12,13 +14,13 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 const CalendarContainer = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
-  padding: '150px 40px', // Adjusted padding
+  padding: '150px 100px', // Adjusted padding
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   minHeight: '100vh', // Ensure full viewport height
   [theme.breakpoints.down('sm')]: {
-    padding: '160px 50px', // Reduce padding for smaller screens
+    padding: '150px 70px', // Reduce padding for smaller screens
   },
 }));
 
@@ -31,7 +33,7 @@ const FormContainer = styled('form')(({ theme }) => ({
   borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   marginTop: '20px',
-  border: '3px solid #F4E1D2', // Add border around the form
+  border: '3px solid #F4E1D2', // Add blue border around the form
 }));
 
 const FieldContainer = styled('div')({
@@ -83,6 +85,12 @@ const StyledButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+const CheckboxContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  marginTop: '10px',
+});
+
 const CalendarComponent = () => {
   const [formValues, setFormValues] = useState({
     selectedDate: null,
@@ -91,12 +99,27 @@ const CalendarComponent = () => {
     businessName: '',
     phoneNumber: '',
     email: '',
+    services: {
+      websiteDevelopment: false,
+      seoOptimization: false,
+      brandingConsultation: false,
+    },
   });
 
   const handleChange = (field, value) => {
     setFormValues((prevState) => ({
       ...prevState,
       [field]: value,
+    }));
+  };
+
+  const handleCheckboxChange = (field) => {
+    setFormValues((prevState) => ({
+      ...prevState,
+      services: {
+        ...prevState.services,
+        [field]: !prevState.services[field],
+      },
     }));
   };
 
@@ -107,15 +130,20 @@ const CalendarComponent = () => {
   };
 
   return (
-    <CalendarContainer>
+    <CalendarContainer
+    style = {{ minHeight: '7vh' }}
+
+    >
       <Typography variant="h4" align="center" gutterBottom sx={{ fontFamily: 'Nunito, sans-serif' }}>
         Schedule an Appointment
       </Typography>
       <Typography variant="body1" align="center" gutterBottom sx={{ fontFamily: 'Nunito, sans-serif' }}>
         Select a date and time that works for you.
       </Typography>
-      <FormContainer onSubmit={handleSubmit}>
-       
+      <FormContainer
+      style = {{ textAlign: 'center' }}
+      onSubmit={handleSubmit}>
+     
         <FieldContainer>
           <StyledTextField
             label="Full Name"
@@ -159,9 +187,83 @@ const CalendarComponent = () => {
             value={formValues.email}
             onChange={(e) => handleChange('email', e.target.value)}
           />
+          </FieldContainer>
+          <FieldContainer>
+           <StyledTextField
+              label="Message"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              value={formValues.message}
+              onChange={(e) => handleChange('message', e.target.value)}
+            />
         </FieldContainer>
+        <CheckboxContainer>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.websiteDevelopment}
+                onChange={() => handleCheckboxChange('websiteDevelopment')}
+                color="primary"
+              />
+            }
+            label="Website Development"
+          />
+            <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.brandingConsultation}
+                onChange={() => handleCheckboxChange('brandingConsultation')}
+                color="primary"
+              />
+            }
+            label="Web Design"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.seoOptimization}
+                onChange={() => handleCheckboxChange('seoOptimization')}
+                color="primary"
+              />
+            }
+            label="SEO Optimization"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.brandingConsultation}
+                onChange={() => handleCheckboxChange('brandingConsultation')}
+                color="primary"
+              />
+            }
+            label="Search Engine Marketing"
+          />
+         
+           <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.brandingConsultation}
+                onChange={() => handleCheckboxChange('brandingConsultation')}
+                color="primary"
+              />
+            }
+            label="Web Hosting"
+          />
+           <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.brandingConsultation}
+                onChange={() => handleCheckboxChange('brandingConsultation')}
+                color="primary"
+              />
+            }
+            label="DNS Migration"
+          />
+        </CheckboxContainer>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Grid container spacing={2} justifyContent="center">
+          <Grid container spacing={1} justifyContent="center">
             <Grid item xs={12} sm={6}>
               <DatePicker
                 label="Select Date"

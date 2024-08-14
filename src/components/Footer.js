@@ -1,154 +1,190 @@
-import React, { useState } from 'react';
-import { Typography, Box, Grid, TextField, Button } from '@mui/material';
-import { styled } from '@mui/system';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 
-const FooterContainer = styled(Box)({
-  backgroundColor: '#BBD7EC', // Dark background color for the footer
-  color: '#3a3a3a', // Text color
-  padding: '100px 0', // Padding for the footer
-  display: 'flex',
-  justifyContent: 'center', // Center the content
-  alignItems: 'center',
-  width: '100%', // Ensure the footer spans the full width of the page
-});
+const bubbleSize = keyframes`
+  0%, 75% {
+    width: var(--size, 4rem);
+    height: var(--size, 4rem);
+  }
+  100% {
+    width: 0rem;
+    height: 0rem;
+  }
+`;
 
-const FooterFormContainer = styled(Box)({
-  display: 'flex',
-  flexDirection: 'row', // Arrange form elements horizontally
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#F4E1D2', // Same background as the popup
-  padding: '20px',
-  borderRadius: '20px',
-  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
-  gap: '10px', // Space between elements
-});
+const bubbleMove = keyframes`
+  0% {
+    bottom: -4rem;
+  }
+  100% {
+    bottom: var(--distance, 10rem);
+  }
+`;
 
-const StyledTextField = styled(TextField)({
-  fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#f8f8f8',
+const Body = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 10rem auto;
+  grid-template-areas: "main" "." "footer";
+  overflow-x: hidden;
+  background: #f4e1d2;
+  min-height: 5vh;
+  font-family: 'Open Sans', sans-serif;
+`;
+
+const Main = styled.div`
+  grid-area: main;
+`;
+
+const FooterContainer = styled.div`
+  z-index: 1;
+  --footer-background: #bbd7ec;
+  display: grid;
+  position: relative;
+  grid-area: footer;
+  
+`;
+
+const Bubbles = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1rem;
+  background: var(--footer-background);
+  filter: url("#blob");
+
+  .bubble {
+    position: absolute;
+    left: var(--position, 50%);
+    background: var(--footer-background);
+    border-radius: 100%;
+    animation: ${bubbleSize} var(--time, 4s) ease-in infinite var(--delay, 0s),
+               ${bubbleMove} var(--time, 4s) ease-in infinite var(--delay, 0s);
+    transform: translate(-50%, 100%);
+  }
+`;
+
+const Content = styled.div`
+  z-index: 2;
+  font-family: 'Nunito', sans-serif;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 4rem;
+  padding: 1rem;
+  background: var(--footer-background);
+
+  a, p {
+    color: #3a3a3a ;
+    text-decoration: none;
+  }
+
+  b {
+    color: white;
+    font-weight: 300;
+  }
+
+  p {
+    margin: 0;
+    font-size: .75rem;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    > div {
+     
+
+      > * {
+        margin-right: .5rem;
+      }
+    }
+
+    .image {
+      align-self: center;
+      width: 5rem;
+      height: 10rem;
  
-  '& label.Mui-focused': {
-    color: '#f4eid2',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#f8f8f8',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      fontFamily: 'Nunito, sans-serif',
-      borderColor: '#f4eid2',
-    },
-    '&:hover fieldset': {
-      fontFamily: 'Nunito, sans-serif',
-      borderColor: '#f4eid2',
-    },
-    '&.Mui-focused fieldset': {
-      fontFamily: 'Nunito, sans-serif',
-      borderColor: '#f4eid2',
-    },
-  },
-  maxWidth: '200px', // Adjust max width for better alignment
-});
-
-const StyledButton = styled(Button)({
-  fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#3a3a3a',
-  color: '#F4E1D2',
-  fontSize: '1rem',
-  padding: '10px 20px',
-  fontWeight: '500',
-  borderRadius: '20px',
- 
-  transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-  '&:hover': {
-    transform: 'scale(1.05)',
-    color: '#3A3A3A',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-    backgroundColor: '#F2784B',
-  },
-  '&:active': {
-    transform: 'scale(0.95)',
-    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-    backgroundColor: '#F2784B',
-  },
-});
+      background-size: cover;
+      background-position: center;
+    }
+  }
+`;
 
 const Footer = () => {
-  const [formValues, setFormValues] = useState({
-    selectedDate: null,
-    selectedTime: null,
-    name: '',
-    email: ''
-  });
-
-  const handleChange = (field, value) => {
-    setFormValues((prevState) => ({
-      ...prevState,
-      [field]: value
-    }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Form Submitted:', formValues);
-    // Handle form submission logic here
-  };
-
   return (
     <FooterContainer>
-      <FooterFormContainer>
-        <StyledTextField
-          label="Your Name"
-          variant="outlined"
-          value={formValues.name}
-          onChange={(e) => handleChange('name', e.target.value)}
-        />
-        <StyledTextField
-          label="Email Address"
-          variant="outlined"
-          value={formValues.email}
-          onChange={(e) => handleChange('email', e.target.value)}
-        />
-          <StyledTextField
-          label="Phone Number"
-          variant="outlined"
-          value={formValues.email}
-          onChange={(e) => handleChange('email', e.target.value)}
-        />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label="Select Date"
-            value={formValues.selectedDate}
-            onChange={(newValue) => handleChange('selectedDate', newValue)}
-            renderInput={(params) => (
-              <StyledTextField
-                {...params}
-                variant="outlined"
-              />
-            )}
+      <Bubbles>
+        {[...Array(18)].map((_, i) => (
+          <div
+            key={i}
+            className="bubble"
+            style={{
+              '--size': `${2 + Math.random() * 6}rem`,
+              '--distance': `${6 + Math.random() * 4}rem`,
+              '--position': `${-5 + Math.random() * 110}%`,
+              '--time': `${5 + Math.random() * 2}s`,
+              '--delay': `${-1 * (2 + Math.random() * 2)}s`
+            }}
           />
-          <TimePicker
-            label="Select Time"
-            value={formValues.selectedTime}
-            onChange={(newValue) => handleChange('selectedTime', newValue)}
-            renderInput={(params) => (
-              <StyledTextField
-                {...params}
-                variant="outlined"
-              />
-            )}
-          />
-        </LocalizationProvider>
-        <StyledButton onClick={handleSubmit}>Submit</StyledButton>
-      </FooterFormContainer>
+        ))}
+      </Bubbles>
+      <Content>
+        <div>
+          <div>
+            <b>Home</b>
+            
+        
+            
+          </div>
+          <div>
+            <b>About</b>
+            <a href="#">Blog</a>
+
+          </div>
+          <div>
+            <b>Services</b>
+            <a href="#">Websites</a>
+            <a href="#">SEO</a>
+            <a href="#">SEM</a>
+           
+            <a href="#">Hosting</a>
+            <a href="#">Design</a>
+            <a href="#">DNS Migration</a>
+          </div>
+          <div>
+            <b>Contact</b>
+            <a href="#">Consultation</a>
+         
+          </div>
+        </div>
+       
+      </Content>
     </FooterContainer>
   );
 };
 
-export default Footer;
+const App = () => {
+  return (
+    <Body>
+      <Main />
+      <Footer />
+      <svg style={{ position: 'fixed', top: '100vh' }}>
+        <defs>
+          <filter id="blob">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+              result="blob"
+            />
+          </filter>
+        </defs>
+      </svg>
+    </Body>
+  );
+};
 
+export default App;

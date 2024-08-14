@@ -1,6 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLaptopCode, faSearch, faBullhorn, faCogs } from '@fortawesome/free-solid-svg-icons';
+import { HiCode, HiSearch, HiSpeakerphone, HiCog } from 'react-icons/hi';
 
 const SkillsBanner = () => {
   const wrapperStyle = {
@@ -24,7 +23,7 @@ const SkillsBanner = () => {
     color: '#3A3A3A',
     fontFamily: 'Nunito, sans-serif', // Correctly specify the font family
     fontWeight: '700',
-    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.05)', // Add text shadow
+    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
     flex: '1 1 20%', // Make each icon take up 20% of the width, allowing for horizontal layout on large screens
     marginBottom: '20px', // Add margin between rows on smaller screens
     maxWidth: '200px', // Limit the width of each icon box
@@ -32,28 +31,28 @@ const SkillsBanner = () => {
 
   const iconStyle = {
     fontSize: '3rem', // Adjust icon size
-    color: '#3A3A3A', // Ensure background color goes orange
+    color: '#F2784B', // Ensure background color goes orange
     marginBottom: '10px',
-    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
+    textShadow: '2px 2px 2px rgba(0, 0, 0, 0.05)', // Add text shadow
   };
 
   return (
     <div style={wrapperStyle}>
       <div style={skillsBannerStyle}>
         <div style={skillStyle}>
-          <FontAwesomeIcon icon={faLaptopCode} style={iconStyle} />
+          <HiCode style={iconStyle} />
           <p>Web Design</p>
         </div>
         <div style={skillStyle}>
-          <FontAwesomeIcon icon={faSearch} style={iconStyle} />
+          <HiSearch style={iconStyle} />
           <p>SEO</p>
         </div>
         <div style={skillStyle}>
-          <FontAwesomeIcon icon={faBullhorn} style={iconStyle} />
+          <HiSpeakerphone style={iconStyle} />
           <p>Digital Marketing</p>
         </div>
         <div style={skillStyle}>
-          <FontAwesomeIcon icon={faCogs} style={iconStyle} />
+          <HiCog style={iconStyle} />
           <p>Solutions</p>
         </div>
       </div>

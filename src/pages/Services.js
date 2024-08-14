@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
 
@@ -131,7 +131,7 @@ const slideInRight = keyframes`
   }
 `;
 
-const ServiceCard = styled(Card)(({ theme, animationDirection }) => ({
+const ServiceCard = styled(Card)(({ theme, animationDirection, animate }) => ({
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   color: '#3a3a3a',
   fontFamily: 'Nunito, sans-serif',
@@ -139,8 +139,8 @@ const ServiceCard = styled(Card)(({ theme, animationDirection }) => ({
   borderRadius: '10px',
   margin: '20px 0',
   zIndex: 2,
-  opacity: 0,
-  animation: `${animationDirection} 1s ease-out forwards`,
+  opacity: animate ? 1 : 0,
+  animation: animate ? `${animationDirection} 1s ease-out forwards` : 'none',
   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
   '&:hover': {
     transform: 'translateY(-10px)',
@@ -200,6 +200,16 @@ const services = [
 ];
 
 const Services = () => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimate(true);
+    }, 500); // Delay animations by 500ms
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <ServicesContainer>
       <ul className="circles">
@@ -235,6 +245,7 @@ const Services = () => {
             <a href={service.link} style={{ textDecoration: 'none' }}>
               <ServiceCard
                 animationDirection={index % 2 === 0 ? slideInLeft : slideInRight}
+                animate={animate}
                 style={{
                   backgroundColor: '#BBD7EC',
                 }}

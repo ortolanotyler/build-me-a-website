@@ -38,19 +38,21 @@ const AboutCard = styled('div')(({ theme, isVisible }) => ({
   backgroundColor: '#F4E1D2',
   padding: '20px',
   width: '100%',
-  maxWidth: '800px',
+  maxWidth: '600px',
   margin: '0 auto 20px auto',
-  borderRadius: '10px',
+  borderRadius: '20px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
   textAlign: 'left',
   opacity: isVisible ? 1 : 0,
   animation: isVisible ? `${slideInUp} 1s ease-out forwards` : 'none',
   [theme.breakpoints.down('md')]: {
-    width: '90%',
+    width: '80%',
     marginBottom: '10px',
   },
   [theme.breakpoints.down('sm')]: {
     width: '80%',
+    marginBottom: '10px',
+
   },
 }));
 
@@ -63,7 +65,7 @@ const CardsContainer = styled('div')(({ theme, isVisible }) => ({
   justifyContent: 'space-between',
   gap: '20px',
   width: '100%',
-  maxWidth: '900px',
+  maxWidth: '800px',
   opacity: isVisible ? 1 : 0,
   animation: isVisible ? `${slideInUp} 1s ease-out forwards` : 'none',
   [theme.breakpoints.down('md')]: {
@@ -77,58 +79,47 @@ const CardsContainer = styled('div')(({ theme, isVisible }) => ({
   },
 }));
 
-// Styled card for the image
-const ImageCard = styled('div')(({ theme }) => ({
-  border: '3px solid #ECE7E3', // Add border to match other components
-  fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#F4E1D2',
-  padding: '20px',
-  flex: 1,
-  borderRadius: '10px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
-  [theme.breakpoints.down('md')]: {
-    width: '100%',
-    marginBottom: '10px',
-  },
-}));
 
-// Styled image
-const Image = styled('img')({
-  width: '100%',
-  borderRadius: '10px',
-});
+
+
 
 // FAQ list
 const FAQList = styled('div')({
+    maxWidth: '800px',
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
+  margin: '0 auto',
   marginTop: '20px',
 });
 
 // FAQ item style
 const FAQItem = styled('div')({
-  marginBottom: '20px',
+  marginBottom: '10px',
   fontSize: '1rem',
 });
 
 // Container for the reviews section
 const ReviewsContainer = styled('div')(({ isVisible }) => ({
-  borderRadius: '10px',
+    color: '#3A3A3A',
+  fontFamily: 'Nunito, sans-serif',
+  borderRadius: '20px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: '#F4E1D2',
-  padding: '40px 20px',
-  marginTop: '50px',
+  padding: '20px 10px',
+  marginTop: '10px',
   opacity: isVisible ? 1 : 0,
   animation: isVisible ? `${slideInUp} 1s ease-out forwards` : 'none',
 }));
 
 // Custom style for each review card
 const ReviewCard = styled(Card)(({ theme }) => ({
+    color: '#3A3A3A',
+  fontFamily: 'Nunito, sans-serif',
   maxWidth: '300px',
-  borderRadius: '10px',
+  borderRadius: '20px',
   width: '100%',
   margin: '10px 10px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',

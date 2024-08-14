@@ -136,7 +136,7 @@ const ServiceCard = styled(Card)(({ theme, animationDirection, animate }) => ({
   color: '#3a3a3a',
   fontFamily: 'Nunito, sans-serif',
   width: '100%',
-  borderRadius: '10px',
+  borderRadius: '20px',
   margin: '20px 0',
   zIndex: 2,
   opacity: animate ? 1 : 0,

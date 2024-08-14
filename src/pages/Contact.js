@@ -11,7 +11,7 @@ const Contact = styled('div')(({ theme }) => ({
   alignItems: 'center',
   minHeight: '100vh', // Ensure full viewport height
   [theme.breakpoints.down('sm')]: {
-    padding: '80px 10px', // Reduce padding for smaller screens
+    padding: '160px 50px', // Reduce padding for smaller screens
   },
 }));
 
@@ -21,7 +21,7 @@ const FormContainer = styled('form')(({ theme }) => ({
   maxWidth: '600px',
   backgroundColor: '#bbd7ec',
   padding: '30px',
-  borderRadius: '10px',
+  borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   marginTop: '20px',
   border: '3px solid #F4E1D2', // Add blue border around the form
@@ -47,7 +47,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: '1rem',
   padding: '10px 20px',
   fontWeight: '600',
-  borderRadius: '10px',
+  borderRadius: '20px',
   marginTop: '20px',
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
   '&:hover': {

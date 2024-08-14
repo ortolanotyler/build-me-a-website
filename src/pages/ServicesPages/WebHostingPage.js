@@ -11,10 +11,10 @@ const PageContainer = styled('div')(({ theme }) => ({
   alignItems: 'center',
   minHeight: '100vh', // Ensure full viewport height
   [theme.breakpoints.down('md')]: {
-    padding: '175px 150px', // Adjusted padding for smaller screens
+    padding: '175px 125px', // Adjusted padding for smaller screens
   },
   [theme.breakpoints.down('sm')]: {
-    padding: '150px 75px', // Adjusted padding for smaller screens
+    padding: '150px 50px', // Adjusted padding for smaller screens
   },
 }));
 

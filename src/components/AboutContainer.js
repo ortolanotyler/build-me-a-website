@@ -50,7 +50,7 @@ const ImageCard = styled('div')(({ theme }) => ({
     backgroundColor: '#f5f5f4',
     padding: '20px',
     width: '48%',
-    borderRadius: '10px',
+    borderRadius: '20px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     [theme.breakpoints.down('md')]: {
         width: '100%',
@@ -61,7 +61,7 @@ const ImageCard = styled('div')(({ theme }) => ({
 // Styled image
 const Image = styled('img')({
     width: '100%',
-    borderRadius: '10px',
+    borderRadius: '20px',
 });
 
 // Bullet points list
@@ -82,7 +82,7 @@ const BulletPointsCard = styled('div')(({ theme }) => ({
     backgroundColor: '#f5f5f4',
     padding: '10px',
     width: '48%',
-    borderRadius: '10px',
+    borderRadius: '20px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     fontFamily: 'Nunito, sans-serif',
     textAlign: 'center', // Center the text in the bullet points card

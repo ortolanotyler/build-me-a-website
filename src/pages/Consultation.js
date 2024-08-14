@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Box, TextField, Typography, Button, Grid } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -9,11 +12,14 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 const CalendarContainer = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
-  padding: '150px 20px',
+  padding: '150px 40px', // Adjusted padding
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   minHeight: '100vh', // Ensure full viewport height
+  [theme.breakpoints.down('sm')]: {
+    padding: '160px 50px', // Reduce padding for smaller screens
+  },
 }));
 
 const FormContainer = styled('form')(({ theme }) => ({
@@ -22,14 +28,37 @@ const FormContainer = styled('form')(({ theme }) => ({
   maxWidth: '600px',
   backgroundColor: '#bbd7ec',
   padding: '30px',
-  borderRadius: '10px',
+  borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   marginTop: '20px',
-  border: '3px solid #F4E1D2', // Add blue border around the form
+  border: '3px solid #F4E1D2', // Add border around the form
 }));
 
 const FieldContainer = styled('div')({
   marginBottom: '20px', // Space around each text field
+});
+
+const StyledTextField = styled(TextField)({
+  fontFamily: 'Nunito, sans-serif',
+  backgroundColor: '#f8f8f8',
+  borderRadius: '10px',
+  '& label.Mui-focused': {
+    color: '#3a3a3a',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: '#3a3a3a',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#3a3a3a',
+    },
+    '&:hover fieldset': {
+      borderColor: '#3a3a3a',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#3a3a3a',
+    },
+  },
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -61,13 +90,13 @@ const CalendarComponent = () => {
     name: '',
     businessName: '',
     phoneNumber: '',
-    email: ''
+    email: '',
   });
 
   const handleChange = (field, value) => {
     setFormValues((prevState) => ({
       ...prevState,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -86,6 +115,51 @@ const CalendarComponent = () => {
         Select a date and time that works for you.
       </Typography>
       <FormContainer onSubmit={handleSubmit}>
+       
+        <FieldContainer>
+          <StyledTextField
+            label="Full Name"
+            name="name"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={formValues.name}
+            onChange={(e) => handleChange('name', e.target.value)}
+          />
+        </FieldContainer>
+        <FieldContainer>
+          <StyledTextField
+            label="Business Name"
+            name="businessName"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={formValues.businessName}
+            onChange={(e) => handleChange('businessName', e.target.value)}
+          />
+        </FieldContainer>
+        <FieldContainer>
+          <StyledTextField
+            label="Phone Number"
+            name="phoneNumber"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={formValues.phoneNumber}
+            onChange={(e) => handleChange('phoneNumber', e.target.value)}
+          />
+        </FieldContainer>
+        <FieldContainer>
+          <StyledTextField
+            label="Email Address"
+            name="email"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={formValues.email}
+            onChange={(e) => handleChange('email', e.target.value)}
+          />
+        </FieldContainer>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12} sm={6}>
@@ -94,11 +168,10 @@ const CalendarComponent = () => {
                 value={formValues.selectedDate}
                 onChange={(newValue) => handleChange('selectedDate', newValue)}
                 renderInput={(params) => (
-                  <TextField
+                  <StyledTextField
                     {...params}
                     fullWidth
                     variant="outlined"
-                    sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
                   />
                 )}
               />
@@ -109,67 +182,16 @@ const CalendarComponent = () => {
                 value={formValues.selectedTime}
                 onChange={(newValue) => handleChange('selectedTime', newValue)}
                 renderInput={(params) => (
-                  <TextField
+                  <StyledTextField
                     {...params}
                     fullWidth
                     variant="outlined"
-                    sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
                   />
                 )}
               />
             </Grid>
           </Grid>
         </LocalizationProvider>
-        <FieldContainer>
-          <TextField
-          style = {{ maxWidth: '300px' }}
-            label="Full Name"
-            name="name"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.name}
-            onChange={(e) => handleChange('name', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-          
-            label="Business Name"
-            name="businessName"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.businessName}
-            onChange={(e) => handleChange('businessName', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-            label="Phone Number"
-            name="phoneNumber"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.phoneNumber}
-            onChange={(e) => handleChange('phoneNumber', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-            label="Email Address"
-            name="email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.email}
-            onChange={(e) => handleChange('email', e.target.value)}
-            sx={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-          />
-        </FieldContainer>
         <StyledButton type="submit" fullWidth>
           Submit
         </StyledButton>
@@ -179,4 +201,3 @@ const CalendarComponent = () => {
 };
 
 export default CalendarComponent;
-

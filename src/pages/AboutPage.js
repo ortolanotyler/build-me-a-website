@@ -21,7 +21,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
   textAlign: 'left',
   padding: '50px',
   backgroundColor: '#bbd7ec',
-  borderRadius: '10px',
+  borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
   border: '3px solid #F4E1D2',
 }));

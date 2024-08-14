@@ -37,7 +37,7 @@ const ParentContainer = styled('div')(({ theme }) => ({
   backgroundColor: '#F4E1D2', // Ensure background color covers the entire viewport
   padding: '125px 50px', // Default padding for larger screens
   [theme.breakpoints.down('sm')]: {
-    padding: '100px 50px', // Half the padding on smaller screens
+    padding: '75px 50px', // Half the padding on smaller screens
   },
 }));
 

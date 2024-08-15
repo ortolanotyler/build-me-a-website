@@ -23,6 +23,8 @@ const slideInLeft = keyframes`
   }
 `;
 
+
+
 const slideInRight = keyframes`
   from {
     transform: translateX(100%);

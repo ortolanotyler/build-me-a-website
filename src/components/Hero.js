@@ -220,7 +220,7 @@ const Hero = () => {
  const handleSubmit = async (event) => {
   event.preventDefault();
   try {
-    const response = await fetch('https://buildmywebsite-server.herokuapp.com/api/form', {
+    const response = await fetch('https://buildmywebsite-server-231b6957e9dd.herokuapp.com/api/form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

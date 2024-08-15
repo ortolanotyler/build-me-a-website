@@ -21,7 +21,7 @@ const Home = () => {
       <AboutAndReviews/>
       
       <Reviews/>
-      <SocialIcons/>
+     
       <main>
         {/* Additional content can be added here */}
       </main>

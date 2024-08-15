@@ -20,8 +20,10 @@ const Home = () => {
       <SkillsBanner />
       
       <AboutAndReviews/>
-      
+    
       <Reviews/>
+
+      <SocialIcons />
      
       <main>
         {/* Additional content can be added here */}

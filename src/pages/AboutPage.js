@@ -6,17 +6,17 @@ import FAQs from '../components/FAQ';
 const PageContainer = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
-  padding: '175px 50px 50px', // Adjusted padding
+  padding: '12.5rem 5rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  minHeight: '100vh', // Ensure full viewport height
+  minHeight: '50vh', // Ensure full viewport height
   [theme.breakpoints.down('md')]: {
-    padding: '150px 50px', // Adjusted padding for smaller screens
-  },
+    padding: '12.5rem 5rem ',
+},
   [theme.breakpoints.down('sm')]: {
-    padding: '150px 50px 50px', // Adjusted padding for smaller screens
-  },
+    padding: '12.5rem 5rem',
+},
 }));
 
 const ContentContainer = styled('div')(({ theme }) => ({

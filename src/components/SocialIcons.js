@@ -6,9 +6,9 @@ const BannerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F4E1D2;
-
+  background-color: #f4e1d2;
   width: 100%;
+  min-height: 30vh;
 `;
 
 const IconWrapper = styled.div`

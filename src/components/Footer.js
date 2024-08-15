@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 const bubbleSize = keyframes`
   0%, 75% {
     width: var(--size, 4rem);
-    height: var(--size, 4rem);
+    height: var(--size, 2rem);
   }
   100% {
     width: 0rem;
@@ -32,6 +32,8 @@ const Body = styled.div`
 `;
 
 const Main = styled.div`
+margin-top: 50px;
+
   grid-area: main;
 `;
 

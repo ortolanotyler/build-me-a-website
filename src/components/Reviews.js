@@ -23,7 +23,7 @@ const ReviewsContainer = styled('div')(({ isVisible }) => ({
   alignItems: 'center',
   backgroundColor: '#F4E1D2',
   marginTop: '20px',
-  padding: '50px',
+  padding: '5rem',
   opacity: isVisible? 1 : 0,
   animation: isVisible? `${slideInUp} 1s ease-out forwards` : 'none',
 }));

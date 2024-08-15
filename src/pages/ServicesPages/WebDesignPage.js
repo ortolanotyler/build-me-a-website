@@ -17,12 +17,12 @@ const PageContainer = styled('div')(({ theme }) => ({
       padding: '150px 50px 50px', // Adjusted padding for smaller screens
     },
   }));
-  
+
 const ContentContainer = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   width: '100%',
   maxWidth: '600px', // Reduced maxWidth to match image width
-  backgroundColor: '#bbd7ec',
+  backgroundColor: '#f8f8f8',
   padding: '30px', // Adjusted padding for better spacing
   borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',

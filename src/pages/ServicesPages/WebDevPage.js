@@ -18,20 +18,20 @@ const PageContainer = styled('div')(({ theme }) => ({
     },
   }));
 
-const ContentContainer = styled('div')(({ theme }) => ({
-  fontFamily: 'Nunito, sans-serif',
-  width: '100%',
-  maxWidth: '600px', // Reduced maxWidth to match image width
-  backgroundColor: '#bbd7ec',
-  padding: '30px', // Adjusted padding for better spacing
-  borderRadius: '20px',
-  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-  marginTop: '5px',
-  border: '1px solid #ECE7E3',
-  [theme.breakpoints.down('sm')]: {
-    maxWidth: '100%', // Decrease content width on smaller screens
-  },
-}));
+  const ContentContainer = styled('div')(({ theme }) => ({
+    fontFamily: 'Nunito, sans-serif',
+    width: '100%',
+    maxWidth: '600px', // Reduced maxWidth to match image width
+    backgroundColor: '#f8f8f8',
+    padding: '30px', // Adjusted padding for better spacing
+    borderRadius: '20px',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    marginTop: '5px',
+    border: '1px solid #ECE7E3',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%', // Decrease content width on smaller screens
+    },
+  }));
 
 const SectionTitle = styled(Typography)({
   fontFamily: 'Nunito, sans-serif',

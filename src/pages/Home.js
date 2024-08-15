@@ -18,6 +18,7 @@ const Home = () => {
       <Hero />
       <SkillsBanner />
       <AboutAndReviews/>
+      
       <Reviews/>
 
       <main>

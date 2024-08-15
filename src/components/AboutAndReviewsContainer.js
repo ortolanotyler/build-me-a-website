@@ -32,7 +32,7 @@ const AboutCard = styled('div')(({ theme, isVisible }) => ({
   border: '1px solid #ECE7E3',
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#bbD7ec',
+  backgroundColor: '#f8f8f8',
   padding: '20px',
   width: '100%',
   maxWidth: '700px',

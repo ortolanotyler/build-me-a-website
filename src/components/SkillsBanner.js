@@ -17,7 +17,7 @@ const slideInRight = keyframes`
 
 const Wrapper = styled('div')(({ theme }) => ({
   position: 'relative',
-  minHeight: '20vh',
+  minHeight: '25vh',
   padding: '50px 0', // Padding around the skills section
   width: '100%', // Make sure it spans the full width
   display: 'flex',

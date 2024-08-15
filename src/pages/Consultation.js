@@ -257,6 +257,37 @@ const CalendarComponent = () => {
               }
               label="Branding Consultation"
             />
+              <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.brandingConsultation}
+                onChange={() => handleCheckboxChange('brandingConsultation')}
+                color="primary"
+              />
+            }
+            label="Search Engine Marketing"
+          />
+         
+           <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.brandingConsultation}
+                onChange={() => handleCheckboxChange('brandingConsultation')}
+                color="primary"
+              />
+            }
+            label="Web Hosting"
+          />
+           <FormControlLabel
+            control={
+              <Checkbox
+                checked={formValues.services.brandingConsultation}
+                onChange={() => handleCheckboxChange('brandingConsultation')}
+                color="primary"
+              />
+            }
+            label="DNS Migration"
+          />
           </CheckboxContainer>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Grid container spacing={1} justifyContent="center">
@@ -288,6 +319,7 @@ const CalendarComponent = () => {
                   )}
                 />
               </Grid>
+              
             </Grid>
           </LocalizationProvider>
           <StyledButton type="submit" fullWidth>

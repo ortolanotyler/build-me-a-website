@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import SkillsBanner from '../components/SkillsBanner';
 import AboutAndReviews from '../components/AboutAndReviewsContainer';
 import Reviews from '../components/Reviews';
+import SocialIcons from '../components/SocialIcons';
 
 const Home = () => {
   const containerStyle = {
@@ -20,7 +21,7 @@ const Home = () => {
       <AboutAndReviews/>
       
       <Reviews/>
-
+      <SocialIcons/>
       <main>
         {/* Additional content can be added here */}
       </main>

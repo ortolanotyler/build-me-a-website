@@ -54,7 +54,7 @@ const Bubbles = styled.div`
   filter: url("#blob");
 
   .bubble {
-    position: absolute;
+    position: fixed;
     left: var(--position, 50%);
     background: var(--footer-background);
     border-radius: 100%;

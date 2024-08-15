@@ -126,10 +126,29 @@ const CalendarComponent = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Form Submitted:', formValues);
-    // Handle form submission logic (e.g., send to API, clear form, etc.)
+    try {
+        const response = await fetch('https://buildmywebsite-server-231b6957e9dd.herokuapp.com/api/contact', {
+            method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues),
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Form Submitted:', result);
+        // Optionally, handle success (e.g., show a success message)
+      } else {
+        console.error('Form submission failed:', response.statusText);
+        // Optionally, handle error (e.g., show an error message)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Optionally, handle error (e.g., show an error message)
+    }
   };
 
   return (

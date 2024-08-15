@@ -4,7 +4,7 @@ import { styled, keyframes } from '@mui/system';
 
 const ServicesContainer = styled('div')(({ theme }) => ({
   color: '#3A3A3A',
-  padding: '150px 50px 50px',
+  padding: '12.5rem 2.5rem 2.5rem',
   background: '-webkit-linear-gradient(to left, #F4E1D2, #F4E1D2)',
   background: 'linear-gradient(to left, #F4E1D2, #F4E1D2)',
   minHeight: '100vh',

@@ -7,19 +7,25 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import styledComponents from 'styled-components';
 
 const logo = `${process.env.PUBLIC_URL}/Images/logo.png`;
 
-const linkStyle = {
-  textDecoration: 'none',
-  color: '#3A3A3A',
-  fontFamily: 'Nunito, sans-serif',
-  fontSize: '1.25rem',
-  fontWeight: '500',
-  display: 'flex',
-  alignItems: 'center',
-  padding: '10px',
-};
+const StyledLink = styledComponents(Link)`
+  text-decoration: none;
+  color: #3A3A3A;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #f8f8f8;
+  }
+`;
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1000);
@@ -88,64 +94,60 @@ const Header = () => {
 
   const renderDrawerList = () => (
     <List style={drawerListStyle}>
-      <ListItem button component={Link} to="/" onClick={closeDrawerOnClick}>
+      <ListItem button component={StyledLink} to="/" onClick={closeDrawerOnClick}>
         <ListItemText primary="Home" />
       </ListItem>
-      <ListItem button component={Link} to="/about" onClick={closeDrawerOnClick}>
+      <ListItem button component={StyledLink} to="/about" onClick={closeDrawerOnClick}>
         <ListItemText primary="About" />
       </ListItem>
       {/* Only show individual service links on smaller screens */}
       {isMobile && (
         <>
-       
-         <ListItem button component={Link} to="/services" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/services" onClick={closeDrawerOnClick}>
             <ListItemText primary="Services" />
           </ListItem>
-          <ListItem button component={Link} to="/contact" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/contact" onClick={closeDrawerOnClick}>
             <ListItemText primary="Contact" />
           </ListItem>
-          <ListItem button component={Link} to="/web-development" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/web-development" onClick={closeDrawerOnClick}>
             <ListItemText primary="Web Development" />
           </ListItem>
-          <ListItem button component={Link} to="/search-engine-optimization" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/search-engine-optimization" onClick={closeDrawerOnClick}>
             <ListItemText primary="SEO" />
           </ListItem>
-          <ListItem button component={Link} to="/web-design" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/web-design" onClick={closeDrawerOnClick}>
             <ListItemText primary="Web Design" />
           </ListItem>
-          <ListItem button component={Link} to="/web-hosting" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/web-hosting" onClick={closeDrawerOnClick}>
             <ListItemText primary="Web Hosting" />
           </ListItem>
-          <ListItem button component={Link} to="/search-engine-marketing" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/search-engine-marketing" onClick={closeDrawerOnClick}>
             <ListItemText primary="Search Engine Marketing" />
           </ListItem>
-          <ListItem button component={Link} to="/dns-migration" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/dns-migration" onClick={closeDrawerOnClick}>
             <ListItemText primary="DNS Migration" />
           </ListItem>
-         
-          <ListItem button component={Link} to="/consultation" onClick={closeDrawerOnClick}>
+          <ListItem button component={StyledLink} to="/consultation" onClick={closeDrawerOnClick}>
             <ListItemText primary="Free Consultation" />
           </ListItem>
         </>
       )}
-    
     </List>
   );
 
   return (
     <header style={headerStyle}>
       <div style={logoContainerStyle}>
-        <a href="/" style={linkStyle}>
-        <img src={logo} alt="Logo" style={logoStyle} />
-
-        </a>
+        <StyledLink to="/">
+          <img src={logo} alt="Logo" style={logoStyle} />
+        </StyledLink>
       </div>
       <nav style={navContainerStyle}>
-        <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/about" style={linkStyle}>About</Link>
-        <Link to="/services" style={linkStyle}>Services</Link>
-        <Link to="/contact" style={linkStyle}>Contact</Link>
-        <Link to="/consultation" style={linkStyle}>Free Consultation</Link>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/about">About</StyledLink>
+        <StyledLink to="/services">Services</StyledLink>
+        <StyledLink to="/contact">Contact</StyledLink>
+        <StyledLink to="/consultation">Free Consultation</StyledLink>
       </nav>
       <IconButton edge="start" color="inherit" aria-label="menu" sx={mobileMenuIconStyle} onClick={toggleDrawer(true)}>
         <MenuIcon />
@@ -168,5 +170,3 @@ const Header = () => {
 };
 
 export default Header;
-
-

@@ -14,17 +14,17 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 const CalendarContainer = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   backgroundColor: '#F4E1D2',
-  padding: '175px 50px 50px',
+  padding: '12.5rem 5rem 5rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  minHeight: '100vh',
+  minHeight: '80vh',
   [theme.breakpoints.down('md')]: {
-    padding: '150px 50px',
-  },
+    padding: '12.5rem 5rem 5rem',
+},
   [theme.breakpoints.down('sm')]: {
-    padding: '150px 50px 50px',
-  },
+    padding: '12.5rem 5rem 5rem',
+},
 }));
 
 const FormContainer = styled('form')(({ theme }) => ({

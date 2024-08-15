@@ -8,7 +8,7 @@ import SocialIcons from '../components/SocialIcons';
 const Home = () => {
   const containerStyle = {
     backgroundColor: '#F4E1D2',
-    minHeight: '100vh',
+    minHeight: '80vh',
     fontFamily: 'sans-serif',
     width: '100%', // Ensure the header spans the full width of the screen
 
@@ -18,6 +18,7 @@ const Home = () => {
     <div style={containerStyle}>
       <Hero />
       <SkillsBanner />
+      
       <AboutAndReviews/>
       
       <Reviews/>

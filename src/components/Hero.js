@@ -217,31 +217,42 @@ const Hero = () => {
     }));
   };
 
- const handleSubmit = async (event) => {
-  event.preventDefault();
-  try {
-    const response = await fetch('https://buildmywebsite-server-231b6957e9dd.herokuapp.com/api/form', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formValues),
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      console.log('Form Submitted:', result);
-      setFormStatus({ success: true, error: false });
-    } else {
-      console.error('Form submission failed:', response.statusText);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+    const formattedTime = formValues.selectedTime
+      ? formValues.selectedTime.format('HH:mm:ss')
+      : null;
+  
+    const updatedFormValues = {
+      ...formValues,
+      selectedTime: formattedTime,
+    };
+  
+    try {
+      const response = await fetch('https://buildmywebsite-server.herokuapp.com/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormValues),
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Form Submitted:', result);
+        setFormStatus({ success: true, error: false });
+      } else {
+        console.error('Form submission failed:', response.statusText);
+        setFormStatus({ success: false, error: true });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
       setFormStatus({ success: false, error: true });
     }
-  } catch (error) {
-    console.error('Error submitting form:', error);
-    setFormStatus({ success: false, error: true });
-  }
-  handleClosePopup();
-};
+    handleClosePopup();
+  };
+  
 
   return (
     <ParentContainer>

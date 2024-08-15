@@ -200,6 +200,7 @@ const Hero = () => {
     email: '',
     message: ''
   });
+  const [formStatus, setFormStatus] = useState({ success: false, error: false });
 
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
@@ -218,7 +219,6 @@ const Hero = () => {
 
  const handleSubmit = async (event) => {
   event.preventDefault();
-
   try {
     const response = await fetch('https://buildmywebsite-server.herokuapp.com/api/form', {
       method: 'POST',
@@ -231,16 +231,15 @@ const Hero = () => {
     if (response.ok) {
       const result = await response.json();
       console.log('Form Submitted:', result);
-      // Handle success (e.g., show a thank you message)
+      setFormStatus({ success: true, error: false });
     } else {
       console.error('Form submission failed:', response.statusText);
-      // Handle error (e.g., show an error message)
+      setFormStatus({ success: false, error: true });
     }
   } catch (error) {
     console.error('Error submitting form:', error);
-    // Handle network errors or unexpected issues
+    setFormStatus({ success: false, error: true });
   }
-
   handleClosePopup();
 };
 

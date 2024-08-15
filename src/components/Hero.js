@@ -23,8 +23,6 @@ const slideInLeft = keyframes`
   }
 `;
 
-//test
-
 const slideInRight = keyframes`
   from {
     transform: translateX(100%);
@@ -40,32 +38,32 @@ const ParentContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: '#F4E1D2', // Ensure background color covers the entire viewport
-  padding: '125px 50px', // Default padding for larger screens
+  backgroundColor: '#F4E1D2',
+  padding: '125px 50px',
   [theme.breakpoints.down('sm')]: {
-    padding: '50px 25px', // Half the padding on smaller screens
+    padding: '50px 25px',
   },
 }));
 
 const HeroContainer = styled(Grid)(({ theme }) => ({
   backgroundColor: '#F4E1D2',
-  maxWidth: '1000px', // Limit the maximum width of the container
+  maxWidth: '1000px',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginTop: '50px', // Add some margin at the top
-  padding: '100px', // Add some padding inside the container
+  marginTop: '50px',
+  padding: '100px',
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',
     textAlign: 'center',
-    padding: '50px 25px', // Adjust padding for medium screens
+    padding: '50px 25px',
   },
 }));
 
 const TextContainer = styled(Grid)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'flex-start', // Align text to the top
+  justifyContent: 'flex-start',
   textAlign: 'left',
   animation: `${slideInLeft} 1s ease-out`,
   marginBottom: '20px',
@@ -73,7 +71,7 @@ const TextContainer = styled(Grid)(({ theme }) => ({
     textAlign: 'center',
     alignItems: 'center',
     marginBottom: '20px',
-    justifyContent: 'center', // Center content on smaller screens
+    justifyContent: 'center',
   },
 }));
 
@@ -83,9 +81,9 @@ const Title = styled('h1')(({ theme }) => ({
   fontSize: '2.5rem',
   color: '#3A3A3A',
   fontWeight: 'normal',
-  marginBottom: '20px', // Add some margin at the bottom
+  marginBottom: '20px',
   [theme.breakpoints.down('md')]: {
-    fontSize: '2rem', // Adjust font size for medium screens
+    fontSize: '2rem',
   },
 }));
 
@@ -95,12 +93,12 @@ const StyledButton = styled(Button)(({ theme }) => ({
   color: '#F4E1D2',
   width: '200px',
   borderRadius: '20px',
-  textAlign: 'right', // Align text to the right
+  textAlign: 'right',
   fontSize: '1rem',
   textTransform: 'none',
   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-  alignSelf: 'flex-end', // Align the button to the right
+  alignSelf: 'flex-end',
   '&:hover': {
     transform: 'scale(1.05)',
     backgroundColor: '#F2784B',
@@ -111,7 +109,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
     backgroundColor: '#3A3A3A',
   },
   [theme.breakpoints.down('md')]: {
-    alignSelf: 'center', // Center the button on smaller screens
+    alignSelf: 'center',
     marginTop: '20px',
   },
 }));
@@ -122,12 +120,12 @@ const ImageContainer = styled(Grid)(({ theme }) => ({
   alignItems: 'center',
   animation: `${slideInRight} 1s ease-out`,
   [theme.breakpoints.up('md')]: {
-    width: '50%', // Limit the image container width on large screens
-    alignSelf: 'flex-end', // Align image to the right
+    width: '50%',
+    alignSelf: 'flex-end',
   },
   '& img': {
     width: '100%',
-    maxHeight: '500px', // Limit the maximum height of the image
+    maxHeight: '500px',
     borderRadius: '20px',
     marginLeft: '20px',
     marginTop: '-20px',
@@ -140,15 +138,15 @@ const PopupOverlay = styled('div')({
   left: 0,
   width: '100%',
   height: '100%',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark transparent background
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  zIndex: 1000, // Ensure it's above other content
+  zIndex: 1000,
 });
 
 const PopupContent = styled('div')({
-  backgroundColor: '#bbd7ec', // Same beige background
+  backgroundColor: '#bbd7ec',
   fontFamily: 'Nunito, sans-serif',
   padding: '30px',
   borderRadius: '20px',
@@ -163,6 +161,17 @@ const PopupTitle = styled('h2')({
   color: '#3a3a3a',
   textAlign: 'center',
   marginBottom: '20px',
+});
+
+const SuccessMessage = styled('div')({
+  fontFamily: 'Nunito, sans-serif',
+  color: '#3A3A3A',
+  backgroundColor: '#bbd7ec',
+  padding: '20px',
+  borderRadius: '10px',
+  textAlign: 'center',
+  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+  marginTop: '20px',
 });
 
 const StyledTextField = styled(TextField)({
@@ -222,7 +231,6 @@ const Hero = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
   
-    // Format the time to only include the time part (HH:mm:ss)
     const formattedTime = formValues.selectedTime
       ? formValues.selectedTime.format('HH:mm:ss')
       : null;
@@ -256,8 +264,6 @@ const Hero = () => {
     handleClosePopup();
   };
   
-  
-
   return (
     <ParentContainer>
       <HeroContainer container spacing={3}>
@@ -269,7 +275,7 @@ const Hero = () => {
           <img src={heroImage} alt="People working together" />
         </ImageContainer>
       </HeroContainer>
-      {isPopupOpen && (
+      {isPopupOpen && !formStatus.success && (
         <PopupOverlay onClick={handleClosePopup}>
           <PopupContent onClick={(e) => e.stopPropagation()}>
             <PopupTitle>Free Consultation</PopupTitle>
@@ -313,41 +319,40 @@ const Hero = () => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Grid container spacing={2} justifyContent="center" alignItems="center">
                 <Grid item xs={12} sm={6}>
-                <DatePicker
-  label="Select Date"
-  value={formValues.selectedDate}
-  onChange={(newValue) => handleChange('selectedDate', newValue)}
-  slotProps={{
-    textField: {
-      fullWidth: true,
-      variant: "outlined",
-      sx: {
-        display: 'flex',
-        justifyContent: 'center',
-        textAlign: 'center',
-      },
-    },
-  }}
-/>
-
-<TimePicker
-  label="Select Time"
-  value={formValues.selectedTime}
-  onChange={(newValue) => handleChange('selectedTime', newValue)}
-  slotProps={{
-    textField: {
-      fullWidth: true,
-      variant: "outlined",
-      sx: {
-        display: 'flex',
-        justifyContent: 'center',
-        textAlign: 'center',
-      },
-    },
-  }}
-/>
-
-
+                  <DatePicker
+                    label="Select Date"
+                    value={formValues.selectedDate}
+                    onChange={(newValue) => handleChange('selectedDate', newValue)}
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        variant: "outlined",
+                        sx: {
+                          display: 'flex',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                        },
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TimePicker
+                    label="Select Time"
+                    value={formValues.selectedTime}
+                    onChange={(newValue) => handleChange('selectedTime', newValue)}
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        variant: "outlined",
+                        sx: {
+                          display: 'flex',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                        },
+                      },
+                    }}
+                  />
                 </Grid>
               </Grid>
               <Button 
@@ -361,6 +366,11 @@ const Hero = () => {
             </LocalizationProvider>
           </PopupContent>
         </PopupOverlay>
+      )}
+      {formStatus.success && (
+        <SuccessMessage>
+          Thanks! We'll be in touch within 1 business day.
+        </SuccessMessage>
       )}
     </ParentContainer>
   );

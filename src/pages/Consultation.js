@@ -12,20 +12,20 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const CalendarContainer = styled('div')(({ theme }) => ({
-    fontFamily: 'Nunito, sans-serif',
-    backgroundColor: '#F4E1D2',
-    padding: '175px 50px 50px', // Adjusted padding
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    minHeight: '100vh', // Ensure full viewport height
-    [theme.breakpoints.down('md')]: {
-      padding: '150px 50px', // Adjusted padding for smaller screens
-    },
-    [theme.breakpoints.down('sm')]: {
-      padding: '150px 50px 50px', // Adjusted padding for smaller screens
-    },
-  }));
+  fontFamily: 'Nunito, sans-serif',
+  backgroundColor: '#F4E1D2',
+  padding: '175px 50px 50px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  minHeight: '100vh',
+  [theme.breakpoints.down('md')]: {
+    padding: '150px 50px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '150px 50px 50px',
+  },
+}));
 
 const FormContainer = styled('form')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
@@ -40,7 +40,7 @@ const FormContainer = styled('form')(({ theme }) => ({
 }));
 
 const FieldContainer = styled('div')({
-  marginBottom: '20px', // Space around each text field
+  marginBottom: '20px',
 });
 
 const StyledTextField = styled(TextField)({
@@ -94,6 +94,17 @@ const CheckboxContainer = styled('div')({
   marginTop: '10px',
 });
 
+const SuccessMessage = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Nunito, sans-serif',
+  color: '#3A3A3A',
+  backgroundColor: '#bbd7ec',
+  padding: '20px',
+  borderRadius: '10px',
+  textAlign: 'center',
+  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+  marginTop: '20px',
+}));
+
 const CalendarComponent = () => {
   const [formValues, setFormValues] = useState({
     selectedDate: null,
@@ -102,12 +113,15 @@ const CalendarComponent = () => {
     businessName: '',
     phoneNumber: '',
     email: '',
+    message: '',
     services: {
       websiteDevelopment: false,
       seoOptimization: false,
       brandingConsultation: false,
     },
   });
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (field, value) => {
     setFormValues((prevState) => ({
@@ -129,89 +143,80 @@ const CalendarComponent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-        const response = await fetch('https://buildmywebsite-server-231b6957e9dd.herokuapp.com/api/contact', {
-            method: 'POST',
+      const response = await fetch('https://buildmywebsite-server-231b6957e9dd.herokuapp.com/api/contact', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formValues),
       });
-  
+
       if (response.ok) {
-        const result = await response.json();
-        console.log('Form Submitted:', result);
-        // Optionally, handle success (e.g., show a success message)
+        setFormSubmitted(true);
       } else {
         console.error('Form submission failed:', response.statusText);
-        // Optionally, handle error (e.g., show an error message)
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Optionally, handle error (e.g., show an error message)
     }
   };
 
   return (
-    <CalendarContainer
-    style = {{ minHeight: '7vh' }}
-
-    >
+    <CalendarContainer style={{ minHeight: '7vh' }}>
       <Typography variant="h4" align="center" gutterBottom sx={{ fontFamily: 'Nunito, sans-serif' }}>
         Schedule an Appointment
       </Typography>
       <Typography variant="body1" align="center" gutterBottom sx={{ fontFamily: 'Nunito, sans-serif' }}>
         Select a date and time that works for you.
       </Typography>
-      <FormContainer
-      style = {{ textAlign: 'center' }}
-      onSubmit={handleSubmit}>
-     
-        <FieldContainer>
-          <StyledTextField
-            label="Full Name"
-            name="name"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.name}
-            onChange={(e) => handleChange('name', e.target.value)}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <StyledTextField
-            label="Business Name"
-            name="businessName"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.businessName}
-            onChange={(e) => handleChange('businessName', e.target.value)}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <StyledTextField
-            label="Phone Number"
-            name="phoneNumber"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.phoneNumber}
-            onChange={(e) => handleChange('phoneNumber', e.target.value)}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <StyledTextField
-            label="Email Address"
-            name="email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={formValues.email}
-            onChange={(e) => handleChange('email', e.target.value)}
-          />
+      {!formSubmitted ? (
+        <FormContainer style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
+          <FieldContainer>
+            <StyledTextField
+              label="Full Name"
+              name="name"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={formValues.name}
+              onChange={(e) => handleChange('name', e.target.value)}
+            />
           </FieldContainer>
           <FieldContainer>
-           <StyledTextField
+            <StyledTextField
+              label="Business Name"
+              name="businessName"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={formValues.businessName}
+              onChange={(e) => handleChange('businessName', e.target.value)}
+            />
+          </FieldContainer>
+          <FieldContainer>
+            <StyledTextField
+              label="Phone Number"
+              name="phoneNumber"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={formValues.phoneNumber}
+              onChange={(e) => handleChange('phoneNumber', e.target.value)}
+            />
+          </FieldContainer>
+          <FieldContainer>
+            <StyledTextField
+              label="Email Address"
+              name="email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={formValues.email}
+              onChange={(e) => handleChange('email', e.target.value)}
+            />
+          </FieldContainer>
+          <FieldContainer>
+            <StyledTextField
               label="Message"
               variant="outlined"
               fullWidth
@@ -220,106 +225,80 @@ const CalendarComponent = () => {
               value={formValues.message}
               onChange={(e) => handleChange('message', e.target.value)}
             />
-        </FieldContainer>
-        <CheckboxContainer>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={formValues.services.websiteDevelopment}
-                onChange={() => handleCheckboxChange('websiteDevelopment')}
-                color="primary"
-              />
-            }
-            label="Website Development"
-          />
+          </FieldContainer>
+          <CheckboxContainer>
             <FormControlLabel
-            control={
-              <Checkbox
-                checked={formValues.services.brandingConsultation}
-                onChange={() => handleCheckboxChange('brandingConsultation')}
-                color="primary"
-              />
-            }
-            label="Web Design"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={formValues.services.seoOptimization}
-                onChange={() => handleCheckboxChange('seoOptimization')}
-                color="primary"
-              />
-            }
-            label="SEO Optimization"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={formValues.services.brandingConsultation}
-                onChange={() => handleCheckboxChange('brandingConsultation')}
-                color="primary"
-              />
-            }
-            label="Search Engine Marketing"
-          />
-         
-           <FormControlLabel
-            control={
-              <Checkbox
-                checked={formValues.services.brandingConsultation}
-                onChange={() => handleCheckboxChange('brandingConsultation')}
-                color="primary"
-              />
-            }
-            label="Web Hosting"
-          />
-           <FormControlLabel
-            control={
-              <Checkbox
-                checked={formValues.services.brandingConsultation}
-                onChange={() => handleCheckboxChange('brandingConsultation')}
-                color="primary"
-              />
-            }
-            label="DNS Migration"
-          />
-        </CheckboxContainer>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Grid container spacing={1} justifyContent="center">
-            <Grid item xs={12} sm={6}>
-              <DatePicker
-                label="Select Date"
-                value={formValues.selectedDate}
-                onChange={(newValue) => handleChange('selectedDate', newValue)}
-                renderInput={(params) => (
-                  <StyledTextField
-                    {...params}
-                    fullWidth
-                    variant="outlined"
-                  />
-                )}
-              />
+              control={
+                <Checkbox
+                  checked={formValues.services.websiteDevelopment}
+                  onChange={() => handleCheckboxChange('websiteDevelopment')}
+                  color="primary"
+                />
+              }
+              label="Website Development"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formValues.services.seoOptimization}
+                  onChange={() => handleCheckboxChange('seoOptimization')}
+                  color="primary"
+                />
+              }
+              label="SEO Optimization"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={formValues.services.brandingConsultation}
+                  onChange={() => handleCheckboxChange('brandingConsultation')}
+                  color="primary"
+                />
+              }
+              label="Branding Consultation"
+            />
+          </CheckboxContainer>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Grid container spacing={1} justifyContent="center">
+              <Grid item xs={12} sm={6}>
+                <DatePicker
+                  label="Select Date"
+                  value={formValues.selectedDate}
+                  onChange={(newValue) => handleChange('selectedDate', newValue)}
+                  renderInput={(params) => (
+                    <StyledTextField
+                      {...params}
+                      fullWidth
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TimePicker
+                  label="Select Time"
+                  value={formValues.selectedTime}
+                  onChange={(newValue) => handleChange('selectedTime', newValue)}
+                  renderInput={(params) => (
+                    <StyledTextField
+                      {...params}
+                      fullWidth
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TimePicker
-                label="Select Time"
-                value={formValues.selectedTime}
-                onChange={(newValue) => handleChange('selectedTime', newValue)}
-                renderInput={(params) => (
-                  <StyledTextField
-                    {...params}
-                    fullWidth
-                    variant="outlined"
-                  />
-                )}
-              />
-            </Grid>
-          </Grid>
-        </LocalizationProvider>
-        <StyledButton type="submit" fullWidth>
-          Submit
-        </StyledButton>
-      </FormContainer>
+          </LocalizationProvider>
+          <StyledButton type="submit" fullWidth>
+            Submit
+          </StyledButton>
+        </FormContainer>
+      ) : (
+        <SuccessMessage variant="h5">
+          Thanks! We'll be in touch within 1 business day.
+        </SuccessMessage>
+      )}
     </CalendarContainer>
   );
 };

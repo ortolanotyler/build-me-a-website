@@ -14,7 +14,7 @@ const bubbleSize = keyframes`
 
 const bubbleMove = keyframes`
   0% {
-    bottom: -4rem;
+    bottom: 0;
   }
   100% {
     bottom: var(--distance, 10rem);
@@ -27,7 +27,7 @@ const Body = styled.div`
   grid-template-areas: "main" "." "footer";
   overflow-x: hidden;
   background: #f4e1d2;
-  min-height: 10vh;
+  min-height: 5vh;
   font-family: 'Open Sans', sans-serif;
 `;
 
@@ -121,8 +121,8 @@ const Footer = () => {
             key={i}
             className="bubble"
             style={{
-              '--size': `${2 + Math.random() * 6}rem`,
-              '--distance': `${7 + Math.random() * 4}rem`,
+              '--size': `${3 + Math.random() * 6}rem`,
+              '--distance': `${5 + Math.random() * 4}rem`,
               '--position': `${-5 + Math.random() * 110}%`,
               '--time': `${10 + Math.random() * 3}s`,
               '--delay': `${-1 * (2 + Math.random() * 2)}s`

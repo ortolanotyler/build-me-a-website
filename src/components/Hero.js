@@ -220,6 +220,7 @@ const Hero = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
   
+    // Format the time to only include the time part (HH:mm:ss)
     const formattedTime = formValues.selectedTime
       ? formValues.selectedTime.format('HH:mm:ss')
       : null;
@@ -252,6 +253,7 @@ const Hero = () => {
     }
     handleClosePopup();
   };
+  
   
 
   return (

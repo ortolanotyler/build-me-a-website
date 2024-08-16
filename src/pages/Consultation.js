@@ -30,7 +30,7 @@ const CalendarContainer = styled('div')(({ theme }) => ({
 const FormContainer = styled('form')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   width: '100%',
-  maxWidth: '600px',
+  maxWidth: '400px',
   backgroundColor: '#bbd7ec',
   padding: '30px',
   borderRadius: '20px',

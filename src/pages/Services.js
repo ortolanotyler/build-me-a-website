@@ -38,7 +38,7 @@ const ServiceCard = styled(Card)(({ theme, animationDirection, animate }) => ({
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   color: '#3a3a3a',
   fontFamily: 'Nunito, sans-serif',
-  width: '100%',
+  width: '80%',
   borderRadius: '20px',
   border: '1.25px solid #ECE7E3',
   margin: '20px 0',
@@ -51,7 +51,7 @@ const ServiceCard = styled(Card)(({ theme, animationDirection, animate }) => ({
     boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
   },
   [theme.breakpoints.up('md')]: {
-    width: '80%',
+    width: '70%',
     margin: '20px auto',
   },
 }));
@@ -116,13 +116,13 @@ const Services = () => {
 
   return (
     <ServicesContainer>
-       <Typography variant="h3" align="center" gutterBottom style={{ 
+       <Typography variant="h2" align="center" gutterBottom style={{ 
           textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
 
         fontFamily: 'Nunito, sans-serif' }}>   
-        Our Services
+         Services
       </Typography>
-      <Grid container spacing={3} justifyContent="center">
+      <Grid container spacing={0} justifyContent="center">
         {services.map((service, index) => (
           <Grid item xs={12} sm={6} md={5} key={index}>
             <a href={service.link} style={{ textDecoration: 'none' }}>

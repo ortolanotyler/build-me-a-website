@@ -51,7 +51,7 @@ const Bubbles = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  height: 1rem;
+  height: 5px;
   background: var(--footer-background);
   filter: url("#blob");
 
@@ -71,8 +71,8 @@ const Content = styled.div`
   font-family: 'Nunito', sans-serif;
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-gap: 4rem;
-  padding: 1rem;
+  grid-gap: 5rem;
+  padding: 2rem;
   background: var(--footer-background);
 
   a, p {
@@ -124,9 +124,9 @@ const Footer = () => {
             className="bubble"
             style={{
               '--size': `${3 + Math.random() * 6}rem`,
-              '--distance': `${5 + Math.random() * 4}rem`,
+              '--distance': `${6 + Math.random() * 4}rem`,
               '--position': `${-5 + Math.random() * 110}%`,
-              '--time': `${10 + Math.random() * 3}s`,
+              '--time': `${5 + Math.random() * 3}s`,
               '--delay': `${-1 * (2 + Math.random() * 2)}s`
             }}
           />

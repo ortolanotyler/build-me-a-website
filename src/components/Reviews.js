@@ -19,6 +19,7 @@ const ReviewsContainer = styled('div')(({ isVisible }) => ({
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
   display: 'flex',
+  textAlign: 'center',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: '#F4E1D2',
@@ -27,21 +28,20 @@ const ReviewsContainer = styled('div')(({ isVisible }) => ({
   opacity: isVisible? 1 : 0,
   animation: isVisible? `${slideInUp} 1s ease-out forwards` : 'none',
 }));
- 
+
 // Styled card for each review
 const ReviewCard = styled(Card)(({ theme }) => ({
   color: '#3A3A3A',
   fontFamily: 'Nunito, sans-serif',
   borderRadius: '20px',
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
- 
-  margin: '5px',
-  maxWidth: '100%', // Ensure responsive width
+  margin: '10px auto', // Center the cards within their grid items
+  maxWidth: '100%',
   [theme.breakpoints.up('md')]: {
-    maxWidth: '280px', // More consistent width on medium screens
+    maxWidth: '280px',
   },
   [theme.breakpoints.up('lg')]: {
-    maxWidth: '300px', // Slightly larger width on large screens
+    maxWidth: '300px',
   },
 }));
 
@@ -81,27 +81,40 @@ const Reviews = () => {
   }, []);
 
   return (
-    <ReviewsContainer ref={containerRef} isVisible={isVisible}>
-      <Grid container spacing={1} justifyContent="center">
-        {reviews.map((review, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            <ReviewCard>
-              <CardContent>
-                <Typography variant="h6" gutterBottom align="center">
-                  {review.name}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" gutterBottom align="center">
-                  {review.review}
-                </Typography>
-                <Box display="flex" justifyContent="center" mt={1}>
-                  <Rating value={review.rating} readOnly />
-                </Box>
-              </CardContent>
-            </ReviewCard>
-          </Grid>
-        ))}
-      </Grid>
-    </ReviewsContainer>
+    <div>
+      <h2
+        style={{
+          fontWeight: 'normal',
+          textAlign: 'center',
+          color: '#3A3A3A',
+          fontFamily: 'Nunito, sans-serif',
+          fontSize: '2rem',
+        }}
+      >
+        Reviews
+      </h2>
+      <ReviewsContainer ref={containerRef} isVisible={isVisible}>
+        <Grid container spacing={3} justifyContent="center">
+          {reviews.map((review, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index} container justifyContent="center">
+              <ReviewCard>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom align="center">
+                    {review.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" gutterBottom align="center">
+                    {review.review}
+                  </Typography>
+                  <Box display="flex" justifyContent="center" mt={1}>
+                    <Rating value={review.rating} readOnly />
+                  </Box>
+                </CardContent>
+              </ReviewCard>
+            </Grid>
+          ))}
+        </Grid>
+      </ReviewsContainer>
+    </div>
   );
 };
 

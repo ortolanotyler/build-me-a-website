@@ -4,21 +4,21 @@ import { styled } from '@mui/system';
 
 const SectionContainer = styled('div')(({ theme }) => ({
   color: '#3A3A3A',
-  padding: '150px 50px 50px',
+  padding: '150px 50px ',
   background: '#F4E1D2',
   minHeight: '100vh',
   overflow: 'hidden',
   zIndex: 0,
 }));
 
-const ServiceCard = styled(Card)(({ theme }) => ({
+const AboutCard = styled(Card)(({ theme }) => ({
   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   color: '#3a3a3a',
   fontFamily: 'Nunito, sans-serif',
   width: '100%',
   borderRadius: '20px',
   border: '2px solid #ECE7E3',
-  margin: '20px 0',
+  
   zIndex: 2,
   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
   '&:hover': {
@@ -59,7 +59,7 @@ const services = [
   },
   {
     title: 'Personalized Service',
-    description: "Tired of dealing with large companies that treat you like just another number? So are we. Work directly with someone who cares about your business.",
+    description: "Tired of dealing with large companies that don't know you from Adam? So are we. Work directly with someone who cares about your business enough to give you their cell phone number.",
     image: `${process.env.PUBLIC_URL}/Images/webdesign.jpg`,
     link: '/web-design',
   },
@@ -87,10 +87,12 @@ const WhatWeDoSection = () => {
         style={{
           textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
           fontFamily: 'Nunito, sans-serif',
-          marginBottom: '20px',
+          marginBottom: '50px',
+         
+
         }}
       >
-        What We Can Do for You
+        A fresh approach to small business growth
       </Typography>
       <Typography
         variant="body1"
@@ -98,15 +100,19 @@ const WhatWeDoSection = () => {
         style={{
           fontFamily: 'Nunito, sans-serif',
           marginBottom: '50px',
+          marginLeft: '50px',
+          marginRight: '50px',
         }}
       >
-        Our clients trust us to deliver high-quality, tailored services.
+
+ Whether your small business is your life's work or just beginning, who you partner with matters.
+
       </Typography>
       <Grid container spacing={3} justifyContent="center">
         {services.map((service, index) => (
           <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
             <a href={service.link} style={{ textDecoration: 'none' }}>
-              <ServiceCard
+              <AboutCard
                 style={{
                   backgroundColor: '#BBD7EC',
                 }}
@@ -138,7 +144,7 @@ const WhatWeDoSection = () => {
                     {service.description}
                   </Typography>
                 </CardContentStyled>
-              </ServiceCard>
+              </AboutCard>
             </a>
           </Grid>
         ))}

@@ -2,13 +2,14 @@ import React from 'react';
 import { styled } from '@mui/system';
 
 const FAQList = styled('div')({
-  maxWidth: '800px',
-  color: '#3A3A3A',
-  fontFamily: 'Nunito, sans-serif',
-  margin: '10px auto', // Adjusted margin for consistent spacing
-  padding: '20px 20px',
-  borderRadius: '10px', // Rounded corners for the FAQ container
-});
+    maxWidth: '800px',
+    color: '#3A3A3A',
+    fontFamily: 'Nunito, sans-serif',
+    margin: '1px auto', // Adjusted margin for consistent spacing
+    padding: '20px 20px',
+    borderRadius: '10px', // Rounded corners for the About container
+  
+  });
 
 const FAQItem = styled('div')({
   marginBottom: '10px',
@@ -18,7 +19,7 @@ const FAQItem = styled('div')({
 const FAQs = () => {
   return (
     <FAQList>
-      <h3>Frequently Asked Questions</h3>
+      <h2>Frequently Asked Questions</h2>
       <FAQItem>
         <strong>What services does your web development business offer?</strong>
         <p>
@@ -49,36 +50,7 @@ const FAQs = () => {
           Our pricing is transparent and tailored to the specific needs of your project. We offer both fixed-price packages for standard services, like a basic business website or SEO audit, and custom quotes for more complex or unique projects. For instance, a standard 5-page business website might start at $2,500, while a fully custom e-commerce platform with advanced integrations could be priced higher. We’re always upfront about costs, so there are no surprises.
         </p>
       </FAQItem>
-      <FAQItem>
-        <strong>Do you offer ongoing maintenance and support?</strong>
-        <p>
-          Absolutely! We offer various maintenance and support packages to ensure your website stays updated, secure, and running smoothly. This includes regular updates, security monitoring, backups, and content updates. For example, we can take care of everything from updating your site’s content and plugins to ensuring your SSL certificate is always up to date, giving you peace of mind to focus on your business.
-        </p>
-      </FAQItem>
-      <FAQItem>
-        <strong>How do you ensure my website will be SEO-friendly?</strong>
-        <p>
-          SEO is integrated into our development process from the start. We conduct thorough keyword research, optimize your website’s architecture, ensure mobile responsiveness, and implement clean, fast-loading code. For instance, we’ll optimize your site’s meta tags, headings, and image alt texts to align with your targeted keywords. We also ensure your site is set up for Google Analytics and Search Console, so you can track your SEO performance.
-        </p>
-      </FAQItem>
-      <FAQItem>
-        <strong>Can you integrate e-commerce functionality into my website?</strong>
-        <p>
-          Yes, we specialize in integrating e-commerce functionality, whether you need a simple online store or a full-fledged e-commerce platform. We can set up secure payment gateways, manage product inventory, and design user-friendly checkout processes. For instance, if you’re a retailer, we can build an online store using Shopify or WooCommerce, complete with product variations, discount codes, and customer reviews, all tailored to your brand.
-        </p>
-      </FAQItem>
-      <FAQItem>
-        <strong>What information do you need from me to get started?</strong>
-        <p>
-          To get started, we typically need an overview of your business, your goals for the website, and any specific features you’d like to include. If you have branding materials like a logo, color scheme, or content, that’s also helpful. For example, if you’re launching a new product, we’ll need product descriptions, images, and any promotional materials you want to feature on the site. The more detailed the information, the better we can tailor the site to your needs.
-        </p>
-      </FAQItem>
-      <FAQItem>
-        <strong>Can you provide examples of past projects?</strong>
-        <p>
-          Certainly! We’re proud of the work we’ve done and happy to share examples of past projects that demonstrate our expertise. You can view our portfolio on our website, where we showcase a variety of websites across different industries. For example, we recently designed a custom website for a boutique fashion brand that includes an integrated e-commerce platform, social media feeds, and a blog—all optimized for SEO and mobile devices.
-        </p>
-      </FAQItem>
+     
     </FAQList>
   );
 };

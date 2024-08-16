@@ -137,8 +137,11 @@ const ContactForm = () => {
 
   return (
     <Contact>
-      <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif' }}>
-        Contact Us
+          <Typography variant="h2" align="center" gutterBottom style={{ 
+          textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
+
+        fontFamily: 'Nunito, sans-serif' }}>   
+         Contact
       </Typography>
       <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif' }}>
         Fill out the form below to get in touch with us and let us know how we can assist you.

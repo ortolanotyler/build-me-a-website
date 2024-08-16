@@ -8,7 +8,7 @@ const BannerContainer = styled.div`
   align-items: center;
   background-color: #f4e1d2;
   width: 100%;
-  min-height: 30vh;
+  min-height: 20vh;
 `;
 
 const IconWrapper = styled.div`

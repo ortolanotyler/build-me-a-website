@@ -60,10 +60,10 @@ const Skill = styled('div')(({ theme }) => ({
   textAlign: 'center',
   color: '#3a3a3a',
   fontFamily: 'Nunito, sans-serif', // Correctly specify the font family
-  fontWeight: '600',
+  fontWeight: 'normal',
   cursor: 'pointer', // Ensure the cursor changes to pointer on hover
 
-  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.125)', // Add text shadow
+  textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
   maxWidth: '200px', // Limit the width of each icon box
 }));
 

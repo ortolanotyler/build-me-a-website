@@ -25,7 +25,9 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   background-color: #f8f8f8;
-  max-width: 90%; /* Ensure the card does not exceed the viewport width */
+  
+
+  max-width: 70%; /* Ensure the card does not exceed the viewport width */
   margin: 0 auto 3rem auto; /* Center the card with auto margins */
   padding: 2rem; /* Padding inside the card */
   display: flex;
@@ -33,6 +35,7 @@ const Card = styled.div`
   align-items: center;
   text-align: left;
   overflow: hidden; /* Prevent content from overflowing */
+
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack items on smaller screens */
@@ -89,21 +92,20 @@ const CardTitle = styled.h3`
 `;
 
 const CardDescription = styled.p`
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 2rem;
   color: #3a3a3a;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 const CardsSection = () => {
-  // Define the cards array here
   const cards = [
-    { description: 'This is a description for Web Development.', href: '#card1', image: '/Images/websites1.jpg' },
-    { description: 'This is a description for Card 2.', href: '#card2', image: '/Images/seo1.jpg' },
-    { description: 'This is a description for Card 3.', href: '#card3', image: '/Images/18.jpg' },
-    { description: 'This is a description for Card 4.', href: '#card4', image: '/Images/19.jpg' },
-    { description: 'This is a description for Card 5.', href: '#card5', image: '/Images/20.jpg' },
-    { description: 'This is a description for Card 6.', href: '#card6', image: '/Images/21.jpg' },
+    {  description: 'Building bridges in small business digital marketing.', href: '#card1', image: '/Images/websites1.jpg' },
+    { description: 'We are a digital marketing company from Ontario. We consult with small business owners to provide them expertise in the fields of web development, digital marketing, and search engine optimization.', href: '#card2', image: '/Images/seo1.jpg' },
+    {  description: 'Our aim is to build lasting relationships with the people we work with and support them on their journey to small-business success.', href: '#card3', image: '/Images/sem1.jpg' },
+    {  description: "Whether your small business is your life's work or just beginning, we can help you to increase your revenue both online and in person.", href: '#card4', image: '/Images/19.jpg' },
+    {  description: 'Book a free consultation, we will go ahead and analyze your current presence and come to you with a plan at a date and time that works for you.', href: '#card5', image: '/Images/20.jpg' },
+    { description: 'Thanks for stopping by.', href: '#card6', image: '/Images/21.jpg' },
   ];
 
   return (
@@ -111,10 +113,10 @@ const CardsSection = () => {
       {cards.map((card, index) => (
         <Card key={index} isReversed={index % 2 !== 0}>
           <CardImageWrapper>
-            <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.description} />
+            <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.title} />
           </CardImageWrapper>
           <CardContent>
-            <CardTitle>{card.description}</CardTitle>
+            <CardTitle>{card.title}</CardTitle>
             <CardDescription>{card.description}</CardDescription>
           </CardContent>
         </Card>

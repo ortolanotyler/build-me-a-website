@@ -61,15 +61,18 @@ const Header = () => {
 
   const navContainerStyle = {
     fontFamily: 'League Spartan, sans-serif',
-
+    fontSize: '1.5rem',
+    textShadow : '2px 4px 2px rgba(0, 0, 0, 0.1)',
     display: isMobile ? 'none' : 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '2.5rem',
+    gap: '2rem',
   };
 
   const mobileMenuIconStyle = {
     display: isMobile ? 'block' : 'none',
+    color: '#f8f8f8',
+    fontSize: '2rem',
   };
 
   const drawerListStyle = {

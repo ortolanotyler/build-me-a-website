@@ -5,7 +5,7 @@ const ParallaxSection = ({ image, children }) => {
     backgroundImage: `url(${image})`,
     minHeight: '300px',
     backgroundAttachment: 'fixed',
-    opacity: 0.9,
+    opacity: 0.5,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',

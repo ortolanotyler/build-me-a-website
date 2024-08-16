@@ -2,9 +2,11 @@ import React from 'react';
 
 const ProfileCard = () => {
   const cardStyle = {
-    maxWidth: '500px',
-    margin: '50px auto',
-    overflowY: 'auto',
+    maxWidth: '1500px',
+    margin: '40px auto',
+    overflowY: 'hidden',
+    overflowX: 'hidden',
+
     backgroundColor: 'rgba(255, 255, 255, 1)',
     display: 'flex',
     flexDirection: 'column',

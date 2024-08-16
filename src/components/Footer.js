@@ -26,7 +26,7 @@ const Body = styled.div`
   grid-template-rows: 1fr 10rem auto;
   grid-template-areas: "main" "." "footer";
   overflow-x: hidden;
-  background: #f4e1d2;
+  background: #f8f8f8;
   min-height: 5vh;
   font-family: 'Open Sans', sans-serif;
 `;

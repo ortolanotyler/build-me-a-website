@@ -1,169 +1,129 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Card, CardContent, Typography, CardMedia } from '@mui/material';
-import { styled, keyframes } from '@mui/system';
+import React from 'react';
+import ParallaxSection from './Parallax';
 
-const ServicesContainer = styled('div')(({ theme }) => ({
-  color: '#3A3A3A',
-  padding: '12.5rem 2.5rem 2.5rem',
-  background: '-webkit-linear-gradient(to left, #F4E1D2, #F4E1D2)',
-  background: 'linear-gradient(to left, #F4E1D2, #F4E1D2)',
-  minHeight: '100vh',
-  overflow: 'hidden',
-  zIndex: 0,
-}));
+function HomePage() {
+  const headingStyle = {
+    fontSize: '48px',
+    margin: 0,
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+    color: '#FFF',
+  };
 
-const slideInLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
+  const sectionStyle = {
+    padding: '100px 20px',
+    backgroundColor: 'transparent',
+    color: 'black',
+    textAlign: 'center',
+  };
 
-const slideInRight = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
+  const subheadingStyle = {
+    fontSize: '36px',
+    margin: '0 0 20px',
+    color: '#FFF',
+  };
 
-const ServiceCard = styled(Card)(({ theme, animationDirection, animate }) => ({
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-  color: '#3a3a3a',
-  fontFamily: 'Nunito, sans-serif',
-  width: '80%',
-  borderRadius: '20px',
-  border: '1.25px solid #ECE7E3',
-  margin: '20px 0',
-  zIndex: 2,
-  opacity: animate ? 1 : 0,
-  animation: animate ? `${animationDirection} 1s ease-out forwards` : 'none',
-  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  '&:hover': {
-    transform: 'translateY(-10px)',
-    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
-  },
-  [theme.breakpoints.up('md')]: {
-    width: '70%',
-    margin: '20px auto',
-  },
-}));
+  const paragraphStyle = {
+    fontSize: '18px',
+    lineHeight: '1.6',
+    color: '#FFF',
+  };
 
-const CardContentStyled = styled(CardContent)(({ theme }) => ({
-  minHeight: '125px',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  padding: '10px',
-}));
+  const gridContainerStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridGap: '20px',
+    padding: '40px',
+    backgroundColor: '#f0f0f0',
+  };
 
-const services = [
-  {
-    title: 'Web Development',
-    description: 'We create stunning and responsive websites that help your business grow.',
-    image: `${process.env.PUBLIC_URL}/Images/webdev.jpg`,
-    link: '/web-development',
-  },
-  {
-    title: 'Search Engine Optimization',
-    description: 'Optimize your site to rank higher in search engines and attract more visitors.',
-    image: `${process.env.PUBLIC_URL}/Images/google.png`,
-    link: '/search-engine-optimization',
-  },
-  {
-    title: 'Web Hosting',
-    description: 'Designing user-friendly interfaces that provide an exceptional user experience.',
-    image: `${process.env.PUBLIC_URL}/Images/webhosting.jpg`,
-    link: '/web-hosting',
-  },
-  {
-    title: 'Web Design',
-    description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
-    image: `${process.env.PUBLIC_URL}/Images/webdesign.jpg`,
-    link: '/web-design',
-  },
-  {
-    title: 'Search Engine Marketing',
-    description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
-    image: `${process.env.PUBLIC_URL}/Images/SEM.jpg`,
-    link: '/search-engine-marketing',
-  },
-  {
-    title: 'DNS Migration',
-    description: 'Boost your online presence and drive more sales with our digital marketing strategies.',
-    image: `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-    link: '/dns-migration',
-  },
-];
+  const gridItemStyle = {
+    backgroundColor: '#ffffff',
+    padding: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
+  };
 
-const Services = () => {
-  const [animate, setAnimate] = useState(false);
+  const gridHeadingStyle = {
+    fontSize: '24px',
+    marginBottom: '15px',
+  };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimate(true);
-    }, 500); // Delay animations by 500ms
-
-    return () => clearTimeout(timer);
-  }, []);
+  const gridTextStyle = {
+    fontSize: '16px',
+    color: '#333',
+  };
 
   return (
-    <ServicesContainer>
-       <Typography variant="h2" align="center" gutterBottom style={{ 
-          textShadow: '0px 1px 1px rgba(0, 0, 0, 0.1)', // Add text shadow
+    <div className="App">
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/4.png`}>
 
-        fontFamily: 'Nunito, sans-serif' }}>   
-         Services
-      </Typography>
-      <Grid container spacing={0} justifyContent="center">
-        {services.map((service, index) => (
-          <Grid item xs={12} sm={6} md={5} key={index}>
-            <a href={service.link} style={{ textDecoration: 'none' }}>
-              <ServiceCard
-                animationDirection={index % 2 === 0 ? slideInLeft : slideInRight}
-                animate={animate}
-                style={{
-                  backgroundColor: '#BBD7EC',
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  alt={service.title}
-                  height="200"
-                  image={service.image}
-                  title={service.title}
-                />
-                <CardContentStyled>
-                  <Typography
-                    style={{ fontFamily: 'Nunito, sans-serif', marginBottom: '8px' }}
-                    variant="h6"
-                    component="div"
-                    gutterBottom
-                  >
-                    {service.title}
-                  </Typography>
-                  <Typography
-                    style={{ fontFamily: 'Nunito, sans-serif' }}
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    {service.description}
-                  </Typography>
-                </CardContentStyled>
-              </ServiceCard>
-            </a>
-          </Grid>
-        ))}
-      </Grid>
-    </ServicesContainer>
+
+      </ParallaxSection>
+
+
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/4.png`}>
+
+
+
+      </ParallaxSection>
+
+      
+
+      <div style={gridContainerStyle}>
+        <div style={gridItemStyle}>
+          <h3 style={gridHeadingStyle}>Project One</h3>
+          <p style={gridTextStyle}>A brief description of Project One.</p>
+        </div>
+        <div style={gridItemStyle}>
+          <h3 style={gridHeadingStyle}>Project Two</h3>
+          <p style={gridTextStyle}>A brief description of Project Two.</p>
+        </div>
+        <div style={gridItemStyle}>
+          <h3 style={gridHeadingStyle}>Project Three</h3>
+          <p style={gridTextStyle}>A brief description of Project Three.</p>
+        </div>
+        <div style={gridItemStyle}>
+          <h3 style={gridHeadingStyle}>Project Four</h3>
+          <p style={gridTextStyle}>A brief description of Project Four.</p>
+        </div>
+        <div style={gridItemStyle}>
+          <h3 style={gridHeadingStyle}>Project Five</h3>
+          <p style={gridTextStyle}>A brief description of Project Five.</p>
+        </div>
+        <div style={gridItemStyle}>
+          <h3 style={gridHeadingStyle}>Project Six</h3>
+          <p style={gridTextStyle}>A brief description of Project Six.</p>
+        </div>
+      </div>
+
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/10.png`}>
+
+
+
+
+      </ParallaxSection>
+
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/10.png`}>
+
+
+
+
+      </ParallaxSection>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/10.png`}>
+
+
+
+
+</ParallaxSection>
+
+      <div style={sectionStyle}>
+        <h2 style={subheadingStyle}>Get In Touch</h2>
+        <p style={paragraphStyle}>
+          Feel free to reach out for more information about our services and offers.
+        </p>
+      </div>
+    </div>
   );
-};
+}
 
-export default Services;
+export default HomePage;

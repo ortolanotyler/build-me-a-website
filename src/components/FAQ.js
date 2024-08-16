@@ -2,17 +2,17 @@ import React from 'react';
 import { styled } from '@mui/system';
 
 const FAQList = styled('div')({
-    maxWidth: '800px',
+    maxWidth: '100%',
     color: '#3A3A3A',
     fontFamily: 'Nunito, sans-serif',
-    margin: '1px auto', // Adjusted margin for consistent spacing
-    padding: '20px 20px',
+    padding: '5rem',
     borderRadius: '10px', // Rounded corners for the About container
-  
-  });
+    justifyContent: 'center',
+
+});
 
 const FAQItem = styled('div')({
-  marginBottom: '10px',
+  marginBottom: '1rem',
   fontSize: '1rem',
 });
 

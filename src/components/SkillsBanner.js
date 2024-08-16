@@ -30,12 +30,11 @@ const Wrapper = styled('div')(({ theme }) => ({
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundImage: `url(${process.env.PUBLIC_URL}/Images/toronto.jpg)`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     opacity: 0.75, // Adjust the opacity for the fade effect
-   // Ensure the overlay is behind the content
+    zIndex: '-1', // Ensure the overlay is behind the content
   },
 }));
 
@@ -58,19 +57,18 @@ const SkillsBannerContainer = styled('div')(({ theme, isVisible }) => ({
 const Skill = styled('div')(({ theme }) => ({
   textAlign: 'center',
   color: '#f8f8f8',
-  fontFamily: 'Nunito, sans-serif', // Correctly specify the font family
+  fontFamily: 'Nunito, sans-serif',
   fontWeight: '600',
-  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
-
+  cursor: 'pointer',
   textShadow: '3px 2px 1px rgba(0, 0, 0, 0.35)', // Add text shadow
   maxWidth: '200px', // Limit the width of each icon box
 }));
 
 const Icon = styled('div')(({ theme }) => ({
   fontSize: '3rem', // Adjust icon size
-  color: '#f8f8f8', // Ensure background color goes orange
+  color: '#f8f8f8',
   marginBottom: '10px',
-  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
+  cursor: 'pointer',
   transition: 'transform 0.3s ease', // Smooth transition for hover effect
   '&:hover': {
     transform: 'scale(1.2)', // Slightly enlarge icon on hover
@@ -79,8 +77,8 @@ const Icon = styled('div')(({ theme }) => ({
 
 const Link = styled('a')({
   textDecoration: 'none',
-  color: '#f8f8f8', // Ensure background color goes orange
-  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
+  color: '#f8f8f8',
+  cursor: 'pointer',
 });
 
 const SkillsBanner = () => {
@@ -177,6 +175,22 @@ const SkillsBanner = () => {
       </SkillsBannerContainer>
     </Wrapper>
   );
+};
+
+const ParallaxSection = ({ image, children }) => {
+  const sectionStyle = {
+    backgroundImage: `url(${image})`,
+    backgroundAttachment: 'fixed',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    width: '100%',
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
+  return <div style={sectionStyle}>{children}</div>;
 };
 
 export default SkillsBanner;

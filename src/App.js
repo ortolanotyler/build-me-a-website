@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Header from './components/Header';
 import CalendarComponent from './pages/Consultation';
@@ -15,6 +14,9 @@ import WebHostingPage from './pages/ServicesPages/WebHostingPage';
 import DNSMigrationPage from './pages/ServicesPages/DNSMigrationPage';
 import AboutPage from './pages/AboutPage';
 import ScrollToTop from './components/ScrollToTop';  // Import the ScrollToTop component
+import HomePage from './pages/Home';
+import PortfolioPage from './pages/Portfolio';
+import BlogPage from './pages/Blog';
 
 function App() {
   return (
@@ -24,10 +26,12 @@ function App() {
       
       <div>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+
           <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/consultation" element={<CalendarComponent />} />
           <Route path="/search-engine-optimization" element={<SeoPage />} />

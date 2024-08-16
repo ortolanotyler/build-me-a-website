@@ -5,8 +5,8 @@ const PortfolioSlider = () => {
     display: 'flex',
     gap: '1vw',
     maxWidth: '1200px',
-    minWidth: '500px',
-    height: '50vh',
+    minWidth: '1000px',
+    height: '100vh',
     transform: 'translate(5%, -25%) rotate(-6deg) rotateX(10deg) rotateY(20deg)',
   };
 
@@ -32,28 +32,28 @@ const PortfolioSlider = () => {
 
   const galleryLineImages = [
     [
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns1.jpg`,
-      `${process.env.PUBLIC_URL}/Images/search-engine-marketing-1.jpg`,
-      `${process.env.PUBLIC_URL}/Images/search-engine-marketing-2.jpg`,
-      `${process.env.PUBLIC_URL}/Images/search-engine-marketing-3.jpg`,
-      `${process.env.PUBLIC_URL}/Images/search-engine-optimization-1.jpg`,
+      `${process.env.PUBLIC_URL}/Images/1.png`,
+      `${process.env.PUBLIC_URL}/Images/2.png`,
+      `${process.env.PUBLIC_URL}/Images/3.png`,
+      `${process.env.PUBLIC_URL}/Images/4.png`,
+      `${process.env.PUBLIC_URL}/Images/5.png`,
+      `${process.env.PUBLIC_URL}/Images/6.png`,
     ],
     [
-      `${process.env.PUBLIC_URL}/Images/search-engine-optimization-2.jpg`,
-      `${process.env.PUBLIC_URL}/Images/search-engine-optimization-3.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
+      `${process.env.PUBLIC_URL}/Images/2.png`,
+      `${process.env.PUBLIC_URL}/Images/3.png`,
+      `${process.env.PUBLIC_URL}/Images/1.png`,
+      `${process.env.PUBLIC_URL}/Images/6.png`,
+      `${process.env.PUBLIC_URL}/Images/5.png`,
+      `${process.env.PUBLIC_URL}/Images/4.png`,
     ],
     [
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
-      `${process.env.PUBLIC_URL}/Images/dns.jpg`,
+      `${process.env.PUBLIC_URL}/Images/1.png`,
+      `${process.env.PUBLIC_URL}/Images/5.png`,
+      `${process.env.PUBLIC_URL}/Images/4.png`,
+      `${process.env.PUBLIC_URL}/Images/3.png`,
+      `${process.env.PUBLIC_URL}/Images/2.png`,
+      `${process.env.PUBLIC_URL}/Images/6.png`,
     ],
   ];
 

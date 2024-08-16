@@ -4,20 +4,17 @@ import { styled } from '@mui/system';
 
 
 const AboutList = styled('div')({
-    maxWidth: '700px',
-    backgroundColor: '#f8f8f8',
+    maxWidth: '1000px',
   
     color: '#3A3A3A',
     fontFamily: 'Nunito, sans-serif',
-    margin: '1px auto', // Adjusted margin for consistent spacing
-    padding: '10px 20px',
     borderRadius: '20px', // Rounded corners for the FAQ container
-    border: '2px solid #bb75e3',
   
   });
 
 const AboutItem = styled('div')({
   marginBottom: '10px',
+  padding: '2rem',
   fontSize: '1rem',
 });
 

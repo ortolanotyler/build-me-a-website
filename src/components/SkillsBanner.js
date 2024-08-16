@@ -4,21 +4,12 @@ import { FaServer } from 'react-icons/fa'; // Import additional icons
 import { styled, keyframes } from '@mui/system';
 
 // Slide-in animation
-const slideInRight = keyframes`
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-`;
+
 
 const Wrapper = styled('div')(({ theme }) => ({
   position: 'relative',
-  minHeight: '25vh',
-  padding: '50px 0', // Padding around the skills section
+  minHeight: '10vh',
+  padding: '10px 0', // Padding around the skills section
   width: '100%', // Make sure it spans the full width
   display: 'flex',
   justifyContent: 'center',
@@ -33,21 +24,19 @@ const Wrapper = styled('div')(({ theme }) => ({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    opacity: 0.75, // Adjust the opacity for the fade effect
-    zIndex: '-1', // Ensure the overlay is behind the content
   },
 }));
 
 const SkillsBannerContainer = styled('div')(({ theme, isVisible }) => ({
   display: 'flex',
+  zIndex: '-1000', // Ensure the overlay is behind the content
+
   justifyContent: 'space-around',
   alignItems: 'center',
-  maxWidth: '1100px', // Adjusted max-width for large screens
+  maxWidth: '1300px', // Adjusted max-width for large screens
   margin: '0 auto',
   flexWrap: 'wrap', // Allow wrapping to the next line
   gap: '30px', // Add spacing between items
-  opacity: isVisible ? 1 : 0, // Initial opacity
-  animation: isVisible ? `${slideInRight} 0.8s ease-out forwards` : 'none',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column', // Stack items vertically on small screens
     gap: '30px', // Add more space between items when stacked
@@ -85,30 +74,7 @@ const SkillsBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect(); // Stop observing once it's visible
-        }
-      },
-      {
-        threshold: 0.1, // Trigger when 10% of the container is visible
-      }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (observer && containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
-  }, []);
-
+  
   return (
     <Wrapper>
       <SkillsBannerContainer ref={containerRef} isVisible={isVisible}>

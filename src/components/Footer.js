@@ -22,11 +22,13 @@ const bubbleMove = keyframes`
 `;
 
 const Body = styled.div`
+  background-image: url(${process.env.PUBLIC_URL}/Images/beachrocksbackground.jpg);
+
   display: grid;
   grid-template-rows: 1fr 10rem auto;
   grid-template-areas: "main" "." "footer";
   overflow-x: hidden;
-  background: #f8f8f8;
+  background: #f8f8f1;
   min-height: 5vh;
   font-family: 'Open Sans', sans-serif;
 `;
@@ -38,7 +40,7 @@ margin-top: 50px;
 `;
 
 const FooterContainer = styled.div`
-  z-index: 1;
+  z-index: 2;
   --footer-background: #bbd7ec;
   display: grid;
   position: relative;

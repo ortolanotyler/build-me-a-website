@@ -48,13 +48,13 @@ const Header = () => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '5rem',
+    padding: '5rem 1rem',
     backgroundColor: 'transparent',
     position: 'fixed',
     top: '0',
     left: '0',
     right: '0',
-    maxWidth: '100vw',
+    maxWidth: '100%',
     zIndex: '1000',
     overflow: 'hidden',
   };
@@ -65,7 +65,7 @@ const Header = () => {
     display: isMobile ? 'none' : 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '2rem',
+    gap: '2.5rem',
   };
 
   const mobileMenuIconStyle = {

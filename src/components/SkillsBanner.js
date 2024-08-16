@@ -4,14 +4,25 @@ import { FaServer } from 'react-icons/fa'; // Import additional icons
 import { styled, keyframes } from '@mui/system';
 
 // Slide-in animation
-
+const slideInRight = keyframes`
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
 
 const Wrapper = styled('div')(({ theme }) => ({
   position: 'relative',
-  minHeight: '10vh',
-  padding: '10px 0', // Padding around the skills section
+  minHeight: '25vh',
+  padding: '50px 0', // Padding around the skills section
   width: '100%', // Make sure it spans the full width
   display: 'flex',
+  color: '#3a3a3a',
+
   justifyContent: 'center',
   alignItems: 'center',
   '&::before': {
@@ -21,22 +32,24 @@ const Wrapper = styled('div')(({ theme }) => ({
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+  
+    opacity: 0.75, // Adjust the opacity for the fade effect
+   // Ensure the overlay is behind the content
   },
 }));
 
 const SkillsBannerContainer = styled('div')(({ theme, isVisible }) => ({
   display: 'flex',
-  zIndex: '-1000', // Ensure the overlay is behind the content
+  color: '#3a3a3a',
 
   justifyContent: 'space-around',
   alignItems: 'center',
-  maxWidth: '1300px', // Adjusted max-width for large screens
+  maxWidth: '1100px', // Adjusted max-width for large screens
   margin: '0 auto',
   flexWrap: 'wrap', // Allow wrapping to the next line
   gap: '30px', // Add spacing between items
+  opacity: isVisible ? 1 : 0, // Initial opacity
+  animation: isVisible ? `${slideInRight} 0.8s ease-out forwards` : 'none',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column', // Stack items vertically on small screens
     gap: '30px', // Add more space between items when stacked
@@ -45,19 +58,20 @@ const SkillsBannerContainer = styled('div')(({ theme, isVisible }) => ({
 
 const Skill = styled('div')(({ theme }) => ({
   textAlign: 'center',
-  color: '#f8f8f8',
-  fontFamily: 'Nunito, sans-serif',
+  color: '#3a3a3a',
+  fontFamily: 'Nunito, sans-serif', // Correctly specify the font family
   fontWeight: '600',
-  cursor: 'pointer',
-  textShadow: '3px 2px 1px rgba(0, 0, 0, 0.35)', // Add text shadow
+  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
+
+  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.125)', // Add text shadow
   maxWidth: '200px', // Limit the width of each icon box
 }));
 
 const Icon = styled('div')(({ theme }) => ({
   fontSize: '3rem', // Adjust icon size
-  color: '#f8f8f8',
+  color: '#3a3a3a',
   marginBottom: '10px',
-  cursor: 'pointer',
+  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
   transition: 'transform 0.3s ease', // Smooth transition for hover effect
   '&:hover': {
     transform: 'scale(1.2)', // Slightly enlarge icon on hover
@@ -66,15 +80,38 @@ const Icon = styled('div')(({ theme }) => ({
 
 const Link = styled('a')({
   textDecoration: 'none',
-  color: '#f8f8f8',
-  cursor: 'pointer',
+  color: '#3a3a3a',
+  cursor: 'pointer', // Ensure the cursor changes to pointer on hover
 });
 
 const SkillsBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
 
-  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing once it's visible
+        }
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the container is visible
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (observer && containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Wrapper>
       <SkillsBannerContainer ref={containerRef} isVisible={isVisible}>
@@ -141,22 +178,6 @@ const SkillsBanner = () => {
       </SkillsBannerContainer>
     </Wrapper>
   );
-};
-
-const ParallaxSection = ({ image, children }) => {
-  const sectionStyle = {
-    backgroundImage: `url(${image})`,
-    backgroundAttachment: 'fixed',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    width: '100%',
-    minHeight: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  };
-
-  return <div style={sectionStyle}>{children}</div>;
 };
 
 export default SkillsBanner;

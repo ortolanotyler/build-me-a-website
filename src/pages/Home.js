@@ -9,7 +9,10 @@ function HomePage() {
   
 
   return (
-    <div className="App">
+    <div className="App"
+    style = {{ background: '#f8f8f8', padding: '0px, 0px' }}>
+    
+    
       <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/4.png`}> </ParallaxSection>
       <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/4.png`}> </ParallaxSection>
 
@@ -26,30 +29,15 @@ function HomePage() {
         </ParallaxSection>
 
     
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/beachrocksbackground.jpg`}>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/10.png`}>
         
       </ParallaxSection>
   
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/beachrocksbackground.jpg`}>
-      <SkillsBanner/>
-        </ParallaxSection>
-        <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/beachrocksbackground.jpg`}>
-        <SubmitButton
-        text = "Free Consultation"
-        type = "button"
-        onClick = {() => alert('Free consultation requested')}
-        >
-          </SubmitButton>
-
-        </ParallaxSection>
       
-        
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/beachrocksbackground.jpg`}>
-        
-        <HomeServices/>
-  
-      </ParallaxSection>
-   
+       
+      <SkillsBanner/>
+     
+      <HomeServices/>
     </div>
   );
 }

@@ -7,7 +7,7 @@ const Button = styled.button`
   opacity: 0.8;
   color: #f8f8f8;
   border: none;
-  padding: 10px 25px;
+ 
   font-size: 16px;
   cursor: pointer;
   border-radius: 20px;

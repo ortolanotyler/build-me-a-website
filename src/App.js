@@ -24,7 +24,10 @@ function App() {
       <Header/>
       <ScrollToTop /> {/* Add the ScrollToTop component here */}
       
-      <div>
+      <div
+
+      style = {{ background: '#f8f8f8', padding: '0px, 0px' }}>
+  
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />

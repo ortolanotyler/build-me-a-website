@@ -119,21 +119,7 @@ const Content = styled.div`
 const Footer = () => {
   return (
     <FooterContainer>
-      <Bubbles>
-        {[...Array(18)].map((_, i) => (
-          <div
-            key={i}
-            className="bubble"
-            style={{
-              '--size': `${3 + Math.random() * 6}rem`,
-              '--distance': `${6 + Math.random() * 4}rem`,
-              '--position': `${-5 + Math.random() * 110}%`,
-              '--time': `${5 + Math.random() * 3}s`,
-              '--delay': `${-1 * (2 + Math.random() * 2)}s`
-            }}
-          />
-        ))}
-      </Bubbles>
+   
       <Content>
         <div>
           <div>

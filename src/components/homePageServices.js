@@ -5,89 +5,119 @@ import SubmitButton from './SubmitButtonComponent';
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
   background-color: #f8f8f8;
-font-weight: 300;
+  font-weight: 300;
   display: flex;
+  margin-right: 1rem;
   flex-direction: column;
   align-items: center;
-  padding: 5rem;
   width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 1rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 1rem;
+  }
 `;
 
 const Card = styled.div`
   background-color: #f8f8f8;
-  min-width: 100%;
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  transition: transform 0.3s ease;
-  margin-bottom: 5rem;
+  max-width: 90%; /* Ensure the card does not exceed the viewport width */
+  margin: 0 auto 3rem auto; /* Center the card with auto margins */
+  padding: 2rem; /* Padding inside the card */
+  display: flex;
+  flex-direction: ${({ isReversed }) => (isReversed ? 'row-reverse' : 'row')}; /* Alternate layout */
+  align-items: center;
+  text-align: left;
+  overflow: hidden; /* Prevent content from overflowing */
 
-  &:hover {
-    transform: translateY(-5px);
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack items on smaller screens */
+    text-align: center;
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+    margin-bottom: 2rem; /* Reduce margin for smaller screens */
+  }
+`;
+
+const CardImageWrapper = styled.div`
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
   }
 `;
 
 const CardImage = styled.img`
-  width: 50%;
+  width: 100%;
   height: auto;
-  margin-left: 2rem;
-  margin-bottom: 5rem;
+  border-radius: 10px;
+`;
+
+const CardContent = styled.div`
+  flex: 1;
+  padding: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const CardTitle = styled.h3`
   font-family: 'Nunito', sans-serif;
-  font-weight: 1.5rem;
-
   font-size: 1.5rem;
-  color: #333;
+  color: #3a3a3a;
   margin-bottom: 1rem;
 `;
 
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
-  color: #666;
+  color: #3a3a3a;
   margin-bottom: 1.5rem;
 `;
 
-const LearnMoreButton = styled.a`
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-  background-color: #000000;
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #333333;
-  }
-`;
-
 const CardsSection = () => {
+  // Define the cards array here
   const cards = [
-    { title: 'Web Development', description: 'This is a description for Web Development.', href: '#card1', image: '/Images/1.png' },
-    { title: 'Card 2', description: 'This is a description for Card 2.', href: '#card2', image: '/Images/2.png' },
-    { title: 'Card 3', description: 'This is a description for Card 3.', href: '#card3', image: '/Images/3.png' },
-    { title: 'Card 4', description: 'This is a description for Card 4.', href: '#card4', image: '/Images/4.png' },
-    { title: 'Card 5', description: 'This is a description for Card 5.', href: '#card5', image: '/Images/5.png' },
-    { title: 'Card 6', description: 'This is a description for Card 6.', href: '#card6', image: '/Images/6.png' },
+    { description: 'This is a description for Web Development.', href: '#card1', image: '/Images/websites1.jpg' },
+    { description: 'This is a description for Card 2.', href: '#card2', image: '/Images/seo1.jpg' },
+    { description: 'This is a description for Card 3.', href: '#card3', image: '/Images/18.jpg' },
+    { description: 'This is a description for Card 4.', href: '#card4', image: '/Images/19.jpg' },
+    { description: 'This is a description for Card 5.', href: '#card5', image: '/Images/20.jpg' },
+    { description: 'This is a description for Card 6.', href: '#card6', image: '/Images/21.jpg' },
   ];
 
   return (
     <CardContainer>
       {cards.map((card, index) => (
-        <Card key={index}>
-          <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.title} />
-          <div>
-          <CardDescription>{card.description}</CardDescription>
-
-          </div>
-          
-<SubmitButton
-color = "black"
-/>
- </Card>
+        <Card key={index} isReversed={index % 2 !== 0}>
+          <CardImageWrapper>
+            <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.description} />
+          </CardImageWrapper>
+          <CardContent>
+            <CardTitle>{card.description}</CardTitle>
+            <CardDescription>{card.description}</CardDescription>
+          </CardContent>
+        </Card>
       ))}
     </CardContainer>
   );

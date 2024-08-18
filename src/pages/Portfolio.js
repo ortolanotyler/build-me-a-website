@@ -96,20 +96,20 @@ function PortfolioPage() {
         </div>
       </div>
 
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/10.png`}>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/about3.jpg`}>
 
 
 
 
       </ParallaxSection>
 
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/10.png`}>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/about3.jpg`}>
 
 
 
 
       </ParallaxSection>
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/10.png`}>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/about3.jpg`}>
 
 
 

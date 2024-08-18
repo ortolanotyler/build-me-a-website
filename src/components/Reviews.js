@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Card, CardContent, Typography, Box, Grid, Rating } from '@mui/material';
+import { Typography, Box, Grid, Rating } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
 
 // Slide-in animation from below
@@ -17,25 +17,27 @@ const slideInUp = keyframes`
 // Container for the entire reviews section
 const ReviewsContainer = styled('div')(({ isVisible }) => ({
   color: '#3A3A3A',
-  fontFamily: 'Nunito, sans-serif',
-  display: 'flex',
+  marginTop: '5rem',
+ 
+  fontFamily: 'League Spartan, sans-serif',
   textAlign: 'center',
   justifyContent: 'center',
+  fontWeight: '100',
   alignItems: 'center',
-  backgroundColor: '#F4E1D2',
-  marginTop: '20px',
-  padding: '5rem',
-  opacity: isVisible? 1 : 0,
-  animation: isVisible? `${slideInUp} 1s ease-out forwards` : 'none',
+  backgroundImage: 'transparent',
+ 
+  opacity: isVisible ? 1 : 0,
+  animation: isVisible ? `${slideInUp} 1s ease-out forwards` : 'none',
 }));
 
-// Styled card for each review
-const ReviewCard = styled(Card)(({ theme }) => ({
+// Styled container for each review
+const ReviewTextContainer = styled(Box)(({ theme }) => ({
   color: '#3A3A3A',
+  fontWeight: '100',
+  marginBottom: '2.5rem',
   fontFamily: 'Nunito, sans-serif',
-  borderRadius: '20px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.25)',
-  margin: '10px auto', // Center the cards within their grid items
+  backgroundImage: 'transparent',
+  textAlign: 'center',
   maxWidth: '100%',
   [theme.breakpoints.up('md')]: {
     maxWidth: '280px',
@@ -50,10 +52,8 @@ const Reviews = () => {
   const containerRef = useRef(null);
 
   const reviews = [
-    { name: 'John Doe', review: 'Excellent service and support. Highly recommended!', rating: 5 },
-    { name: 'Jane Smith', review: 'Professional and timely delivery. Great experience overall.', rating: 5 },
-    { name: 'Michael Johnson', review: 'Fantastic work! The team exceeded our expectations.', rating: 5 },
-    { name: 'Emily Davis', review: 'Very satisfied with the final product. Great job!', rating: 5 },
+    { name: 'Jackie', review: 'Working with Tyler helped me start my dream of an online blog', rating: 5 },
+    { name: 'Lauren', review: 'Professional and timely delivery! Great experience overall I look forward to chatting with you next month.', rating: 5 },
   ];
 
   useEffect(() => {
@@ -82,34 +82,22 @@ const Reviews = () => {
 
   return (
     <div>
-      <h2
-        style={{
-          fontWeight: 'normal',
-          textAlign: 'center',
-          color: '#3A3A3A',
-          fontFamily: 'Nunito, sans-serif',
-          fontSize: '2rem',
-        }}
-      >
-        Reviews
-      </h2>
+    
       <ReviewsContainer ref={containerRef} isVisible={isVisible}>
         <Grid container spacing={3} justifyContent="center">
           {reviews.map((review, index) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={index} container justifyContent="center">
-              <ReviewCard>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom align="center">
-                    {review.name}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" gutterBottom align="center">
-                    {review.review}
-                  </Typography>
-                  <Box display="flex" justifyContent="center" mt={1}>
-                    <Rating value={review.rating} readOnly />
-                  </Box>
-                </CardContent>
-              </ReviewCard>
+              <ReviewTextContainer>
+                <Typography variant="h6" gutterBottom align="center">
+                  {review.name}
+                </Typography>
+                <Box display="flex" justifyContent="center" mt={0} mb={1}>
+                  <Rating value={review.rating} readOnly />
+                </Box>
+                <Typography variant="body2" color="textSecondary" gutterBottom align="center">
+                  {review.review}
+                </Typography>
+              </ReviewTextContainer>
             </Grid>
           ))}
         </Grid>

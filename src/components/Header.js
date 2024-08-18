@@ -61,8 +61,8 @@ const Header = () => {
 
   const navContainerStyle = {
     fontFamily: 'League Spartan, sans-serif',
-    fontSize: '1.5rem',
-    textShadow : '2px 4px 2px rgba(0, 0, 0, 0.1)',
+    fontSize: '1.25rem',
+    textShadow : '1px 2px 2px rgba(0, 0, 0, 0.5)',
     display: isMobile ? 'none' : 'flex',
     justifyContent: 'center',
     alignItems: 'center',

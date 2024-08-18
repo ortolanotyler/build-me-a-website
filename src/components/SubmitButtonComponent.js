@@ -3,15 +3,18 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   font-family: 'Nunito', sans-serif;
-  background-color: black;
-  opacity: 0.8;
+  background-color: #3a3a3a;
+  font-weight: 300;
+  opacity: 1;
   color: #f8f8f8;
+  padding: 1rem 1rem;
   border: none;
- 
-  font-size: 16px;
+  font-size: 1rem;
+  max-width: 400px;
   cursor: pointer;
   border-radius: 20px;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.1s ease;
+  margin-top: 15rem; /* Move the button down */
 
   &:hover {
     background-color: #333333; /* Slightly lighter black on hover */
@@ -23,15 +26,25 @@ const Button = styled.button`
   }
 
   &:active {
-    opacity: 1; /* Make it fully opaque when clicked */
+    opacity: 0.9; /* Make it fully opaque when clicked */
   }
+`;
+
+const CenteredWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 `;
 
 const SubmitButton = ({ text = "Submit", onClick, type = "submit" }) => {
   return (
-    <Button type={type} onClick={onClick}>
-      {text}
-    </Button>
+    <CenteredWrapper>
+      <Button type={type} onClick={onClick}>
+        {text}
+      </Button>
+    </CenteredWrapper>
   );
 };
 

@@ -31,18 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/consultation" element={<CalendarComponent />} />
-          <Route path="/search-engine-optimization" element={<SeoPage />} />
-          <Route path="/web-development" element={<WebDev />} />
-          <Route path="/search-engine-marketing" element={<SEMPage />} />
-          <Route path="/web-design" element={<WebDesignPage />} />
-          <Route path="/web-hosting" element={<WebHostingPage />} />
-          <Route path="/dns-migration" element={<DNSMigrationPage />} />
+   
 
         </Routes>
       </div>

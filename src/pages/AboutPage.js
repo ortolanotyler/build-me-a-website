@@ -11,8 +11,9 @@ function AboutPage() {
 
   return (
     <div className="App">
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/14.jpg`}> </ParallaxSection>
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/14.jpg`}> </ParallaxSection>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`}> </ParallaxSection>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`}> </ParallaxSection>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`}> </ParallaxSection>
 
      
         

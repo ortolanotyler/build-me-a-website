@@ -17,6 +17,9 @@ import ScrollToTop from './components/ScrollToTop';  // Import the ScrollToTop c
 import HomePage from './pages/Home';
 import PortfolioPage from './pages/Portfolio';
 import BlogPage from './pages/Blog';
+import ServicesPage from './pages/Services';
+import { ContactPage } from '@mui/icons-material';
+import ConsultationPage from './pages/Consultation';
 
 function App() {
   return (
@@ -31,7 +34,12 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-   
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/consultation" element={<ConsultationPage />} />
+
 
         </Routes>
       </div>

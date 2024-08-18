@@ -2,40 +2,81 @@ import React from 'react';
 import styled from 'styled-components';
 import SubmitButton from './SubmitButtonComponent';
 
+const TitleBanner = styled.h2`
+  font-family: 'Nunito', sans-serif;
+  font-weight: normal;
+  padding: 1rem;
+  font-size: 2.5rem;
+  color: #3a3a3a;
+  text-align: center;
+  margin-bottom: 2rem; /* Space between the title and the cards */
+  background-color: #f8f8f8; /* Light background for the title */
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+`;
+
+const IntroParagraph = styled.p`
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  color: #3a3a3a;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    max-width: 90%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    max-width: 95%;
+  }
+`;
+
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
   background-color: #f8f8f8;
   font-weight: 300;
   display: flex;
-  margin-right: 1rem;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0;
+  padding: 1rem; /* Adjust padding to ensure even spacing */
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    padding: 1rem 1rem;
+    padding: 1rem;
   }
 
   @media (max-width: 480px) {
-    padding: 1rem 1rem;
+    padding: 1rem;
   }
 `;
 
 const Card = styled.div`
   background-color: #f8f8f8;
-  
-
   max-width: 70%; /* Ensure the card does not exceed the viewport width */
-  margin: 0 auto 3rem auto; /* Center the card with auto margins */
+  margin: 0 auto 3rem auto; /* Center the card with auto margins and add space between cards */
   padding: 2rem; /* Padding inside the card */
   display: flex;
   flex-direction: ${({ isReversed }) => (isReversed ? 'row-reverse' : 'row')}; /* Alternate layout */
   align-items: center;
   text-align: left;
   overflow: hidden; /* Prevent content from overflowing */
-
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack items on smaller screens */
@@ -51,7 +92,6 @@ const Card = styled.div`
 
 const CardImageWrapper = styled.div`
   flex: 1;
-  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +113,7 @@ const CardImage = styled.img`
 
 const CardContent = styled.div`
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -93,36 +133,85 @@ const CardTitle = styled.h3`
 
 const CardDescription = styled.p`
   font-family: 'League Spartan', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
 
-const AboutPageMainContent = () => {
+const CardsSection = () => {
   const cards = [
-    {  description: 'Building bridges in small business digital marketing.', href: '#card1', image: '/Images/websites1.jpg' },
+    { description: 'Building bridges in small business digital marketing.', href: '#card1', image: '/Images/websites1.jpg' },
     { description: 'We are a digital marketing company from Ontario. We consult with small business owners to provide them expertise in the fields of web development, digital marketing, and search engine optimization.', href: '#card2', image: '/Images/seo1.jpg' },
-    {  description: 'Our aim is to build lasting relationships with the people we work with and support them on their journey to small-business success.', href: '#card3', image: '/Images/sem1.jpg' },
-    {  description: "Whether your small business is your life's work or just beginning, we can help you to increase your revenue both online and in person.", href: '#card4', image: '/Images/19.jpg' },
-    {  description: 'Book a free consultation, we will go ahead and analyze your current presence and come to you with a plan at a date and time that works for you.', href: '#card5', image: '/Images/20.jpg' },
+    { description: 'Our aim is to build lasting relationships with the people we work with and support them on their journey to small-business success.', href: '#card3', image: '/Images/sem1.jpg' },
+    { description: "Whether your small business is your life's work or just beginning, we can help you to increase your revenue both online and in person.", href: '#card4', image: '/Images/19.jpg' },
+    { description: 'Book a free consultation, we will go ahead and analyze your current presence and come to you with a plan at a date and time that works for you.', href: '#card5', image: '/Images/20.jpg' },
     { description: 'Thanks for stopping by.', href: '#card6', image: '/Images/21.jpg' },
   ];
 
   return (
-    <CardContainer>
-      {cards.map((card, index) => (
-        <Card key={index} isReversed={index % 2 !== 0}>
-          <CardImageWrapper>
-            <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.title} />
-          </CardImageWrapper>
-          <CardContent>
-            <CardTitle>{card.title}</CardTitle>
-            <CardDescription>{card.description}</CardDescription>
-          </CardContent>
-        </Card>
-      ))}
-    </CardContainer>
+    <>
+      <TitleBanner>Our Process</TitleBanner>
+      <IntroParagraph>
+        Our approach is grounded in understanding your unique vision and aligning our strategies to meet your goals. Here’s how we work with you to bring your ideas to life, step by step.
+      </IntroParagraph>
+      <CardContainer>
+        {cards.map((card, index) => (
+          <Card key={index} isReversed={index % 2 !== 0}>
+            <CardImageWrapper>
+              <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.title} />
+            </CardImageWrapper>
+            <CardContent>
+              <CardTitle>{card.title}</CardTitle>
+              <CardDescription>{card.description}</CardDescription>
+            </CardContent>
+          </Card>
+        ))}
+      </CardContainer>
+      <div 
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/Images/consultation.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          boxShadow: '0 8px 20px rgba(0, 0, 0, 0.5)',
+          borderRadius: '20px',
+          border: "3px solid #3a3a3a",
+          textAlign: 'center',
+          width: '80%',        // Responsive width for the image section
+          maxWidth: '400px',   // Max width to avoid too wide on large screens
+          height: '4rem',      // Adjust the height as needed
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: '1rem auto',  // Center the section horizontally
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.boxShadow = '0 8px 12px rgba(0, 0, 0, 0.2)';
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+          e.currentTarget.style.transform = 'translateY(0)';
+        }}
+        onMouseDown={(e) => {
+          e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+          e.currentTarget.style.transform = 'translateY(2px)';
+        }}
+        onMouseUp={(e) => {
+          e.currentTarget.style.boxShadow = '0 8px 12px rgba(0, 0, 0, 0.2)';
+          e.currentTarget.style.transform = 'translateY(-2px)';
+        }}
+        onClick={() => alert('Button Clicked!')}
+      >
+        {/* Button Text */}
+      </div>
+      <IntroParagraph>
+        Ready to bring your ideas to life? Let's get started!
+      </IntroParagraph>
+    </>
   );
 };
 
-export default AboutPageMainContent;
+export default CardsSection;

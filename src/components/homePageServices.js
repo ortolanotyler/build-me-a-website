@@ -28,7 +28,7 @@ const Card = styled.div`
   
 
   max-width: 70%; /* Ensure the card does not exceed the viewport width */
-  margin: 0 auto 3rem auto; /* Center the card with auto margins */
+  margin: 0 auto 1rem auto; /* Center the card with auto margins */
   padding: 2rem; /* Padding inside the card */
   display: flex;
   flex-direction: ${({ isReversed }) => (isReversed ? 'row-reverse' : 'row')}; /* Alternate layout */

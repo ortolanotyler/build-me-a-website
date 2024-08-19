@@ -24,7 +24,7 @@ const BlogPost1 = () => {
   }, [config]);
 
   return (
-    <div style={{ fontFamily: 'League Spartan, sans-serif', minHeight: '100vh', color: 'black', backgroundColor: 'transparent' }}>
+    <div style={{ fontFamily: 'League Spartan, sans-serif', minHeight: '100vh', color: '#3a3a3a', backgroundColor: 'transparent' }}>
       <header style={{ padding: '2rem 0 1rem', textAlign: 'center' }}>
         <h1 style={{ margin: 0, textTransform: 'uppercase', fontSize: '2rem', fontWeight: 'normal' }}>
           Understanding CSS: The Language of Web Design
@@ -34,7 +34,7 @@ const BlogPost1 = () => {
         {!isSmallScreen ? (
           <div style={{ 
             display: 'flex', 
-            gap: '2rem', 
+            
             flexDirection: 'row', 
             flexWrap: 'wrap' 
           }}>

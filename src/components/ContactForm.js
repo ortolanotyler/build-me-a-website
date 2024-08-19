@@ -3,17 +3,19 @@ import { TextField, Checkbox, FormControlLabel, Button, Typography, Grid } from 
 import { styled } from '@mui/system';
 
 const Contact = styled('div')(({ theme }) => ({
-    fontFamily: 'Nunito, sans-serif',
-    backgroundColor: '#f8f8f8',
+  fontFamily: 'Nunito, sans-serif',
+  backgroundColor: '#f8f8f8',
   padding: '2rem 2rem 2rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   minHeight: '40vh',
   [theme.breakpoints.down('md')]: {
-    padding: '2rem 2rem 2rem',  },
+    padding: '2rem 2rem 2rem',
+  },
   [theme.breakpoints.down('sm')]: {
-    padding: '2rem 2rem 2rem',  },
+    padding: '2rem 2rem 2rem',
+  },
 }));
 
 const FormContainer = styled('form')(({ theme }) => ({
@@ -37,13 +39,13 @@ const FieldContainer = styled('div')({
 });
 
 const CheckboxContainer = styled('div')({
-    fontFamily: 'Nunito, sans-serif',
-    marginTop: '20px',
+  fontFamily: 'Nunito, sans-serif',
+  marginTop: '20px',
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
-    fontFamily: 'Nunito, sans-serif',
-    backgroundColor: '#3A3A3A',
+  fontFamily: 'Nunito, sans-serif',
+  backgroundColor: '#3A3A3A',
   color: '#f8f8f8',
   fontSize: '1rem',
   padding: '1rem 2rem',
@@ -77,6 +79,7 @@ const ContactForm = () => {
       dnsMigration: false,
     },
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -109,181 +112,190 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        const result = await response.json();
-        console.log('Form Submitted:', result);
-        // Optionally, handle success (e.g., show a success message)
+        setSubmitted(true);
       } else {
         console.error('Form submission failed:', response.statusText);
-        // Optionally, handle error (e.g., show an error message)
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Optionally, handle error (e.g., show an error message)
     }
   };
 
   return (
     <Contact>
-      <Typography variant="h3" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
-        Free Consulation
-      </Typography>
-      <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
-        Fill out the form below to get in touch with us and let us know how we can assist you.
-      </Typography>
-      <FormContainer onSubmit={handleSubmit}>
-        <FieldContainer>
-          <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-            label="Full Name"
-            name="name"
-            variant="outlined"
-            fullWidth
-            value={formValues.name}
-            onChange={handleChange}
-            InputLabelProps={{
-              style: { fontFamily: 'Nunito, sans-serif' },
-            }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-            label="Email Address"
-            name="email"
-            variant="outlined"
-            fullWidth
-            value={formValues.email}
-            onChange={handleChange}
-            InputLabelProps={{
-              style: { fontFamily: 'Nunito, sans-serif' },
-            }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-            label="Business Number"
-            name="businessNumber"
-            variant="outlined"
-            fullWidth
-            value={formValues.businessNumber}
-            onChange={handleChange}
-            InputLabelProps={{
-              style: { fontFamily: 'Nunito, sans-serif' },
-            }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-            label="Business Name"
-            name="businessName"
-            variant="outlined"
-            fullWidth
-            value={formValues.businessName}
-            onChange={handleChange}
-            InputLabelProps={{
-              style: { fontFamily: 'Nunito, sans-serif' },
-            }}
-          />
-        </FieldContainer>
-        <FieldContainer>
-          <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
-            label="Message"
-            name="message"
-            variant="outlined"
-            fullWidth
-            multiline
-            rows={4}
-            value={formValues.message}
-            onChange={handleChange}
-            InputLabelProps={{
-              style: { fontFamily: 'Nunito, sans-serif' },
-            }}
-          />
-        </FieldContainer>
-        <CheckboxContainer>
-          <Typography variant="h5" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
-            What can we do for you?
+      {submitted ? (
+        <Typography
+          variant="h5"
+          align="center"
+          style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+        >
+          Thank you! We will be in touch within 1 business day.
+        </Typography>
+      
+      ) : (
+        <>
+          <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
+            Free Consultation
           </Typography>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formValues.services.webDevelopment}
-                    onChange={handleCheckboxChange}
-                    name="webDevelopment"
-                  />
-                }
-                label="Web Development"
-                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+          <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
+            Fill out the form below to get in touch with us and let us know how we can assist you.
+          </Typography>
+          <FormContainer onSubmit={handleSubmit}>
+            <FieldContainer>
+              <TextField
+                style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+                label="Full Name"
+                name="name"
+                variant="outlined"
+                fullWidth
+                value={formValues.name}
+                onChange={handleChange}
+                InputLabelProps={{
+                  style: { fontFamily: 'Nunito, sans-serif' },
+                }}
               />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formValues.services.seoOptimization}
-                    onChange={handleCheckboxChange}
-                    name="seoOptimization"
-                  />
-                }
-                label="Search Engine Optimization"
-                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+            </FieldContainer>
+            <FieldContainer>
+              <TextField
+                style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+                label="Email Address"
+                name="email"
+                variant="outlined"
+                fullWidth
+                value={formValues.email}
+                onChange={handleChange}
+                InputLabelProps={{
+                  style: { fontFamily: 'Nunito, sans-serif' },
+                }}
               />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formValues.services.webDesign}
-                    onChange={handleCheckboxChange}
-                    name="webDesign"
-                  />
-                }
-                label="Web Design"
-                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+            </FieldContainer>
+            <FieldContainer>
+              <TextField
+                style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+                label="Business Number"
+                name="businessNumber"
+                variant="outlined"
+                fullWidth
+                value={formValues.businessNumber}
+                onChange={handleChange}
+                InputLabelProps={{
+                  style: { fontFamily: 'Nunito, sans-serif' },
+                }}
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formValues.services.uiUxDesign}
-                    onChange={handleCheckboxChange}
-                    name="uiUxDesign"
-                  />
-                }
-                label="UI/UX Design"
-                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+            </FieldContainer>
+            <FieldContainer>
+              <TextField
+                style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+                label="Business Name"
+                name="businessName"
+                variant="outlined"
+                fullWidth
+                value={formValues.businessName}
+                onChange={handleChange}
+                InputLabelProps={{
+                  style: { fontFamily: 'Nunito, sans-serif' },
+                }}
               />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formValues.services.digitalMarketing}
-                    onChange={handleCheckboxChange}
-                    name="digitalMarketing"
-                  />
-                }
-                label="Digital Marketing"
-                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+            </FieldContainer>
+            <FieldContainer>
+              <TextField
+                style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
+                label="Message"
+                name="message"
+                variant="outlined"
+                fullWidth
+                multiline
+                rows={4}
+                value={formValues.message}
+                onChange={handleChange}
+                InputLabelProps={{
+                  style: { fontFamily: 'Nunito, sans-serif' },
+                }}
               />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={formValues.services.dnsMigration}
-                    onChange={handleCheckboxChange}
-                    name="dnsMigration"
+            </FieldContainer>
+            <CheckboxContainer>
+              <Typography variant="h5" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
+                What can we do for you?
+              </Typography>
+              <Grid container spacing={1}>
+                <Grid item xs={12} sm={6}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formValues.services.webDevelopment}
+                        onChange={handleCheckboxChange}
+                        name="webDevelopment"
+                      />
+                    }
+                    label="Web Development"
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
                   />
-                }
-                label="DNS Migration"
-                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
-              />
-            </Grid>
-          </Grid>
-        </CheckboxContainer>
-        <StyledButton type="submit" fullWidth>
-          Submit
-        </StyledButton>
-      </FormContainer>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formValues.services.seoOptimization}
+                        onChange={handleCheckboxChange}
+                        name="seoOptimization"
+                      />
+                    }
+                    label="Search Engine Optimization"
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formValues.services.webDesign}
+                        onChange={handleCheckboxChange}
+                        name="webDesign"
+                      />
+                    }
+                    label="Web Design"
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formValues.services.uiUxDesign}
+                        onChange={handleCheckboxChange}
+                        name="uiUxDesign"
+                      />
+                    }
+                    label="UI/UX Design"
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formValues.services.digitalMarketing}
+                        onChange={handleCheckboxChange}
+                        name="digitalMarketing"
+                      />
+                    }
+                    label="Digital Marketing"
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={formValues.services.dnsMigration}
+                        onChange={handleCheckboxChange}
+                        name="dnsMigration"
+                      />
+                    }
+                    label="DNS Migration"
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
+                  />
+                </Grid>
+              </Grid>
+            </CheckboxContainer>
+            <StyledButton type="submit" fullWidth>
+              Submit
+            </StyledButton>
+          </FormContainer>
+        </>
+      )}
     </Contact>
   );
 };

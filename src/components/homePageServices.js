@@ -162,6 +162,7 @@ const CardsSection = () => {
      <TitleBanner>More than just websites</TitleBanner>
      <IntroParagraph>
      Our goal is to help you grow your revenue by expanding your digital reach and attracting more potential customers.     </IntroParagraph>
+
        <CardContainer>
       {cards.map((card, index) => (
         <Card key={index} isReversed={index % 2 !== 0}>

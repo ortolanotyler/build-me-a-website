@@ -4,6 +4,7 @@ import BlogPost1 from '../components/BlogPost1';
 import BlogPost2 from '../components/BlogPost2';
 import BlogPost3 from '../components/BlogPost3';
 import BlogPost4 from '../components/BlogPost4';
+import SubmitButton from '../components/SubmitButtonComponent';
 
 function BlogPage() {
   const [currentPost, setCurrentPost] = useState('CSS');
@@ -76,6 +77,8 @@ function BlogPage() {
       <div style={{ marginBottom: '50px' }}>
         {renderBlogPost()}
       </div>
+      <SubmitButton to ='/consultation' text="Book a Free Consultation" />
+
     </div>
   );
 }

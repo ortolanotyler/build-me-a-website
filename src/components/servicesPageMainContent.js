@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import SubmitButton from './SubmitButtonComponent';
 
 
 const TitleBanner = styled.h2`
@@ -176,51 +177,12 @@ const ServicesPageMain = () => {
           </Card>
         ))}
       </CardContainer>
-      <div 
-        style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/Images/consultation.jpg)`,
-          backgroundSize: 'cover',
-
-          backgroundPosition: 'center',
-          boxShadow: '0 8px 20px rgba(0, 0, 0, 0.5)',
-          borderRadius: '20px',
-          border: "3px solid #3a3a3a",
-          textAlign: 'center',
-          width: '80%',
-          maxWidth: '300px',
-          height: '4rem',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          margin: '1rem auto',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease',
-        }}
-        onMouseOver={(e) => {
-          e.currentTarget.style.boxShadow = '0 8px 12px rgba(0, 0, 0, 0.2)';
-          e.currentTarget.style.transform = 'translateY(-2px)';
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-          e.currentTarget.style.transform = 'translateY(0)';
-        }}
-        onMouseDown={(e) => {
-          e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
-          e.currentTarget.style.transform = 'translateY(2px)';
-        }}
-        onMouseUp={(e) => {
-          e.currentTarget.style.boxShadow = '0 8px 12px rgba(0, 0, 0, 0.2)';
-          e.currentTarget.style.transform = 'translateY(-2px)';
-        }}
-        onClick={() => navigate('/consultation')}
-        >
-        {/* Button Text */}
-      </div>
-
       <IntroParagraph>
         Ready to bring your ideas to life? Let's get started!
       </IntroParagraph>
+      <SubmitButton to ='/consultation' text="Book a Free Consultation" />
+
+   
     </>
   );
 };

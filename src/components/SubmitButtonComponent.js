@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   font-family: 'Nunito', sans-serif;
   background-color: #3a3a3a;
-  font-weight: 300;
+  font-weight: 200;
   opacity: 1;
   color: #f8f8f8;
   padding: 1rem 1rem;
@@ -35,7 +35,7 @@ const CenteredWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 5rem 0;
+  padding: 1rem 0;
   height: 10vh;
 `;
 

@@ -17,7 +17,8 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="App" style={{ background: '#f8f8f8', padding: '0px' }}>
+    <div className="App" style={{ backgroundColor: '#f8f8f8', padding: '0px' }}>
+
       <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/14.jpg`} />
       {/* Conditionally render additional parallax sections only if not on mobile */}
       {!isMobile && (

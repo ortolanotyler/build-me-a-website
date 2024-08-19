@@ -73,13 +73,13 @@ const backgroundStyle = {
 
 const containerStyle = {
   display: 'grid',
-  padding: '5rem 0',
+  padding: '1rem 0',
   gridTemplateColumns: 'repeat(3, auto)', 
   gridTemplateRows: 'repeat(3, auto)',    
   gridGap: '10px', 
   justifyContent: 'center',
   alignItems: 'center',
-  minHeight: '40vh', 
+  minHeight: '30vh', 
 };
 
 const AvatarGrid = () => {

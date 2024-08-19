@@ -71,7 +71,7 @@ const Header = () => {
   const mobileMenuIconStyle = {
     display: isMobile ? 'block' : 'none',
     color: '#f8f8f8',
-    fontSize: '2rem',
+    fontSize: '3rem',
   };
 
   const drawerListStyle = {

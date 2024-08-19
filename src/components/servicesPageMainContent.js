@@ -11,7 +11,7 @@ const TitleBanner = styled.h2`
   font-size: 2.5rem;
   color: #3a3a3a;
   text-align: center;
-  margin-bottom: 2rem; /* Space between the title and the cards */
+  margin-bottom: 1rem; /* Space between the title and the cards */
 
   background-color: #f8f8f8; /* Light background for the title */
   width: 100%;
@@ -33,9 +33,9 @@ const IntroParagraph = styled.p`
   font-size: 1.25rem;
   color: #3a3a3a;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   line-height: 1.6;
-  max-width: 70%;
+  max-width: 60%;
   margin-left: auto;
   margin-right: auto;
 
@@ -51,9 +51,9 @@ const IntroParagraph = styled.p`
 `;
 
 const CardContainer = styled.div`
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'Nunito', sans-serif;
   background-color: #f8f8f8;
-  font-weight: 300;
+  font-weight: normal;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,7 +138,7 @@ const CardTitle = styled.h3`
 
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
     font-weight: normal;
 
   color: #3a3a3a;

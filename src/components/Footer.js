@@ -23,17 +23,15 @@ const bubbleMove = keyframes`
 
 const Body = styled.div`
   display: grid;
-  grid-template-rows: 1fr 10rem auto;
+  grid-template-rows: 1fr 15rem auto;
   grid-template-areas: "main" "." "footer";
   overflow-x: hidden;
   background: #f8f8f8;
-  min-height: 1vh;
+  min-height: 2vh;
   font-family: 'Open Sans', sans-serif;
 `;
 
 const Main = styled.div`
-
-
   grid-area: main;
 `;
 
@@ -41,9 +39,9 @@ const FooterContainer = styled.div`
   z-index: 1;
   --footer-background: #bbd7ec;
   display: grid;
+  
   position: relative;
   grid-area: footer;
-  
 `;
 
 const Bubbles = styled.div`
@@ -51,7 +49,6 @@ const Bubbles = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  
   background: var(--footer-background);
   filter: url("#blob");
 
@@ -69,14 +66,13 @@ const Bubbles = styled.div`
 const Content = styled.div`
   z-index: 2;
   font-family: 'Nunito', sans-serif;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-gap: 4rem;
-  padding: 1rem;
+  display: flex;
+  justify-content: space-between; /* Aligns items to both sides */
+  padding: 2rem;
   background: var(--footer-background);
 
   a, p {
-    color: #3a3a3a ;
+    color: #3a3a3a;
     text-decoration: none;
   }
 
@@ -93,24 +89,18 @@ const Content = styled.div`
   > div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+  }
 
-    > div {
-     
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
 
-      > * {
-        margin-right: .5rem;
-      }
-    }
-
-    .image {
-      align-self: center;
-      width: 5rem;
-      height: 10rem;
- 
-      background-size: cover;
-      background-position: center;
-    }
+  .logo {
+    width: 5rem;
+    height: 5rem;
+    background-size: cover;
+    background-position: center;
   }
 `;
 
@@ -131,39 +121,28 @@ const Footer = () => {
             }}
           />
         ))}
-         
-       
       </Bubbles>
       <Content>
         <div>
           <div>
-            <b>Home</b>
-            
-        
-            
+            <a href="/"> <b>Home</b> </a>            
           </div>
           <div>
-            <b>About</b>
-            <a href="#">Blog</a>
-
+            <a href="/about"> <b>About</b> </a>
+            <a href="/blog">Blog</a>
           </div>
           <div>
-            <b>Services</b>
-            <a href="#">Websites</a>
-            <a href="#">SEO</a>
-            <a href="#">SEM</a>
-           
-            <a href="#">Hosting</a>
-            <a href="#">Design</a>
-            <a href="#">DNS Migration</a>
+            <a href="/services"> <b>Services</b> </a>
+          
           </div>
           <div>
-            <b>Contact</b>
-            <a href="#">Consultation</a>
-         
+            <a href="/consultation"> <b>Contact</b> </a>
+            <a href="/consultation">Consultation</a>
           </div>
         </div>
-       
+        <div className="logo-container">
+          <div className="logo" style={{ minWidth: '200px',backgroundImage: 'url(/Images/logo.png)' }} />
+        </div>
       </Content>
     </FooterContainer>
   );

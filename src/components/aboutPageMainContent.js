@@ -138,7 +138,7 @@ const CardTitle = styled.h3`
 `;
 
 const CardDescription = styled.p`
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
   color: #3a3a3a;
   margin-bottom: 1rem;

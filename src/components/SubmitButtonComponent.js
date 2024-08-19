@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -14,7 +15,6 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 20px;
   transition: background-color 0.3s ease, opacity 0.1s ease;
-  margin-top: 15rem; /* Move the button down */
 
   &:hover {
     background-color: #333333; /* Slightly lighter black on hover */
@@ -35,15 +35,18 @@ const CenteredWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  padding: 5rem 0;
+  height: 10vh;
 `;
 
-const SubmitButton = ({ text = "Submit", onClick, type = "submit" }) => {
+const SubmitButton = ({ text = "Submit", to = "/", type = "button" }) => {
   return (
     <CenteredWrapper>
-      <Button type={type} onClick={onClick}>
-        {text}
-      </Button>
+      <Link to={to}>
+        <Button type={type}>
+          {text}
+        </Button>
+      </Link>
     </CenteredWrapper>
   );
 };

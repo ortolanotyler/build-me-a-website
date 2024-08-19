@@ -140,7 +140,7 @@ const CardTitle = styled.h3`
 
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
     font-weight: normal;
 
   color: #3a3a3a;
@@ -149,8 +149,8 @@ const CardDescription = styled.p`
 
 const CardsSection = () => {
   const cards = [
-    {  description: 'Building bridges in small business digital marketing.', href: '#card1', image: '/Images/websites1.jpg' },
-    { description: 'We are a digital marketing company from Ontario. We consult with small business owners to provide them expertise in the fields of web development, digital marketing, and search engine optimization.', href: '#card2', image: '/Images/seo1.jpg' },
+    {  description: 'We are a digital marketing company from Ontario. We consult with small business owners to provide them expertise in the fields of web development, digital marketing, search engine optimization, and more.', href: '#card1', image: '/Images/websites1.jpg' },
+    { description: "We recognize the immense time and effort it takes to turn your idea into a profitable business, because we've been there ourselves", href: '#card2', image: '/Images/seo1.jpg' },
     {  description: 'Our aim is to build lasting relationships with the people we work with and support them on their journey to small-business success.', href: '#card3', image: '/Images/sem1.jpg' },
     {  description: "Whether your small business is your life's work or just beginning, we can help you to increase your revenue both online and in person.", href: '#card4', image: '/Images/19.jpg' },
     {  description: 'Book a free consultation, we will go ahead and analyze your current presence and come to you with a plan at a date and time that works for you.', href: '#card5', image: '/Images/20.jpg' },
@@ -159,10 +159,9 @@ const CardsSection = () => {
 
   return (
     <>
-     <TitleBanner>Building bridges in small-business digital marketing</TitleBanner>
+     <TitleBanner>More than just websites</TitleBanner>
      <IntroParagraph>
-
-     </IntroParagraph>
+     Our goal is to help you grow your revenue by expanding your digital reach and attracting more potential customers.     </IntroParagraph>
        <CardContainer>
       {cards.map((card, index) => (
         <Card key={index} isReversed={index % 2 !== 0}>
@@ -176,6 +175,7 @@ const CardsSection = () => {
         </Card>
       ))}
     </CardContainer>
+    <SubmitButton to ='/consultation' text="Book a Free Consultation" />
     </>
  
   );

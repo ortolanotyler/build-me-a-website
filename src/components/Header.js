@@ -111,6 +111,8 @@ const Header = () => {
         <StyledLink to="/about">About</StyledLink>
         <StyledLink to="/services">Services</StyledLink>
         <StyledLink to="/blog">Blog</StyledLink>
+        <StyledLink to="/portfolio">Portfolio</StyledLink>
+
         <StyledLink to="/consultation">Free Consultation</StyledLink>
       </nav>
       <IconButton edge="start" color="inherit" aria-label="menu" sx={mobileMenuIconStyle} onClick={toggleDrawer(true)}>

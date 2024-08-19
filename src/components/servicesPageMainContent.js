@@ -4,14 +4,15 @@ import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
 
 const TitleBanner = styled.h2`
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-weight: normal;
   padding: 1rem;
   font-size: 2.5rem;
   color: #3a3a3a;
   text-align: center;
-  margin-bottom: 2rem;
-  background-color: #f8f8f8;
+  margin-bottom: 2rem; /* Space between the title and the cards */
+
+  background-color: #f8f8f8; /* Light background for the title */
   width: 100%;
   box-sizing: border-box;
 
@@ -27,9 +28,8 @@ const TitleBanner = styled.h2`
 `;
 
 const IntroParagraph = styled.p`
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
-  font-weight: normal;
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 2rem;
@@ -180,6 +180,7 @@ const ServicesPageMain = () => {
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/Images/consultation.jpg)`,
           backgroundSize: 'cover',
+
           backgroundPosition: 'center',
           boxShadow: '0 8px 20px rgba(0, 0, 0, 0.5)',
           borderRadius: '20px',

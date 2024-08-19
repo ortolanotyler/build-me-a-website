@@ -3,7 +3,7 @@ import { TextField, Checkbox, FormControlLabel, Button, Typography, Grid } from 
 import { styled } from '@mui/system';
 
 const Contact = styled('div')(({ theme }) => ({
-    fontFamily: 'League Spartan, sans-serif',
+    fontFamily: 'Nunito, sans-serif',
     backgroundColor: '#f8f8f8',
   padding: '2rem 2rem 2rem',
   display: 'flex',
@@ -11,15 +11,13 @@ const Contact = styled('div')(({ theme }) => ({
   alignItems: 'center',
   minHeight: '40vh',
   [theme.breakpoints.down('md')]: {
-    padding: '150px 50px',
-  },
+    padding: '2rem 2rem 2rem',  },
   [theme.breakpoints.down('sm')]: {
-    padding: '150px 50px 50px',
-  },
+    padding: '2rem 2rem 2rem',  },
 }));
 
 const FormContainer = styled('form')(({ theme }) => ({
-  fontFamily: 'League Spartan, sans-serif',
+  fontFamily: 'Nunito, sans-serif',
   width: '100%',
   maxWidth: '400px',
   backgroundColor: '#bbd7ec',
@@ -39,14 +37,14 @@ const FieldContainer = styled('div')({
 });
 
 const CheckboxContainer = styled('div')({
-    fontFamily: 'League Spartan, sans-serif',
+    fontFamily: 'Nunito, sans-serif',
     marginTop: '20px',
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
     fontFamily: 'Nunito, sans-serif',
     backgroundColor: '#3A3A3A',
-  color: '#F4E1D2',
+  color: '#f8f8f8',
   fontSize: '1rem',
   padding: '1rem 2rem',
   fontWeight: 'normal',
@@ -56,7 +54,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   '&:hover': {
     transform: 'scale(1.05)',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-    backgroundColor: '#F2784B',
+    backgroundColor: '#3a3a3a',
   },
   '&:active': {
     transform: 'scale(0.95)',
@@ -135,7 +133,7 @@ const ContactForm = () => {
       <FormContainer onSubmit={handleSubmit}>
         <FieldContainer>
           <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'League Spartan, sans-serif' }}
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
             label="Full Name"
             name="name"
             variant="outlined"
@@ -143,13 +141,13 @@ const ContactForm = () => {
             value={formValues.name}
             onChange={handleChange}
             InputLabelProps={{
-              style: { fontFamily: 'League Spartan, sans-serif' },
+              style: { fontFamily: 'Nunito, sans-serif' },
             }}
           />
         </FieldContainer>
         <FieldContainer>
           <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'League Spartan, sans-serif' }}
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
             label="Email Address"
             name="email"
             variant="outlined"
@@ -157,13 +155,13 @@ const ContactForm = () => {
             value={formValues.email}
             onChange={handleChange}
             InputLabelProps={{
-              style: { fontFamily: 'League Spartan, sans-serif' },
+              style: { fontFamily: 'Nunito, sans-serif' },
             }}
           />
         </FieldContainer>
         <FieldContainer>
           <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'League Spartan, sans-serif' }}
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
             label="Business Number"
             name="businessNumber"
             variant="outlined"
@@ -171,13 +169,13 @@ const ContactForm = () => {
             value={formValues.businessNumber}
             onChange={handleChange}
             InputLabelProps={{
-              style: { fontFamily: 'League Spartan, sans-serif' },
+              style: { fontFamily: 'Nunito, sans-serif' },
             }}
           />
         </FieldContainer>
         <FieldContainer>
           <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'League Spartan, sans-serif' }}
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
             label="Business Name"
             name="businessName"
             variant="outlined"
@@ -185,13 +183,13 @@ const ContactForm = () => {
             value={formValues.businessName}
             onChange={handleChange}
             InputLabelProps={{
-              style: { fontFamily: 'League Spartan, sans-serif' },
+              style: { fontFamily: 'Nunito, sans-serif' },
             }}
           />
         </FieldContainer>
         <FieldContainer>
           <TextField
-            style={{ backgroundColor: '#F8F8F8', fontFamily: 'League Spartan, sans-serif' }}
+            style={{ backgroundColor: '#F8F8F8', fontFamily: 'Nunito, sans-serif' }}
             label="Message"
             name="message"
             variant="outlined"
@@ -201,12 +199,12 @@ const ContactForm = () => {
             value={formValues.message}
             onChange={handleChange}
             InputLabelProps={{
-              style: { fontFamily: 'League Spartan, sans-serif' },
+              style: { fontFamily: 'Nunito, sans-serif' },
             }}
           />
         </FieldContainer>
         <CheckboxContainer>
-          <Typography variant="h5" gutterBottom style={{ fontFamily: 'League Spartan, sans-serif', color: '#3A3A3A' }}>
+          <Typography variant="h5" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
             What can we do for you?
           </Typography>
           <Grid container spacing={1}>
@@ -220,7 +218,7 @@ const ContactForm = () => {
                   />
                 }
                 label="Web Development"
-                style={{ fontFamily: 'League Spartan, sans-serif', color: '#3A3A3A' }}
+                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
               />
               <FormControlLabel
                 control={
@@ -231,7 +229,7 @@ const ContactForm = () => {
                   />
                 }
                 label="Search Engine Optimization"
-                style={{ fontFamily: 'League Spartan, sans-serif', color: '#3A3A3A' }}
+                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
               />
               <FormControlLabel
                 control={
@@ -242,7 +240,7 @@ const ContactForm = () => {
                   />
                 }
                 label="Web Design"
-                style={{ fontFamily: 'League Spartan, sans-serif', color: '#3A3A3A' }}
+                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -255,7 +253,7 @@ const ContactForm = () => {
                   />
                 }
                 label="UI/UX Design"
-                style={{ fontFamily: 'League Spartan, sans-serif', color: '#3A3A3A' }}
+                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
               />
               <FormControlLabel
                 control={
@@ -266,7 +264,7 @@ const ContactForm = () => {
                   />
                 }
                 label="Digital Marketing"
-                style={{ fontFamily: 'League Spartan, sans-serif', color: '#3A3A3A' }}
+                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
               />
               <FormControlLabel
                 control={
@@ -277,7 +275,7 @@ const ContactForm = () => {
                   />
                 }
                 label="DNS Migration"
-                style={{ fontFamily: 'League Spartan, sans-serif', color: '#3A3A3A' }}
+                style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
               />
             </Grid>
           </Grid>

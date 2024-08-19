@@ -1,33 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ParallaxSection from './Parallax';
-import SkillsBanner from '../components/SkillsBanner';
-import HomeServices from '../components/homePageServices';
-import SubmitButton from '../components/SubmitButtonComponent';
-import AboutPageMainContent from '../components/aboutPageMainContent';
+import BlogPost1 from '../components/BlogPost1';
+import BlogPost2 from '../components/BlogPost2';
+import BlogPost3 from '../components/BlogPost3';
+import BlogPost4 from '../components/BlogPost4';
 
 function BlogPage() {
+  const [currentPost, setCurrentPost] = useState('CSS');
 
-  
+  const blogPosts = [
+    { id: 'CSS', label: 'CSS', component: <BlogPost1 /> },
+    { id: 'Why React?', label: 'Why React?', component: <BlogPost2 /> },
+    { id: 'Responsiveness in Web Development', label: 'Responsiveness in Web Development', component: <BlogPost3 /> },
+    { id: 'CSS Grid and Flexbox', label: 'Mastering CSS Grid + Flexbox', component: <BlogPost4 /> },
+
+  ];
+
+  const renderBlogPost = () => {
+    const currentBlog = blogPosts.find(post => post.id === currentPost);
+    return currentBlog ? currentBlog.component : <BlogPost1 />;
+  };
 
   return (
-    <div className="App">
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`}> </ParallaxSection>
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`}> </ParallaxSection>
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`}> </ParallaxSection>
+    <div className="App" style={{ backgroundColor: '#f8f8f8', minHeight: '100vh' }}>
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`} />
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`} />
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`} />
 
-     
-        
-     
+      <div style={{ display: 'flex', justifyContent: 'center', margin: '5rem 0', marginBottom: '2rem' }}>
+        {blogPosts.map(post => (
+          <button
+            key={post.id}
+            onClick={() => setCurrentPost(post.id)}
+            style={{
+              margin: '0 10px',
+              cursor: 'pointer',
+              padding: '10px 20px',
+              borderRadius: '20px',
+              backgroundColor: currentPost === post.id ? '#f8f8f8' : '#3a3a3a',
+              color: currentPost === post.id ? '#3a3a3a' : '#f8f8f8',
+              border: '2px solid #3a3a3a',
+            }}
+          >
+            {post.label}
+          </button>
+        ))}
+      </div>
 
-    
-        
-      
- 
-      
-        
-        
-  
-   
+      <div style={{ marginBottom: '50px' }}>
+        {renderBlogPost()}
+      </div>
     </div>
   );
 }

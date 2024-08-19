@@ -2,6 +2,52 @@ import React from 'react';
 import styled from 'styled-components';
 import SubmitButton from './SubmitButtonComponent';
 
+const TitleBanner = styled.h2`
+  font-family: 'Nunito', sans-serif;
+  font-weight: normal;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #3a3a3a;
+  text-align: center;
+  margin-bottom: 2rem;
+  background-color: #f8f8f8;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+`;
+
+const IntroParagraph = styled.p`
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.25rem;
+  font-weight: normal;
+  color: #3a3a3a;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    max-width: 90%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    max-width: 95%;
+  }
+`;
+
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
   background-color: #f8f8f8;
@@ -87,13 +133,16 @@ const CardContent = styled.div`
 const CardTitle = styled.h3`
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
+  font-weight: normal;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
 
 const CardDescription = styled.p`
-  font-family: 'League Spartan', sans-serif;
-  font-size: 2rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem;
+    font-weight: normal;
+
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
@@ -109,7 +158,12 @@ const CardsSection = () => {
   ];
 
   return (
-    <CardContainer>
+    <>
+     <TitleBanner>Building bridges in small-business digital marketing</TitleBanner>
+     <IntroParagraph>
+
+     </IntroParagraph>
+       <CardContainer>
       {cards.map((card, index) => (
         <Card key={index} isReversed={index % 2 !== 0}>
           <CardImageWrapper>
@@ -122,6 +176,8 @@ const CardsSection = () => {
         </Card>
       ))}
     </CardContainer>
+    </>
+ 
   );
 };
 

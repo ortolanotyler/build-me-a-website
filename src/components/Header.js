@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/system';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
@@ -110,7 +109,6 @@ const Header = () => {
       <nav style={navContainerStyle}>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/about">About</StyledLink>
-        <StyledLink to="/portfolio">Portfolio</StyledLink>
         <StyledLink to="/services">Services</StyledLink>
         <StyledLink to="/blog">Blog</StyledLink>
         <StyledLink to="/consultation">Free Consultation</StyledLink>
@@ -124,7 +122,7 @@ const Header = () => {
         onClose={toggleDrawer(false)}
         PaperProps={{
           style: {
-            backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background for drawer
+            backgroundColor: 'rgba(0, 0, 0, 0.1)', // Semi-transparent black background for drawer
             color: '#f8f8f8',
           },
         }}

@@ -79,10 +79,10 @@ const BlogPost3 = () => {
           Responsiveness in Web Development
         </h1>
       </header>
-      <main style={{ maxWidth: '700px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
+      <main style={{ maxWidth: '500px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
         {!isSmallScreen ? (
-          <div style={{ display: 'flex', gap: '2rem', flexDirection: 'row', flexWrap: 'wrap' }}>
-            <div style={{ flex: 1 }}>
+          <div style={{ padding: '1rem 2rem', textAlign: 'left' }}>
+          <div style={{ flex: 1 }}>
               <p>
                 In today's digital age, users access websites on a variety of devices ranging from desktops and laptops to tablets and smartphones. With such a wide array of screen sizes and resolutions, ensuring that your website is responsive has become a critical aspect of web development. Responsiveness refers to the ability of a website to adapt to different screen sizes and orientations, providing a consistent and user-friendly experience across all devices.
               </p>

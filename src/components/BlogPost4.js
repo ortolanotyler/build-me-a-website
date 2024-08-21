@@ -79,10 +79,10 @@ const BlogPost4 = () => {
           Mastering Layouts with CSS Grid and Flexbox
         </h1>
       </header>
-      <main style={{ maxWidth: '700px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
+      <main style={{ maxWidth: '500px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
         {!isSmallScreen ? (
-          <div style={{ display: 'flex', gap: '2rem', flexDirection: 'row', flexWrap: 'wrap' }}>
-            <div style={{ flex: 1 }}>
+          <div style={{ padding: '1rem 2rem', textAlign: 'left' }}>
+          <div style={{ flex: 1 }}>
               <p>
                 In the world of web development, creating responsive and visually appealing layouts is a crucial task. CSS Grid and Flexbox are two powerful layout models that have revolutionized the way developers approach design. These tools provide developers with the flexibility to create complex and adaptive layouts with ease, making them indispensable in modern web design.
               </p>

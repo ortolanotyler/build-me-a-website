@@ -93,14 +93,22 @@ const Content = styled.div`
 
   .logo-container {
     display: flex;
+    flex-direction: column; /* Stack logo and email vertically */
     align-items: center;
+    text-align: center;
   }
 
   .logo {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     background-size: cover;
     background-position: center;
+    margin-bottom: 0.5rem; /* Space between logo and email */
+  }
+
+  .email {
+    font-size: 0.75rem;
+    color: #3a3a3a;
   }
 `;
 
@@ -133,7 +141,6 @@ const Footer = () => {
           </div>
           <div>
             <a href="/services"> <b>Services</b> </a>
-          
           </div>
           <div>
             <a href="/consultation"> <b>Contact</b> </a>
@@ -141,12 +148,8 @@ const Footer = () => {
           </div>
         </div>
         <div className="logo-container">
-          <div className="logo" style={{ minWidth: '200px',backgroundImage: 'url(/Images/logo.png)' }} />
-        </div>
-        <div
-       className= "container" > 
-        
-          contact@buildmeawebsite.ca
+          <div className="logo" style={{ minWidth: '200px', backgroundImage: 'url(/Images/logo.png)' }} />
+          <div className="email">contact@buildmeawebsite.ca</div> {/* Email rendered below the logo */}
         </div>
       </Content>
     </FooterContainer>

@@ -111,7 +111,6 @@ const Header = () => {
         <StyledLink to="/about">About</StyledLink>
         <StyledLink to="/services">Services</StyledLink>
         <StyledLink to="/blog">Blog</StyledLink>
-        <StyledLink to="/portfolio">Portfolio</StyledLink>
 
         <StyledLink to="/consultation">Free Consultation</StyledLink>
       </nav>

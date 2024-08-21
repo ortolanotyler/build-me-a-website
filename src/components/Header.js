@@ -89,9 +89,7 @@ const Header = () => {
       <ListItem button component={StyledLink} to="/about" onClick={closeDrawerOnClick}>
         <ListItemText primary="About" />
       </ListItem>
-      <ListItem button component={StyledLink} to="/portfolio" onClick={closeDrawerOnClick}>
-        <ListItemText primary="Portfolio" />
-      </ListItem>
+   
       <ListItem button component={StyledLink} to="/services" onClick={closeDrawerOnClick}>
         <ListItemText primary="Services" />
       </ListItem>

@@ -115,6 +115,7 @@ const CardImage = styled.img`
   width: 100%;
   height: auto;
   border-radius: 10px;
+  alt: "Description of the image for SEO";
 `;
 
 const CardContent = styled.div`
@@ -141,44 +142,43 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
-    font-weight: normal;
-
+  font-weight: normal;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
 
 const CardsSection = () => {
   const cards = [
-    {  description: 'We are a digital marketing company from Ontario. We consult with small business owners to provide them expertise in the fields of web development, digital marketing, search engine optimization, and more.', href: '#card1', image: '/Images/websites1.jpg' },
+    { description: 'We are a digital marketing company from Ontario. We consult with small business owners to provide them expertise in the fields of web development, digital marketing, search engine optimization, and more.', href: '#card1', image: '/Images/websites1.jpg' },
     { description: "We recognize the immense time and effort it takes to turn your idea into a profitable business, because we've been there ourselves", href: '#card2', image: '/Images/seo1.jpg' },
-    {  description: 'Our aim is to build lasting relationships with the people we work with and support them on their journey to small-business success.', href: '#card3', image: '/Images/sem1.jpg' },
-    {  description: "Whether your small business is your life's work or just beginning, we can help you to increase your revenue both online and in person.", href: '#card4', image: '/Images/19.jpg' },
-    {  description: 'Book a free consultation, we will go ahead and analyze your current presence and come to you with a plan at a date and time that works for you.', href: '#card5', image: '/Images/20.jpg' },
+    { description: 'Our aim is to build lasting relationships with the people we work with and support them on their journey to small-business success.', href: '#card3', image: '/Images/sem1.jpg' },
+    { description: "Whether your small business is your life's work or just beginning, we can help you to increase your revenue both online and in person.", href: '#card4', image: '/Images/19.jpg' },
+    { description: 'Book a free consultation, we will go ahead and analyze your current presence and come to you with a plan at a date and time that works for you.', href: '#card5', image: '/Images/20.jpg' },
     { description: 'Thanks for stopping by.', href: '#card6', image: '/Images/21.jpg' },
   ];
 
   return (
     <>
-     <TitleBanner>More than just websites</TitleBanner>
-     <IntroParagraph>
-     Our goal is to help you grow your revenue by expanding your digital reach and attracting more potential customers.     </IntroParagraph>
+      <TitleBanner>More than just websites</TitleBanner>
+      <IntroParagraph>
+        Our goal is to help you grow your revenue by expanding your digital reach and attracting more potential customers.
+      </IntroParagraph>
 
-       <CardContainer>
-      {cards.map((card, index) => (
-        <Card key={index} isReversed={index % 2 !== 0}>
-          <CardImageWrapper>
-            <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.title} />
-          </CardImageWrapper>
-          <CardContent>
-            <CardTitle>{card.title}</CardTitle>
-            <CardDescription>{card.description}</CardDescription>
-          </CardContent>
-        </Card>
-      ))}
-    </CardContainer>
-    <SubmitButton to ='/consultation' text="Book a Free Consultation" />
+      <CardContainer>
+        {cards.map((card, index) => (
+          <Card key={index} isReversed={index % 2 !== 0}>
+            <CardImageWrapper>
+              <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.description} />
+            </CardImageWrapper>
+            <CardContent>
+              <CardTitle>{card.title}</CardTitle>
+              <CardDescription>{card.description}</CardDescription>
+            </CardContent>
+          </Card>
+        ))}
+      </CardContainer>
+      <SubmitButton to='/consultation' text="Book a Free Consultation" />
     </>
- 
   );
 };
 

@@ -38,7 +38,6 @@ function HomePage() {
         <meta property="og:image" content="https://buildmeawebsite.ca/og-image-home.jpg" />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json">
-        <script type="application/ld+json">
   {JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -69,7 +68,6 @@ function HomePage() {
     "description": "Build Me A Website offers cutting-edge web development and digital marketing services.",
     "image": "https://buildmeawebsite.ca/og-image-home.jpg"
   })}
-</script>
 
         </script>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=G-YYTCRX2PFK`}></script>

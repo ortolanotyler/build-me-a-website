@@ -143,6 +143,11 @@ const Footer = () => {
         <div className="logo-container">
           <div className="logo" style={{ minWidth: '200px',backgroundImage: 'url(/Images/logo.png)' }} />
         </div>
+        <div
+       className= "container" > 
+        
+          contact@buildmeawebsite.ca
+        </div>
       </Content>
     </FooterContainer>
   );

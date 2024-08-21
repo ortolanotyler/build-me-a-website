@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import SubmitButton from './SubmitButtonComponent';
 
-
-const TitleBanner = styled.h2`
+const TitleBanner = styled.h1`  /* Updated to H1 for SEO */
   font-family: 'Nunito', sans-serif;
   font-weight: normal;
   padding: 1rem;
@@ -12,7 +11,6 @@ const TitleBanner = styled.h2`
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 1rem; /* Space between the title and the cards */
-
   background-color: #f8f8f8; /* Light background for the title */
   width: 100%;
   box-sizing: border-box;
@@ -113,6 +111,7 @@ const CardImage = styled.img`
   width: 100%;
   height: auto;
   border-radius: 10px;
+  alt: "Service image";  /* Added alt text for SEO */
 `;
 
 const CardContent = styled.div`
@@ -128,7 +127,7 @@ const CardContent = styled.div`
   }
 `;
 
-const CardTitle = styled.h3`
+const CardTitle = styled.h2`  /* Updated to H2 for SEO */
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
   font-weight: normal;
@@ -139,23 +138,21 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
-    font-weight: normal;
-
+  font-weight: normal;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
 
 const ServicesPageMain = () => {
-
-    const navigate = useNavigate();  // Add this inside your component
+  const navigate = useNavigate();
 
   const cards = [
-    { description: "We create and maintain functional, visually appealing websites that work on all devices. Our flexible approach ensures your site grows with your business.", href: '#card3', image: '/Images/service1.jpg' },
-    { description: "We design user-friendly websites that balance aesthetics and functionality, creating a great first impression while guiding visitors to key actions.", href: '#card6', image: '/Images/service6.jpg' },
-    { description: "Our tailored SEO strategies boost your website's visibility, driving organic traffic and enhancing your online presence.", href: '#card2', image: '/Images/service2.jpg' },
-    { description: "We manage SEM campaigns that drive targeted traffic to your site, increasing brand awareness and delivering measurable results.", href: '#card5', image: '/Images/service3.jpg' },
-    { description: "Our hosting solutions ensure your website is fast, secure, and always available, providing a strong foundation for your online presence.", href: '#card1', image: '/Images/service4.jpg' },
-    { description: "We handle DNS migrations seamlessly, ensuring your website remains accessible and downtime is minimized during transitions.", href: '#card4', image: '/Images/service5.jpg' },
+    { title: "Web Development", description: "We create and maintain functional, visually appealing websites that work on all devices. Our flexible approach ensures your site grows with your business.", href: '#card1', image: '/Images/service1.jpg' },
+    { title: "Web Design", description: "We design user-friendly websites that balance aesthetics and functionality, creating a great first impression while guiding visitors to key actions.", href: '#card2', image: '/Images/service6.jpg' },
+    { title: "SEO Optimization", description: "Our tailored SEO strategies boost your website's visibility, driving organic traffic and enhancing your online presence.", href: '#card3', image: '/Images/service2.jpg' },
+    { title: "SEM Campaigns", description: "We manage SEM campaigns that drive targeted traffic to your site, increasing brand awareness and delivering measurable results.", href: '#card4', image: '/Images/service3.jpg' },
+    { title: "Hosting Solutions", description: "Our hosting solutions ensure your website is fast, secure, and always available, providing a strong foundation for your online presence.", href: '#card5', image: '/Images/service4.jpg' },
+    { title: "DNS Management", description: "We handle DNS migrations seamlessly, ensuring your website remains accessible and downtime is minimized during transitions.", href: '#card6', image: '/Images/service5.jpg' },
   ];
 
   return (
@@ -180,9 +177,7 @@ const ServicesPageMain = () => {
       <IntroParagraph>
         Ready to bring your ideas to life? Let's get started!
       </IntroParagraph>
-      <SubmitButton to ='/consultation' text="Book a Free Consultation" />
-
-   
+      <SubmitButton to='/consultation' text="Book a Free Consultation" />
     </>
   );
 };

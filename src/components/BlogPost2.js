@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const BlogPost2 = () => {
   const [config, setConfig] = useState({ size: 120, y: 30 });
@@ -25,19 +26,62 @@ const BlogPost2 = () => {
 
   return (
     <div style={{ fontFamily: 'League Spartan, sans-serif', minHeight: '100vh', color: '#3a3a3a', backgroundColor: 'transparent' }}>
+      <Helmet>
+        <title>The Benefits of Hiring a React Developer - Build Me A Website</title>
+        <meta
+          name="description"
+          content="Discover the numerous benefits of hiring a React developer for your web development project. Learn how React's component-based architecture, performance optimizations, and rich ecosystem can elevate your application's quality."
+        />
+        <meta
+          name="keywords"
+          content="React developer, web development, JavaScript, component-based architecture, front-end development, performance optimization"
+        />
+        <link rel="canonical" href="https://buildmeawebsite.ca/blog/benefits-of-hiring-a-react-developer" />
+        <meta property="og:title" content="The Benefits of Hiring a React Developer - Build Me A Website" />
+        <meta
+          property="og:description"
+          content="Discover the numerous benefits of hiring a React developer for your web development project. Learn how React's component-based architecture, performance optimizations, and rich ecosystem can elevate your application's quality."
+        />
+        <meta property="og:url" content="https://buildmeawebsite.ca/blog/benefits-of-hiring-a-react-developer" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://buildmeawebsite.ca/og-image-react-developer.jpg" />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "The Benefits of Hiring a React Developer",
+            "description": "Discover the numerous benefits of hiring a React developer for your web development project. Learn how React's component-based architecture, performance optimizations, and rich ecosystem can elevate your application's quality.",
+            "image": "https://buildmeawebsite.ca/og-image-react-developer.jpg",
+            "author": {
+              "@type": "Organization",
+              "name": "Build Me A Website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Build Me A Website",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://buildmeawebsite.ca/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://buildmeawebsite.ca/blog/benefits-of-hiring-a-react-developer"
+            },
+            "datePublished": "2024-08-21",
+            "dateModified": "2024-08-21"
+          })}
+        </script>
+      </Helmet>
       <header style={{ padding: '2rem 0 1rem', textAlign: 'center' }}>
         <h1 style={{ margin: 0, textTransform: 'uppercase', fontSize: '2rem', fontWeight: 'normal' }}>
           The Benefits of Hiring a React Developer
-          </h1>
+        </h1>
       </header>
       <main style={{ maxWidth: '700px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
         {!isSmallScreen ? (
-          <div style={{ 
-            display: 'flex', 
-            gap: '2rem', 
-            flexDirection: 'row', 
-            flexWrap: 'wrap' 
-          }}>
+          <div style={{ display: 'flex', gap: '2rem', flexDirection: 'row', flexWrap: 'wrap' }}>
             <div style={{ flex: 1 }}>
               <p>
                 React is a popular JavaScript library that has revolutionized front-end development. It allows developers to create dynamic, high-performance user interfaces with ease. If you're looking to build or scale a web application, hiring a React developer could be one of the best decisions you make.
@@ -74,8 +118,7 @@ const BlogPost2 = () => {
             </div>
           </div>
         ) : (
-            <div
-            style = {{padding: '1rem 2rem', textAlign: 'left' }}>
+          <div style={{ padding: '1rem 2rem', textAlign: 'left' }}>
             <p>
               React is a popular JavaScript library that has revolutionized front-end development. It allows developers to create dynamic, high-performance user interfaces with ease. If you're looking to build or scale a web application, hiring a React developer could be one of the best decisions you make.
             </p>

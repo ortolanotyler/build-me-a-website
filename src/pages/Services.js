@@ -20,14 +20,25 @@ function ServicesPage() {
   return (
     <div className="App">
       <Helmet>
+        {/* Title Tag */}
         <title>Services - Build Me A Website | Web Development & Digital Marketing</title>
+        
+        {/* Meta Description */}
         <meta
           name="description"
           content="Discover the services offered by Build Me A Website, including web development, SEO optimization, digital marketing strategies, and more."
         />
-      <meta name="keywords" content="web development, Ontario, Toronto, website design, web hosting, DNS management, SEO services, SEM strategies, digital marketing, responsive design, ecommerce solutions, UX/UI design, content management systems, website optimization, online branding, website maintenance, professional web services, web security, custom websites, domain registration, web analytics" />
 
+        {/* Meta Keywords */}
+        <meta
+          name="keywords"
+          content="web development, Ontario, Toronto, website design, web hosting, DNS management, SEO services, SEM strategies, digital marketing, responsive design, ecommerce solutions, UX/UI design, content management systems, website optimization, online branding, website maintenance, professional web services, web security, custom websites, domain registration, web analytics"
+        />
+
+        {/* Canonical URL */}
         <link rel="canonical" href="https://buildmeawebsite.ca/services" />
+
+        {/* Open Graph Tags */}
         <meta property="og:title" content="Services - Build Me A Website | Web Development & Digital Marketing" />
         <meta
           property="og:description"
@@ -36,7 +47,11 @@ function ServicesPage() {
         <meta property="og:url" content="https://buildmeawebsite.ca/services" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://buildmeawebsite.ca/og-image-services.jpg" />
+
+        {/* Robots Meta Tag */}
         <meta name="robots" content="index, follow" />
+
+        {/* Structured Data (Schema.org) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -60,6 +75,8 @@ function ServicesPage() {
             "description": "Build Me A Website provides expert web development and digital marketing services tailored to your business needs."
           })}
         </script>
+
+        {/* Google Analytics */}
         <script async src={`https://www.googletagmanager.com/gtag/js?id=G-YYTCRX2PFK`}></script>
         <script>
           {`
@@ -71,6 +88,7 @@ function ServicesPage() {
         </script>
       </Helmet>
 
+      {/* Parallax Section with Images */}
       <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Services.jpg`} />
       {!isMobile && (
         <>
@@ -78,6 +96,8 @@ function ServicesPage() {
           <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Services.jpg`} />
         </>
       )}
+      
+      {/* Services Page Main Content */}
       <ServicesPageMain />
     </div>
   );

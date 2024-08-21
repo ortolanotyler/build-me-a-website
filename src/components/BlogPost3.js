@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const BlogPost3 = () => {
   const [config, setConfig] = useState({ size: 120, y: 30 });
@@ -25,19 +26,62 @@ const BlogPost3 = () => {
 
   return (
     <div style={{ fontFamily: 'League Spartan, sans-serif', minHeight: '100vh', color: '#3a3a3a', backgroundColor: 'transparent' }}>
+      <Helmet>
+        <title>Responsiveness in Web Development - Build Me A Website</title>
+        <meta
+          name="description"
+          content="Learn about the importance of responsiveness in web development, including mobile-first design, performance optimization, and accessibility considerations."
+        />
+        <meta
+          name="keywords"
+          content="responsiveness, web development, mobile-first design, SEO, accessibility, responsive design, performance optimization"
+        />
+        <link rel="canonical" href="https://buildmeawebsite.ca/blog/responsiveness-in-web-development" />
+        <meta property="og:title" content="Responsiveness in Web Development - Build Me A Website" />
+        <meta
+          property="og:description"
+          content="Learn about the importance of responsiveness in web development, including mobile-first design, performance optimization, and accessibility considerations."
+        />
+        <meta property="og:url" content="https://buildmeawebsite.ca/blog/responsiveness-in-web-development" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://buildmeawebsite.ca/og-image-responsiveness.jpg" />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Responsiveness in Web Development",
+            "description": "Learn about the importance of responsiveness in web development, including mobile-first design, performance optimization, and accessibility considerations.",
+            "image": "https://buildmeawebsite.ca/og-image-responsiveness.jpg",
+            "author": {
+              "@type": "Organization",
+              "name": "Build Me A Website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Build Me A Website",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://buildmeawebsite.ca/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://buildmeawebsite.ca/blog/responsiveness-in-web-development"
+            },
+            "datePublished": "2024-08-21",
+            "dateModified": "2024-08-21"
+          })}
+        </script>
+      </Helmet>
       <header style={{ padding: '2rem 0 1rem', textAlign: 'center' }}>
         <h1 style={{ margin: 0, textTransform: 'uppercase', fontSize: '2rem', fontWeight: 'normal' }}>
           Responsiveness in Web Development
-          </h1>
+        </h1>
       </header>
       <main style={{ maxWidth: '700px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
         {!isSmallScreen ? (
-          <div style={{ 
-            display: 'flex', 
-            gap: '2rem', 
-            flexDirection: 'row', 
-            flexWrap: 'wrap' 
-          }}>
+          <div style={{ display: 'flex', gap: '2rem', flexDirection: 'row', flexWrap: 'wrap' }}>
             <div style={{ flex: 1 }}>
               <p>
                 In today's digital age, users access websites on a variety of devices ranging from desktops and laptops to tablets and smartphones. With such a wide array of screen sizes and resolutions, ensuring that your website is responsive has become a critical aspect of web development. Responsiveness refers to the ability of a website to adapt to different screen sizes and orientations, providing a consistent and user-friendly experience across all devices.
@@ -74,8 +118,7 @@ const BlogPost3 = () => {
             </div>
           </div>
         ) : (
-            <div
-            style = {{padding: '1rem 2rem', textAlign: 'left' }}>
+          <div style={{ padding: '1rem 2rem', textAlign: 'left' }}>
             <p>
               In today's digital age, users access websites on a variety of devices ranging from desktops and laptops to tablets and smartphones. With such a wide array of screen sizes and resolutions, ensuring that your website is responsive has become a critical aspect of web development. Responsiveness refers to the ability of a website to adapt to different screen sizes and orientations, providing a consistent and user-friendly experience across all devices.
             </p>

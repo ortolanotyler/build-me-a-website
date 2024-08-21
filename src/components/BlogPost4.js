@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const BlogPost4 = () => {
   const [config, setConfig] = useState({ size: 120, y: 30 });
@@ -25,19 +26,62 @@ const BlogPost4 = () => {
 
   return (
     <div style={{ fontFamily: 'League Spartan, sans-serif', minHeight: '100vh', color: '#3a3a3a', backgroundColor: 'transparent' }}>
+      <Helmet>
+        <title>Mastering Layouts with CSS Grid and Flexbox - Build Me A Website</title>
+        <meta
+          name="description"
+          content="Learn how to master layouts with CSS Grid and Flexbox, two powerful layout models that provide flexibility and control in modern web development."
+        />
+        <meta
+          name="keywords"
+          content="CSS Grid, Flexbox, web development, responsive design, layout models, modern web design, grid layout, flexbox layout"
+        />
+        <link rel="canonical" href="https://buildmeawebsite.ca/blog/mastering-layouts-with-css-grid-and-flexbox" />
+        <meta property="og:title" content="Mastering Layouts with CSS Grid and Flexbox - Build Me A Website" />
+        <meta
+          property="og:description"
+          content="Learn how to master layouts with CSS Grid and Flexbox, two powerful layout models that provide flexibility and control in modern web development."
+        />
+        <meta property="og:url" content="https://buildmeawebsite.ca/blog/mastering-layouts-with-css-grid-and-flexbox" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://buildmeawebsite.ca/og-image-grid-flexbox.jpg" />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Mastering Layouts with CSS Grid and Flexbox",
+            "description": "Learn how to master layouts with CSS Grid and Flexbox, two powerful layout models that provide flexibility and control in modern web development.",
+            "image": "https://buildmeawebsite.ca/og-image-grid-flexbox.jpg",
+            "author": {
+              "@type": "Organization",
+              "name": "Build Me A Website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Build Me A Website",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://buildmeawebsite.ca/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://buildmeawebsite.ca/blog/mastering-layouts-with-css-grid-and-flexbox"
+            },
+            "datePublished": "2024-08-21",
+            "dateModified": "2024-08-21"
+          })}
+        </script>
+      </Helmet>
       <header style={{ padding: '2rem 0 1rem', textAlign: 'center' }}>
         <h1 style={{ margin: '0 2rem', textTransform: 'uppercase', fontSize: '2rem', fontWeight: 'normal' }}>
           Mastering Layouts with CSS Grid and Flexbox
-          </h1>
+        </h1>
       </header>
       <main style={{ maxWidth: '700px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
         {!isSmallScreen ? (
-          <div style={{ 
-            display: 'flex', 
-            gap: '2rem', 
-            flexDirection: 'row', 
-            flexWrap: 'wrap' 
-          }}>
+          <div style={{ display: 'flex', gap: '2rem', flexDirection: 'row', flexWrap: 'wrap' }}>
             <div style={{ flex: 1 }}>
               <p>
                 In the world of web development, creating responsive and visually appealing layouts is a crucial task. CSS Grid and Flexbox are two powerful layout models that have revolutionized the way developers approach design. These tools provide developers with the flexibility to create complex and adaptive layouts with ease, making them indispensable in modern web design.
@@ -74,8 +118,7 @@ const BlogPost4 = () => {
             </div>
           </div>
         ) : (
-            <div
-            style = {{padding: '1rem 2rem', textAlign: 'left' }}>
+          <div style={{ padding: '1rem 2rem', textAlign: 'left' }}>
             <p>
               In the world of web development, creating responsive and visually appealing layouts is a crucial task. CSS Grid and Flexbox are two powerful layout models that have revolutionized the way developers approach design. These tools provide developers with the flexibility to create complex and adaptive layouts with ease, making them indispensable in modern web design.
             </p>
@@ -114,4 +157,3 @@ const BlogPost4 = () => {
 };
 
 export default BlogPost4;
-

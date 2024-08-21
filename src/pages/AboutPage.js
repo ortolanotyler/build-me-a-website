@@ -20,14 +20,25 @@ function AboutPage() {
   return (
     <div className="App">
       <Helmet>
+        {/* Title Tag */}
         <title>About Us - Build Me A Website</title>
+
+        {/* Meta Description */}
         <meta
           name="description"
           content="Learn more about Build Me A Website, a leading web development and digital marketing agency. Discover our mission, values, and team."
         />
-            <meta name="keywords" content="web development, Ontario, Toronto, website design, web hosting, DNS management, SEO services, SEM strategies, digital marketing, responsive design, ecommerce solutions, UX/UI design, content management systems, website optimization, online branding, website maintenance, professional web services, web security, custom websites, domain registration, web analytics" />
 
+        {/* Meta Keywords */}
+        <meta
+          name="keywords"
+          content="web development, Ontario, Toronto, website design, web hosting, DNS management, SEO services, SEM strategies, digital marketing, responsive design, ecommerce solutions, UX/UI design, content management systems, website optimization, online branding, website maintenance, professional web services, web security, custom websites, domain registration, web analytics"
+        />
+
+        {/* Canonical URL */}
         <link rel="canonical" href="https://buildmeawebsite.com/about" />
+
+        {/* Open Graph Tags */}
         <meta property="og:title" content="About Us - Build Me A Website" />
         <meta
           property="og:description"
@@ -36,7 +47,11 @@ function AboutPage() {
         <meta property="og:url" content="https://buildmeawebsite.ca/about" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://buildmeawebsite.ca/og-image-about.jpg" />
+
+        {/* Robots Meta Tag */}
         <meta name="robots" content="index, follow" />
+
+        {/* Structured Data (Schema.org) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -58,11 +73,12 @@ function AboutPage() {
             "contactPoint": {
               "@type": "ContactPoint",
               "contactType": "Customer Service",
-              
               "email": "contact@buildmeawebsite.ca"
             }
           })}
         </script>
+
+        {/* Google Analytics */}
         <script async src={`https://www.googletagmanager.com/gtag/js?id=G-YYTCRX2PFK`}></script>
         <script>
           {`
@@ -74,6 +90,7 @@ function AboutPage() {
         </script>
       </Helmet>
 
+      {/* Parallax Section with Images */}
       <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`} />
       {!isMobile && (
         <>
@@ -81,6 +98,8 @@ function AboutPage() {
           <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`} />
         </>
       )}
+
+      {/* About Page Main Content */}
       <AboutPageMainContent />
     </div>
   );

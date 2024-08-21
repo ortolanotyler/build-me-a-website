@@ -20,14 +20,25 @@ function ConsultationPage() {
   return (
     <div className="App">
       <Helmet>
+        {/* Title Tag */}
         <title>Free Consultation - Build Me A Website | Get Expert Advice</title>
+
+        {/* Meta Description */}
         <meta
           name="description"
           content="Book a free consultation with Build Me A Website to discuss your web development and digital marketing needs. Get expert advice tailored to your business."
         />
-      <meta name="keywords" content="web development, Ontario, Toronto, website design, web hosting, DNS management, SEO services, SEM strategies, digital marketing, responsive design, ecommerce solutions, UX/UI design, content management systems, website optimization, online branding, website maintenance, professional web services, web security, custom websites, domain registration, web analytics" />
 
+        {/* Meta Keywords */}
+        <meta
+          name="keywords"
+          content="web development, Ontario, Toronto, website design, web hosting, DNS management, SEO services, SEM strategies, digital marketing, responsive design, ecommerce solutions, UX/UI design, content management systems, website optimization, online branding, website maintenance, professional web services, web security, custom websites, domain registration, web analytics"
+        />
+
+        {/* Canonical URL */}
         <link rel="canonical" href="https://buildmeawebsite.ca/consultation" />
+
+        {/* Open Graph Tags */}
         <meta property="og:title" content="Free Consultation - Build Me A Website | Get Expert Advice" />
         <meta
           property="og:description"
@@ -36,7 +47,11 @@ function ConsultationPage() {
         <meta property="og:url" content="https://buildmeawebsite.ca/consultation" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://buildmeawebsite.ca/og-image-consultation.jpg" />
+
+        {/* Robots Meta Tag */}
         <meta name="robots" content="index, follow" />
+
+        {/* Structured Data (Schema.org) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -57,10 +72,12 @@ function ConsultationPage() {
             },
             "potentialAction": {
               "@type": "CommunicateAction",
-              "target": "mailto:support@buildmeawebsite.ca"
+              "target": "mailto:contact@buildmeawebsite.ca"
             }
           })}
         </script>
+
+        {/* Google Analytics */}
         <script async src={`https://www.googletagmanager.com/gtag/js?id=G-YYTCRX2PFK`}></script>
         <script>
           {`
@@ -72,15 +89,16 @@ function ConsultationPage() {
         </script>
       </Helmet>
 
+      {/* Parallax Section with Images */}
       <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
       {!isMobile && (
         <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
       )}
-      
+
+      {/* Contact Form Section */}
       <ContactForm />
     </div>
   );
 }
 
 export default ConsultationPage;
-

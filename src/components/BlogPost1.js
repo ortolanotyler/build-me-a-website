@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const BlogPost1 = () => {
   const [config, setConfig] = useState({ size: 120, y: 30 });
@@ -25,6 +26,54 @@ const BlogPost1 = () => {
 
   return (
     <div style={{ fontFamily: 'League Spartan, sans-serif', minHeight: '100vh', color: '#3a3a3a', backgroundColor: 'transparent' }}>
+      <Helmet>
+        <title>Understanding CSS: The Language of Web Design - Build Me A Website</title>
+        <meta
+          name="description"
+          content="Learn about CSS, the language that controls the presentation of web pages. This article covers everything from CSS basics to advanced techniques like Flexbox and Grid."
+        />
+        <meta
+          name="keywords"
+          content="CSS, web design, Flexbox, Grid, responsive design, web development, cascading style sheets"
+        />
+        <link rel="canonical" href="https://buildmeawebsite.ca/blog/understanding-css" />
+        <meta property="og:title" content="Understanding CSS: The Language of Web Design - Build Me A Website" />
+        <meta
+          property="og:description"
+          content="Learn about CSS, the language that controls the presentation of web pages. This article covers everything from CSS basics to advanced techniques like Flexbox and Grid."
+        />
+        <meta property="og:url" content="https://buildmeawebsite.ca/blog/understanding-css" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://buildmeawebsite.ca/og-image-css.jpg" />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Understanding CSS: The Language of Web Design",
+            "description": "Learn about CSS, the language that controls the presentation of web pages. This article covers everything from CSS basics to advanced techniques like Flexbox and Grid.",
+            "image": "https://buildmeawebsite.ca/og-image-css.jpg",
+            "author": {
+              "@type": "Organization",
+              "name": "Build Me A Website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Build Me A Website",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://buildmeawebsite.ca/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://buildmeawebsite.ca/blog/understanding-css"
+            },
+            "datePublished": "2024-08-21",
+            "dateModified": "2024-08-21"
+          })}
+        </script>
+      </Helmet>
       <header style={{ padding: '2rem 0 1rem', textAlign: 'center' }}>
         <h1 style={{ margin: 0, textTransform: 'uppercase', fontSize: '2rem', fontWeight: 'normal' }}>
           Understanding CSS: The Language of Web Design
@@ -32,12 +81,7 @@ const BlogPost1 = () => {
       </header>
       <main style={{ maxWidth: '700px', margin: '1rem auto', lineHeight: '1.5', textAlign: 'justify' }}>
         {!isSmallScreen ? (
-          <div style={{ 
-            display: 'flex', 
-            
-            flexDirection: 'row', 
-            flexWrap: 'wrap' 
-          }}>
+          <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
             <div style={{ flex: 1 }}>
               <p>
                 Cascading Style Sheets (CSS) is a stylesheet language used to control the presentation of web pages. While HTML provides the structure of a web page, CSS defines how it should look to users. CSS allows you to apply styles such as colors, fonts, and spacing to your HTML elements, creating a visually appealing and user-friendly experience.
@@ -74,9 +118,7 @@ const BlogPost1 = () => {
             </div>
           </div>
         ) : (
-          <div
-          style = {{padding: '1rem 2rem', textAlign: 'left' }}>
-          
+          <div style={{ padding: '1rem 2rem', textAlign: 'left' }}>
             <p>
               Cascading Style Sheets (CSS) is a stylesheet language used to control the presentation of web pages. While HTML provides the structure of a web page, CSS defines how it should look to users. CSS allows you to apply styles such as colors, fonts, and spacing to your HTML elements, creating a visually appealing and user-friendly experience.
             </p>

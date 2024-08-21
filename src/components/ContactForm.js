@@ -153,6 +153,7 @@ const ContactForm = () => {
                 InputLabelProps={{
                   style: { fontFamily: 'Nunito, sans-serif' },
                 }}
+                required
               />
             </FieldContainer>
             <FieldContainer>
@@ -167,6 +168,8 @@ const ContactForm = () => {
                 InputLabelProps={{
                   style: { fontFamily: 'Nunito, sans-serif' },
                 }}
+                type="email"
+                required
               />
             </FieldContainer>
             <FieldContainer>
@@ -211,6 +214,7 @@ const ContactForm = () => {
                 InputLabelProps={{
                   style: { fontFamily: 'Nunito, sans-serif' },
                 }}
+                required
               />
             </FieldContainer>
             <CheckboxContainer>

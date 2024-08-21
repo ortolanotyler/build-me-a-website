@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from './SubmitButtonComponent';
 
-const TitleBanner = styled.h1`  /* Updated to H1 for SEO */
+const TitleBanner = styled.h2`  /* Updated to H2 for consistency */
   font-family: 'Nunito', sans-serif;
-  font-weight: normal;
+  font-weight: 300;
   padding: 1rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 1rem; /* Space between the title and the cards */
@@ -17,18 +17,19 @@ const TitleBanner = styled.h1`  /* Updated to H1 for SEO */
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   @media (max-width: 480px) {
     font-size: 1.5rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 `;
 
 const IntroParagraph = styled.p`
   font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
+  font-weight: 300;
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 2.5rem;
@@ -51,12 +52,12 @@ const IntroParagraph = styled.p`
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
   background-color: #f8f8f8;
-  font-weight: normal;
+  font-weight: 300;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 5;
+  padding: 0;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
@@ -72,7 +73,7 @@ const Card = styled.div`
   background-color: #f8f8f8;
   max-width: 70%;
   font-family: 'Nunito', sans-serif;
-  margin: 0 auto 5rem auto;
+  margin: 0 auto 2.5rem auto;
   padding: 0 1rem;
   display: flex;
   flex-direction: ${({ isReversed }) => (isReversed ? 'row-reverse' : 'row')};
@@ -127,7 +128,7 @@ const CardContent = styled.div`
   }
 `;
 
-const CardTitle = styled.h2`  /* Updated to H2 for SEO */
+const CardTitle = styled.h3`  /* Updated to H3 for consistency */
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
   font-weight: normal;
@@ -137,8 +138,8 @@ const CardTitle = styled.h2`  /* Updated to H2 for SEO */
 
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
-  font-size: 1.25rem;
-  font-weight: normal;
+  font-size: 1rem;
+  font-weight: 300;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;

@@ -4,7 +4,7 @@ import SubmitButton from './SubmitButtonComponent';
 
 const TitleBanner = styled.h2`
   font-family: 'Nunito', sans-serif;
-  font-weight: normal;
+  font-weight: 300;
   padding: 1rem;
   font-size: 2rem;
   color: #3a3a3a;
@@ -16,19 +16,21 @@ const TitleBanner = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   @media (max-width: 480px) {
     font-size: 1.5rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 `;
 
 const IntroParagraph = styled.p`
   font-family: 'League Spartan', sans-serif;
   font-size: 1.25rem;
-  font-weight: normal;
+  font-weight: 300;
+      padding: 0 2rem;
+
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 2rem;
@@ -139,7 +141,7 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
-  font-weight: normal;
+  font-weight: 300;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
@@ -156,10 +158,13 @@ const CardsSection = () => {
 
   return (
     <>
-      <TitleBanner>More than just websites</TitleBanner>
+      <TitleBanner
+      style = {{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1) '}}
+      >
+      Building bridges in digital marketing</TitleBanner>
       <IntroParagraph>
-        We’re a small business like you, dedicated to helping fellow entrepreneurs thrive online. Let’s grow together!
-      </IntroParagraph>
+     We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.     </IntroParagraph>
+
 
       <CardContainer>
         {cards.map((card, index) => (

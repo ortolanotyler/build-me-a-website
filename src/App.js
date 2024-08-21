@@ -12,7 +12,6 @@ import HomePage from './pages/Home';
 import BlogPage from './pages/Blog';
 import ServicesPage from './pages/Services';
 import ConsultationPage from './pages/Consultation';
-import Sitemap from './pages/Sitemap';
 
 // Initialize Google Analytics
 ReactGA.initialize('G-YYTCRX2PFK');
@@ -59,8 +58,6 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/consultation" element={<ConsultationPage />} />
-            <Route path="/sitemap" element={<Sitemap />} />
-
           </Routes>
         </div>
 

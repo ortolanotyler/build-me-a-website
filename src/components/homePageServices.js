@@ -4,54 +4,54 @@ import SubmitButton from './SubmitButtonComponent';
 
 const TitleBanner = styled.h2`
   font-family: 'Nunito', sans-serif;
-  font-weight: normal;
+  font-weight: 300;
   padding: 1rem;
   font-size: 2rem;
   color: #3a3a3a;
   text-align: center;
-  margin-bottom: 2rem;
+
   background-color: #f8f8f8;
   width: 100%;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   @media (max-width: 480px) {
     font-size: 1.5rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 `;
 
 const IntroParagraph = styled.p`
   font-family: 'League Spartan', sans-serif;
-  font-size: 1.25rem;
-  font-weight: normal;
+  font-size: 1rem;
+  font-weight: 300;
   color: #3a3a3a;
   text-align: center;
-  margin-bottom: 2rem;
+ 
   line-height: 1.6;
   max-width: 70%;
   margin-left: auto;
   margin-right: auto;
 
   @media (max-width: 768px) {
-    font-size: 1.1rem;
-    max-width: 90%;
+    font-size: 1rem;
+    max-width: 60%;
   }
 
   @media (max-width: 480px) {
     font-size: 1rem;
-    max-width: 95%;
+    max-width: 70%;
   }
 `;
 
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
   background-color: #f8f8f8;
-  font-weight: 300;
+  font-weight: 200;
   display: flex;
   margin-right: 1rem;
   flex-direction: column;
@@ -71,8 +71,6 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   background-color: #f8f8f8;
-  
-
   max-width: 70%; /* Ensure the card does not exceed the viewport width */
   margin: 0 auto 1rem auto; /* Center the card with auto margins */
   padding: 2rem; /* Padding inside the card */
@@ -81,7 +79,6 @@ const Card = styled.div`
   align-items: center;
   text-align: left;
   overflow: hidden; /* Prevent content from overflowing */
-
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack items on smaller screens */
@@ -120,7 +117,7 @@ const CardImage = styled.img`
 
 const CardContent = styled.div`
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -134,7 +131,7 @@ const CardContent = styled.div`
 const CardTitle = styled.h3`
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
-  font-weight: normal;
+  font-weight: 200;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
@@ -142,10 +139,17 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
-  font-weight: normal;
+  font-weight: 300;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
+
+// CardWrapper component to prevent passing isReversed to the DOM
+const CardWrapper = ({ isReversed, children, ...rest }) => (
+  <Card isReversed={isReversed} {...rest}>
+    {children}
+  </Card>
+);
 
 const CardsSection = () => {
   const cards = [
@@ -159,14 +163,16 @@ const CardsSection = () => {
 
   return (
     <>
-      <TitleBanner>More than just websites</TitleBanner>
+      <TitleBanner
+      style = {{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1) '}}
+      >
+      Building bridges in digital marketing</TitleBanner>
       <IntroParagraph>
-        Our goal is to help you grow your revenue by expanding your digital reach and attracting more potential customers.
-      </IntroParagraph>
+     We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.     </IntroParagraph>
 
       <CardContainer>
         {cards.map((card, index) => (
-          <Card key={index} isReversed={index % 2 !== 0}>
+          <CardWrapper key={index} isReversed={index % 2 !== 0}>
             <CardImageWrapper>
               <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.description} />
             </CardImageWrapper>
@@ -174,7 +180,7 @@ const CardsSection = () => {
               <CardTitle>{card.title}</CardTitle>
               <CardDescription>{card.description}</CardDescription>
             </CardContent>
-          </Card>
+          </CardWrapper>
         ))}
       </CardContainer>
       <SubmitButton to='/consultation' text="Book a Free Consultation" />

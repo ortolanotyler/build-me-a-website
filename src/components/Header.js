@@ -43,7 +43,7 @@ const Header = () => {
   };
 
   const headerStyle = {
-    fontFamily: 'League Spartan, sans-serif',
+    fontFamily: 'Nunito, sans-serif',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -59,7 +59,7 @@ const Header = () => {
   };
 
   const navContainerStyle = {
-    fontFamily: 'League Spartan, sans-serif',
+    fontFamily: 'Nunito, sans-serif',
     fontSize: '1.25rem',
     textShadow : '1px 2px 2px rgba(0, 0, 0, 0.5)',
     display: isMobile ? 'none' : 'flex',
@@ -75,9 +75,9 @@ const Header = () => {
   };
 
   const drawerListStyle = {
-    fontFamily: 'League Spartan, sans-serif',
-
-    width: '250px',
+    fontFamily: 'Nunito, sans-serif',
+    textShadow : '1px 2px 2px rgba(0, 0, 0, 0.5)',  
+    minWidth: '250px',
     color: '#f8f8f8',
   };
 

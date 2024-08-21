@@ -140,6 +140,12 @@ const CardDescription = styled.p`
   margin-bottom: 1rem;
 `;
 
+const CardWrapper = ({ isReversed, children, ...rest }) => (
+  <Card isReversed={isReversed} {...rest}>
+    {children}
+  </Card>
+);
+
 const AboutPageMainContent = () => {
   const cards = [
     { title: "Understanding Your Business", description: "We begin by understanding your business and brand, ensuring our strategies align with your goals and resonate with your audience.", href: '#card1', image: '/Images/1.png' },
@@ -161,15 +167,15 @@ const AboutPageMainContent = () => {
 
       <CardContainer>
         {cards.map((card, index) => (
-          <Card key={index} isReversed={index % 2 !== 0}>
-            <CardImageWrapper>
-              <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.title} />
-            </CardImageWrapper>
-            <CardContent>
-              <CardTitle>{card.title}</CardTitle>
-              <CardDescription>{card.description}</CardDescription>
-            </CardContent>
-          </Card>
+         <CardWrapper key={index} isReversed={index % 2 !== 0}>
+         <CardImageWrapper>
+           <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.title} />
+         </CardImageWrapper>
+         <CardContent>
+           <CardTitle>{card.title}</CardTitle>
+           <CardDescription>{card.description}</CardDescription>
+         </CardContent>
+       </CardWrapper>
         ))}
       </CardContainer>
 

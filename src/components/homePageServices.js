@@ -4,54 +4,54 @@ import SubmitButton from './SubmitButtonComponent';
 
 const TitleBanner = styled.h2`
   font-family: 'Nunito', sans-serif;
-  font-weight: 300;
+  font-weight: normal;
   padding: 1rem;
   font-size: 2rem;
   color: #3a3a3a;
   text-align: center;
-
+  margin-bottom: 2rem;
   background-color: #f8f8f8;
   width: 100%;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   @media (max-width: 480px) {
     font-size: 1.5rem;
-    padding: 1rem;
+    padding: 0.5rem;
   }
 `;
 
 const IntroParagraph = styled.p`
   font-family: 'League Spartan', sans-serif;
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 1.25rem;
+  font-weight: normal;
   color: #3a3a3a;
   text-align: center;
- 
+  margin-bottom: 2rem;
   line-height: 1.6;
   max-width: 70%;
   margin-left: auto;
   margin-right: auto;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
-    max-width: 60%;
+    font-size: 1.1rem;
+    max-width: 90%;
   }
 
   @media (max-width: 480px) {
     font-size: 1rem;
-    max-width: 70%;
+    max-width: 95%;
   }
 `;
 
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
   background-color: #f8f8f8;
-  font-weight: 200;
+  font-weight: 300;
   display: flex;
   margin-right: 1rem;
   flex-direction: column;
@@ -75,7 +75,7 @@ const Card = styled.div`
   margin: 0 auto 1rem auto; /* Center the card with auto margins */
   padding: 2rem; /* Padding inside the card */
   display: flex;
-  flex-direction: ${({ isReversed }) => (isReversed ? 'row-reverse' : 'row')}; /* Alternate layout */
+  flex-direction: ${({ reversed }) => (reversed ? 'row-reverse' : 'row')}; /* Alternate layout */
   align-items: center;
   text-align: left;
   overflow: hidden; /* Prevent content from overflowing */
@@ -117,7 +117,7 @@ const CardImage = styled.img`
 
 const CardContent = styled.div`
   flex: 1;
-  padding: 1rem;
+  padding: 1.5rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -131,7 +131,7 @@ const CardContent = styled.div`
 const CardTitle = styled.h3`
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
-  font-weight: 200;
+  font-weight: normal;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
@@ -139,17 +139,10 @@ const CardTitle = styled.h3`
 const CardDescription = styled.p`
   font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: normal;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;
-
-// CardWrapper component to prevent passing isReversed to the DOM
-const CardWrapper = ({ isReversed, children, ...rest }) => (
-  <Card isReversed={isReversed} {...rest}>
-    {children}
-  </Card>
-);
 
 const CardsSection = () => {
   const cards = [
@@ -163,16 +156,14 @@ const CardsSection = () => {
 
   return (
     <>
-      <TitleBanner
-      style = {{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1) '}}
-      >
-      Building bridges in digital marketing</TitleBanner>
+      <TitleBanner>More than just websites</TitleBanner>
       <IntroParagraph>
-     We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.     </IntroParagraph>
+        We’re a small business like you, dedicated to helping fellow entrepreneurs thrive online. Let’s grow together!
+      </IntroParagraph>
 
       <CardContainer>
         {cards.map((card, index) => (
-          <CardWrapper key={index} isReversed={index % 2 !== 0}>
+          <Card key={index} reversed={index % 2 !== 0}>
             <CardImageWrapper>
               <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.description} />
             </CardImageWrapper>
@@ -180,7 +171,7 @@ const CardsSection = () => {
               <CardTitle>{card.title}</CardTitle>
               <CardDescription>{card.description}</CardDescription>
             </CardContent>
-          </CardWrapper>
+          </Card>
         ))}
       </CardContainer>
       <SubmitButton to='/consultation' text="Book a Free Consultation" />

@@ -23,7 +23,7 @@ const bubbleMove = keyframes`
 
 const Body = styled.div`
   display: grid;
-  grid-template-rows: 1fr 15rem auto;
+  grid-template-rows: 1fr 10rem auto;
   grid-template-areas: "main" "." "footer";
   overflow-x: hidden;
   background: #f8f8f8;
@@ -121,12 +121,13 @@ const Footer = () => {
             key={i}
             className="bubble"
             style={{
-              '--size': `${2 + Math.random() * 3}rem`,
-              '--distance': `${5 + Math.random() * 6}rem`,
-              '--position': `${-10 + Math.random() * 110}%`,
-              '--time': `${10 + Math.random() * 3}s`,
-              '--delay': `${-1 * (2 + Math.random() * 2)}s`
+              '--size': `${2 + Math.random() * 2}rem`,  // Based on the CSS, max size should be 4rem (2 + 2)
+              '--distance': `${5 + Math.random() * 4}rem`, // Bottom is -4rem to 10rem, so distance should be 10rem as a minimum and add up to 14rem
+              '--position': `${Math.random() * 100}%`, // Position range should be from 0% to 100% (not negative)
+              '--time': `${4 + Math.random() * 4}s`, // Based on animation time (4s default in bubble-size and bubble-move)
+              '--delay': `${-1 * Math.random() * 2}s` // Delay should align with a random value (negative to 0s)
             }}
+            
           />
         ))}
       </Bubbles>

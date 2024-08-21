@@ -98,14 +98,14 @@ function HomePage() {
       </Helmet>
 
       {/* Parallax Section with Images */}
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/14.jpg`} />
+      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/1.webp`} />
       {!isMobile && (
         <>
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/14.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/14.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/15.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/15.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/15.jpg`} />
+          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/1.webp`} />
+          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/1.webp`} />
+          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/2.webp`} />
+          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/2.webp`} />
+          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/2.webp`} />
         </>
       )}
       

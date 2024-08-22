@@ -158,6 +158,8 @@ const CardsSection = () => {
 
   return (
     <>
+          <SubmitButton to='/consultation' text="Book a Free Consultation" />
+
       <TitleBanner
       style = {{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1) '}}
       >

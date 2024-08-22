@@ -9,14 +9,14 @@ const TitleBanner = styled.h2`
   font-size: 2rem;
   color: #3a3a3a;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: #f8f8f8;
   width: 100%;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    padding: 1rem;
+    padding: 1rem 1rem;
   }
 
   @media (max-width: 480px) {
@@ -29,7 +29,7 @@ const IntroParagraph = styled.p`
   font-family: 'League Spartan', sans-serif;
   font-size: 1.25rem;
   font-weight: 300;
-      padding: 0 2rem;
+      padding: 1 2rem;
 
   color: #3a3a3a;
   text-align: center;

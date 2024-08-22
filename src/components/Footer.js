@@ -28,6 +28,7 @@ const Body = styled.div`
   overflow-x: hidden;
   background: #f8f8f8;
   min-height: 2vh;
+  width: '100vw';
   font-family: 'Open Sans', sans-serif;
 `;
 

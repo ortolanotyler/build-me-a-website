@@ -4,8 +4,9 @@ import { styled } from '@mui/system';
 
 const Contact = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#f8f8f8',
+  backgroundColor: 'transparent',
   padding: '2rem 2rem 2rem',
+  margin: '20px 0',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -134,10 +135,8 @@ const ContactForm = () => {
       
       ) : (
         <>
-          <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
-            Free Consultation
-          </Typography>
-          <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
+     
+          <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}>
             Fill out the form below to get in touch with us and let us know how we can assist you.
           </Typography>
           <FormContainer onSubmit={handleSubmit}>

@@ -92,9 +92,11 @@ function ConsultationPage() {
       {/* Parallax Section with Images */}
       <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
       {!isMobile && (
+
         <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} >
           <ContactForm />
         </ParallaxSection>      )}
+        <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
         <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
         <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
 

@@ -34,7 +34,6 @@ const CenteredWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-    box-shadow: 0 0 5px (0,0,0,1); /* Add a subtle shadow */
 
   width: 100%;
   padding: 1rem 0;

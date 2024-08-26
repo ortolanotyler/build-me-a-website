@@ -158,7 +158,6 @@ const CardsSection = () => {
 
   return (
     <>
-          <SubmitButton to='/consultation' text="Book a Free Consultation" />
 
       <TitleBanner
       style = {{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1) '}}
@@ -166,6 +165,7 @@ const CardsSection = () => {
       Building bridges in digital marketing</TitleBanner>
       <IntroParagraph>
      We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.     </IntroParagraph>
+     <SubmitButton to='/consultation' text="Book a Free Consultation" />
 
 
       <CardContainer>

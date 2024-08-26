@@ -21,26 +21,10 @@ const bubbleMove = keyframes`
   }
 `;
 
-const Body = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 10rem auto;
-  grid-template-areas: "main" "." "footer";
-  overflow-x: hidden;
-  background: #f8f8f8;
-  min-height: 2vh;
-  width: '100vw';
-  font-family: 'Open Sans', sans-serif;
-`;
-
-const Main = styled.div`
-  grid-area: main;
-`;
-
 const FooterContainer = styled.div`
   z-index: 1;
   --footer-background: #bbd7ec;
   display: grid;
-  
   position: relative;
   grid-area: footer;
 `;
@@ -61,6 +45,11 @@ const Bubbles = styled.div`
     animation: ${bubbleSize} var(--time, 4s) ease-in infinite var(--delay, 0s),
                ${bubbleMove} var(--time, 4s) ease-in infinite var(--delay, 0s);
     transform: translate(-50%, 100%);
+  }
+
+  /* Hide bubbles on mobile */
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -128,7 +117,6 @@ const Footer = () => {
               '--time': `${4 + Math.random() * 4}s`, // Based on animation time (4s default in bubble-size and bubble-move)
               '--delay': `${-1 * Math.random() * 2}s` // Delay should align with a random value (negative to 0s)
             }}
-            
           />
         ))}
       </Bubbles>
@@ -158,26 +146,4 @@ const Footer = () => {
   );
 };
 
-const App = () => {
-  return (
-    <Body>
-      <Main />
-      <Footer />
-      <svg style={{ position: 'fixed', top: '100vh' }}>
-        <defs>
-          <filter id="blob">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-              result="blob"
-            />
-          </filter>
-        </defs>
-      </svg>
-    </Body>
-  );
-};
-
-export default App;
+export default Footer;

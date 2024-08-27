@@ -185,7 +185,9 @@ const AboutPageMainContent = () => {
       <IntroParagraph>
         Ready to bring your ideas to life? Let's get started!
       </IntroParagraph>
+      <div style = {{padding: '5rem'}}>
       <SubmitButton to='/consultation' text="Book a Free Consultation" />
+      </div>
     </>
   );
 };

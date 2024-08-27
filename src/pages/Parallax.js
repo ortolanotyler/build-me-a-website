@@ -17,7 +17,7 @@ const ParallaxSection = ({ image, children, showOnMobile = true }) => {
 
   const parallaxStyle = {
     backgroundImage: `url(${image})`,
-    minHeight: '300px',
+    minHeight: '50vh',
     backgroundAttachment: isMobile ? 'scroll' : 'fixed',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',

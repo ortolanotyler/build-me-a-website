@@ -4,9 +4,8 @@ import { styled } from '@mui/system';
 
 const Contact = styled('div')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
-  backgroundColor: 'transparent',
+  backgroundColor: '#f8f8f8',
   padding: '2rem 2rem 2rem',
-  margin: '20px 0',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -22,8 +21,8 @@ const Contact = styled('div')(({ theme }) => ({
 const FormContainer = styled('form')(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
   width: '100%',
-  maxWidth: '350px',
-  backgroundColor: '#transparent',
+  maxWidth: '400px',
+  backgroundColor: '#bbd7ec',
   padding: '30px',
   borderRadius: '20px',
   boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
@@ -46,7 +45,7 @@ const CheckboxContainer = styled('div')({
 
 const StyledButton = styled(Button)(({ theme }) => ({
   fontFamily: 'Nunito, sans-serif',
-  backgroundColor: '#f8f8f8',
+  backgroundColor: '#3A3A3A',
   color: '#f8f8f8',
   fontSize: '1rem',
   padding: '1rem 2rem',
@@ -62,14 +61,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   '&:active': {
     transform: 'scale(0.95)',
     boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-    backgroundColor: '#3a3a3a',
-  },
-}));
-
-const CustomCheckbox = styled(Checkbox)(({ theme }) => ({
-  color: '#f8f8f8',
-  '&.Mui-checked': {
-    color: '#f8f8f8',
+    backgroundColor: '#3A3A3A',
   },
 }));
 
@@ -135,15 +127,17 @@ const ContactForm = () => {
         <Typography
           variant="h5"
           align="center"
-          style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}
+          style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
         >
           Thank you! We will be in touch within 1 business day.
         </Typography>
       
       ) : (
         <>
-     
-          <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}>
+          <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
+            Free Consultation
+          </Typography>
+          <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
             Fill out the form below to get in touch with us and let us know how we can assist you.
           </Typography>
           <FormContainer onSubmit={handleSubmit}>
@@ -159,7 +153,6 @@ const ContactForm = () => {
                 InputLabelProps={{
                   style: { fontFamily: 'Nunito, sans-serif' },
                 }}
-                required
               />
             </FieldContainer>
             <FieldContainer>
@@ -174,8 +167,6 @@ const ContactForm = () => {
                 InputLabelProps={{
                   style: { fontFamily: 'Nunito, sans-serif' },
                 }}
-                type="email"
-                required
               />
             </FieldContainer>
             <FieldContainer>
@@ -220,82 +211,81 @@ const ContactForm = () => {
                 InputLabelProps={{
                   style: { fontFamily: 'Nunito, sans-serif' },
                 }}
-                required
               />
             </FieldContainer>
             <CheckboxContainer>
-              <Typography variant="h5" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}>
+              <Typography variant="h5" gutterBottom style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}>
                 What can we do for you?
               </Typography>
               <Grid container spacing={1}>
                 <Grid item xs={12} sm={6}>
                   <FormControlLabel
                     control={
-                      <CustomCheckbox
+                      <Checkbox
                         checked={formValues.services.webDevelopment}
                         onChange={handleCheckboxChange}
                         name="webDevelopment"
                       />
                     }
                     label="Web Development"
-                    style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
                   />
                   <FormControlLabel
                     control={
-                      <CustomCheckbox
+                      <Checkbox
                         checked={formValues.services.seoOptimization}
                         onChange={handleCheckboxChange}
                         name="seoOptimization"
                       />
                     }
                     label="Search Engine Optimization"
-                    style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
                   />
                   <FormControlLabel
                     control={
-                      <CustomCheckbox
+                      <Checkbox
                         checked={formValues.services.webDesign}
                         onChange={handleCheckboxChange}
                         name="webDesign"
                       />
                     }
                     label="Web Design"
-                    style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <FormControlLabel
                     control={
-                      <CustomCheckbox
+                      <Checkbox
                         checked={formValues.services.uiUxDesign}
                         onChange={handleCheckboxChange}
                         name="uiUxDesign"
                       />
                     }
                     label="UI/UX Design"
-                    style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
                   />
                   <FormControlLabel
                     control={
-                      <CustomCheckbox
+                      <Checkbox
                         checked={formValues.services.digitalMarketing}
                         onChange={handleCheckboxChange}
                         name="digitalMarketing"
                       />
                     }
                     label="Digital Marketing"
-                    style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
                   />
                   <FormControlLabel
                     control={
-                      <CustomCheckbox
+                      <Checkbox
                         checked={formValues.services.dnsMigration}
                         onChange={handleCheckboxChange}
                         name="dnsMigration"
                       />
                     }
                     label="DNS Migration"
-                    style={{ fontFamily: 'Nunito, sans-serif', color: '#f8f8f8' }}
+                    style={{ fontFamily: 'Nunito, sans-serif', color: '#3A3A3A' }}
                   />
                 </Grid>
               </Grid>

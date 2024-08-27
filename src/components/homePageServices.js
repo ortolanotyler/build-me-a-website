@@ -181,7 +181,10 @@ const CardsSection = () => {
           </Card>
         ))}
       </CardContainer>
+      <div style = {{paddingBottom: '10rem'}}>
       <SubmitButton to='/consultation' text="Book a Free Consultation" />
+
+      </div>
     </>
   );
 };

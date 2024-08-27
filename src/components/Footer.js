@@ -105,21 +105,7 @@ const Content = styled.div`
 const Footer = () => {
   return (
     <FooterContainer>
-      <Bubbles>
-        {[...Array(18)].map((_, i) => (
-          <div
-            key={i}
-            className="bubble"
-            style={{
-              '--size': `${2 + Math.random() * 2}rem`,  // Based on the CSS, max size should be 4rem (2 + 2)
-              '--distance': `${5 + Math.random() * 4}rem`, // Bottom is -4rem to 10rem, so distance should be 10rem as a minimum and add up to 14rem
-              '--position': `${Math.random() * 100}%`, // Position range should be from 0% to 100% (not negative)
-              '--time': `${4 + Math.random() * 4}s`, // Based on animation time (4s default in bubble-size and bubble-move)
-              '--delay': `${-1 * Math.random() * 2}s` // Delay should align with a random value (negative to 0s)
-            }}
-          />
-        ))}
-      </Bubbles>
+     
       <Content>
         <div>
           <div>

@@ -28,10 +28,7 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
-  const [scrollDirection, setScrollDirection] = useState(null);
-  const [textColor, setTextColor] = useState('#f8f8f8');
-
-  let lastScrollY = window.scrollY;
+  const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,36 +36,31 @@ const Header = () => {
     };
 
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setScrollDirection('down');
-      } else {
-        setScrollDirection('up');
-      }
-      lastScrollY = window.scrollY;
-    };
-
-    const handleHeaderVisibility = () => {
       if (window.scrollY === 0) {
         setShowHeader(true);
-        setTextColor('#3a3a3a'); // Dark text color at top
-      } else if (scrollDirection === 'down') {
-        setShowHeader(false);
-      } else if (scrollDirection === 'up') {
-        setShowHeader(true);
-        setTextColor('#f8f8f8'); // Light text color when scrolling
+        setLastScrollY(window.scrollY);
+        return;
       }
+
+      if (window.scrollY > lastScrollY) {
+        // Scrolling down
+        setShowHeader(false);
+      } else {
+        // Scrolling up
+        setShowHeader(true);
+      }
+
+      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('scroll', handleHeaderVisibility);
 
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('scroll', handleHeaderVisibility);
     };
-  }, [scrollDirection]);
+  }, [lastScrollY]);
 
   const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
@@ -113,7 +105,7 @@ const Header = () => {
 
   const mobileMenuIconStyle = {
     display: isMobile ? 'block' : 'none',
-    color: textColor,
+    color: '#3a3a3a',
     fontSize: '3rem',
   };
 
@@ -163,7 +155,7 @@ const Header = () => {
         sx={mobileMenuIconStyle}
         onClick={toggleDrawer(true)}
         onMouseEnter={(e) => e.currentTarget.style.color = '#a0d2eb'}
-        onMouseLeave={(e) => e.currentTarget.style.color = textColor}
+        onMouseLeave={(e) => e.currentTarget.style.color = '#3a3a3a'}
         style={{ cursor: 'pointer' }}
       >
         <MenuIcon />

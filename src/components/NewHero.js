@@ -42,7 +42,7 @@ const NewHero = () => {
                     position: 'absolute',
                     top: 350,
                     left: isVisible ? '-150px' : '-100%',
-                    maxWidth: '500px',
+                    maxWidth: '550px',
                     height: 'auto',
                     zIndex: 1,
                     transition: 'left 1s ease-in-out',

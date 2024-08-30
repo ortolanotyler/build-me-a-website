@@ -10,7 +10,7 @@ const TitleBanner = styled.h2`
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 1rem;
-  background-color: #f8f8f8;
+  background-color: #fcfaf4;
   width: 100%;
   box-sizing: border-box;
 
@@ -52,7 +52,7 @@ const IntroParagraph = styled.p`
 
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
-  background-color: #f8f8f8;
+  background-color: #fcfaf4;
   font-weight: 300;
   display: flex;
   margin-right: 1rem;
@@ -72,7 +72,7 @@ const CardContainer = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: #f8f8f8;
+  background-color: #fcfaf4;
   max-width: 70%; /* Ensure the card does not exceed the viewport width */
   margin: 0 auto 1rem auto; /* Center the card with auto margins */
   padding: 2rem; /* Padding inside the card */

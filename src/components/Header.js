@@ -8,19 +8,19 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import styledComponents from 'styled-components';
 
-// Import Nunito font from Google Fonts in your index.html or main CSS file
-// <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;600;700;800&display=swap" rel="stylesheet">
+const logo = `${process.env.PUBLIC_URL}/Images/logo.png`;
 
 const StyledLink = styledComponents(Link)`
   text-decoration: none;
-  color: #f8f8f8;
-  font-family: 'Nunito', sans-serif; /* Ensure the correct syntax with quotes */
-  font-size: 1.25rem;
+  color: #3a3a3a;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem; /* Increased font size */
   font-weight: 100;
   transition: color 0.3s ease-in-out;
+  cursor: pointer; /* Show hand cursor on hover */
 
   &:hover {
-    color: #bbd7ec;
+    color: #a0d2eb; /* Pastel blue */
   }
 `;
 
@@ -29,6 +29,7 @@ const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [scrollDirection, setScrollDirection] = useState(null);
+  const [textColor, setTextColor] = useState('#f8f8f8');
 
   let lastScrollY = window.scrollY;
 
@@ -48,21 +49,14 @@ const Header = () => {
 
     const handleHeaderVisibility = () => {
       if (window.scrollY === 0) {
-        // Always show the header when at the top of the page
         setShowHeader(true);
+        setTextColor('#3a3a3a'); // Dark text color at top
       } else if (scrollDirection === 'down') {
         setShowHeader(false);
       } else if (scrollDirection === 'up') {
         setShowHeader(true);
+        setTextColor('#f8f8f8'); // Light text color when scrolling
       }
-
-      // Fade out after stopping scroll
-      clearTimeout(window.hideHeaderTimeout);
-      window.hideHeaderTimeout = setTimeout(() => {
-        if (window.scrollY !== 0) {
-          setShowHeader(false);
-        }
-      }, 2000);
     };
 
     window.addEventListener('resize', handleResize);
@@ -85,12 +79,14 @@ const Header = () => {
   };
 
   const headerStyle = {
-    fontFamily: "'Nunito', sans-serif", // Ensure correct syntax with quotes
+    fontFamily: "Merriweather, serif", // Apply Merriweather font
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between', // Adjusted to add space for logo
     alignItems: 'center',
-    padding: '5rem 1rem',
+    padding: '1.25rem', // Increased padding for bigger size
+    marginBottom: '2rem',
     backgroundColor: 'transparent',
+    backdropFilter: 'blur(2.5px)',
     position: 'fixed',
     top: '0',
     left: '0',
@@ -101,27 +97,28 @@ const Header = () => {
     transition: 'transform 0.3s ease-in-out, opacity 0.5s ease-in-out',
     transform: showHeader ? 'translateY(0)' : 'translateY(-100%)',
     opacity: showHeader ? '1' : '0',
+    boxShadow: 'none', // Removed box shadow
   };
 
   const navContainerStyle = {
-    fontFamily: "'Nunito', sans-serif",
-    fontSize: '1.25rem',
-    textShadow: '1px 2px 2px rgba(0, 0, 0, 0.5)',
+    fontFamily: "Merriweather, serif", // Apply Merriweather font
+    fontSize: '1.25rem', // Increased font size
+    textShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
     display: isMobile ? 'none' : 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '2rem',
+    gap: '1.5rem',
   };
 
   const mobileMenuIconStyle = {
     display: isMobile ? 'block' : 'none',
-    color: '#f8f8f8',
+    color: textColor,
     fontSize: '3rem',
   };
 
   const drawerListStyle = {
-    fontFamily: "'Nunito', sans-serif",
-    textShadow: '1px 2px 2px rgba(0, 0, 0, 0.5)',
+    fontFamily: "Merriweather, serif", // Apply Merriweather font
+    textShadow: '1px 2px 2px rgba(0, 0, 0, 0.1)',
     minWidth: '250px',
     color: '#f8f8f8',
   };
@@ -148,6 +145,9 @@ const Header = () => {
 
   return (
     <header style={headerStyle}>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <img src={logo} alt="Logo" style={{ height: '80px' }} /> {/* Adjust the height as needed */}
+      </Link>
       <nav style={navContainerStyle}>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/about">About</StyledLink>
@@ -155,7 +155,15 @@ const Header = () => {
         <StyledLink to="/blog">Blog</StyledLink>
         <StyledLink to="/consultation">Free Consultation</StyledLink>
       </nav>
-      <IconButton edge="start" color="inherit" aria-label="menu" sx={mobileMenuIconStyle} onClick={toggleDrawer(true)}>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        sx={mobileMenuIconStyle}
+        onClick={toggleDrawer(true)}
+        onMouseEnter={(e) => e.currentTarget.style.color = '#a0d2eb'}
+        onMouseLeave={(e) => e.currentTarget.style.color = textColor}
+      >
         <MenuIcon />
       </IconButton>
       <Drawer
@@ -164,8 +172,9 @@ const Header = () => {
         onClose={toggleDrawer(false)}
         PaperProps={{
           style: {
-            backgroundColor: 'rgba(0, 0, 0, 0.1)', // Semi-transparent black background for drawer
-            color: '#f8f8f8',
+            backgroundColor: 'transparent',
+            backdropFilter: 'blur(20px)',
+            color: 'transparent',
           },
         }}
       >
@@ -176,4 +185,3 @@ const Header = () => {
 };
 
 export default Header;
-

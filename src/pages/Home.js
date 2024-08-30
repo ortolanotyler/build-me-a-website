@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import ParallaxSection from './Parallax';
 import HomeServices from '../components/homePageServices';
+import NewHero from '../components/NewHero';
 
 function HomePage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -18,7 +19,7 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="App" style={{ backgroundColor: '#f8f8f8', padding: '0px' }}>
+    <div className="App" style={{ backgroundColor: '#fcfaf4' }}>
       <Helmet>
         {/* Title Tag */}
         <title>Build Me A Website - Top Web Development & Digital Marketing Agency</title>
@@ -97,19 +98,10 @@ function HomePage() {
         </script>
       </Helmet>
 
-      {/* Parallax Section with Images */}
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/1.jpg`} />
-      {!isMobile && (
-        <>
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/1.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/1.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/2.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/2.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/2.jpg`} />
-        </>
-      )}
+     
       
       {/* Home Services Section */}
+      <NewHero />
       <HomeServices />
     </div>
   );

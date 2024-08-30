@@ -51,7 +51,7 @@ function App() {
         <Header />
         <ScrollToTop />
 
-        <div style={{ background: '#f8f8f8', padding: '0px, 0px' }}>
+        <div style={{ background: '#fcfaf4' }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

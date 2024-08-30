@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const NewHero = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [scrollY, setScrollY] = useState(window.scrollY);
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 900);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -13,12 +14,20 @@ const NewHero = () => {
             setScrollY(window.scrollY);
         };
 
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 900);
+        };
+
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    const textColor = isSmallScreen ? '#f4e1d2' : '#3a3a3a';
 
     return (
         <div style={{
@@ -63,15 +72,14 @@ const NewHero = () => {
                 fontFamily: 'League Spartan, sans-serif',
                 fontSize: '5rem',
                 fontWeight: 700,
-                padding: '1rem',
-                color: '#3a3a3a',
+                color: textColor, // Change color based on screen size
                 zIndex: 4,
                 lineHeight: '4.5rem',
                 margin: '0',
                 letterSpacing: '-0.2rem',
                 position: 'relative',
                 top: isVisible ? '0' : '-100px',
-                transition: 'top 1s ease-in-out',
+                transition: 'top 1s ease-in-out, color 0.3s ease-in-out', // Add transition for color change
                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'
             }}>
                 Building Bridges
@@ -79,7 +87,7 @@ const NewHero = () => {
 
             <h2 style={{
                 fontFamily: 'Nunito, sans-serif',
-                padding: '1rem',
+                padding: '0.25rem 3rem',
                 fontSize: '3rem',
                 fontWeight: 700,
                 color: '#a0d2eb',
@@ -95,13 +103,13 @@ const NewHero = () => {
             <p style={{
                 fontFamily: 'Nunito, sans-serif',
                 fontSize: '1rem',
-                color: '#3a3a3a',
+                color: textColor, // Change color based on screen size
                 letterSpacing: '0.1rem',
                 marginBottom: '2rem',
                 textTransform: 'uppercase',
                 zIndex: 4,
                 opacity: isVisible ? 1 : 0,
-                transition: 'opacity 1s ease-in-out 1s',
+                transition: 'opacity 1s ease-in-out 1s, color 0.3s ease-in-out', // Add transition for color change
                 textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
             }}>
                 ONTARIO WEBSITES AND SEO

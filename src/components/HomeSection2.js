@@ -87,7 +87,7 @@ const ComponentA = () => {
   return (
     <Container>
       <ImagesWrapper>
-        <Image src={`${process.env.PUBLIC_URL}/Images/image1.png`} alt="Image 1" />
+        <Image src={`${process.env.PUBLIC_URL}/Images/jackiewyers.png`} alt="hello 1" />
         <Image src={`${process.env.PUBLIC_URL}/Images/image2.png`} alt="Image 2" />
         <Image src={`${process.env.PUBLIC_URL}/Images/image3.png`} alt="Image 3" />
         <Image src={`${process.env.PUBLIC_URL}/Images/image4.png`} alt="Image 4" />
@@ -95,13 +95,11 @@ const ComponentA = () => {
       </ImagesWrapper>
       <TextWrapper>
         <Heading>
-          Owned and operated by the founder of an e-commerce brand, <EmphasizedText>Hey Frankie is the digital marketing agency we always wished we had.</EmphasizedText>
-        </Heading>
+insert text here for a hero        </Heading>
         <Paragraph>
-          We’ve all experienced the same song and dance—you get a great agency pitch, hand over some cash, and begin to wonder, “Where are the results?”
-        </Paragraph>
+we're a small business..         </Paragraph>
         <Paragraph>
-          We wanted someone who walks the walk. So we did it ourselves.
+come check us out.. 
         </Paragraph>
       </TextWrapper>
     </Container>

@@ -8,35 +8,41 @@ const Button = styled.button`
   font-weight: 200;
   opacity: 1;
   color: #f8f8f8;
-  padding: 1rem 1rem;
+  padding: 15px ;
   border: none;
-  font-size: 1rem;
+  font-size: 14px;
   max-width: 400px;
   cursor: pointer;
-  border-radius: 20px;
-  transition: background-color 0.3s ease, opacity 0.1s ease;
+  border-radius: 50px;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25), 0 3px 5px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+
+  transition: background-color 0.3s ease, opacity 0.1s ease, box-shadow 0.3s ease;
+
+  /* Adding box shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: #333333; /* Slightly lighter black on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25), 0 3px 5px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
   }
 
   &:focus {
     outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px #aaa; /* Add a subtle shadow when focused */
+    box-shadow: 0 0 5px #aaa, 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow when focused */
   }
 
   &:active {
-    opacity: 0.9; /* Make it fully opaque when clicked */
+    opacity: 0.9; /* Slightly less opaque when clicked */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2); /* Slightly reduced shadow on active state */
   }
 `;
-
 const CenteredWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 100%;
-  padding: 1rem 0;
+  padding: 10px;
   height: 10vh;
 `;
 

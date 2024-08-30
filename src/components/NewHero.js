@@ -28,6 +28,7 @@ const NewHero = () => {
     }, []);
 
     const textColor = isSmallScreen ? '#f4e1d2' : '#3a3a3a';
+    const headingFontSize = isSmallScreen ? '4rem' : '5rem';  // Adjust font size based on screen size
 
     return (
         <div style={{
@@ -39,7 +40,9 @@ const NewHero = () => {
             textAlign: 'center',
             height: '100vh',
             position: 'relative',
-            backgroundColor: '#fcfaf4'
+            backgroundColor: '#fcfaf4',
+            padding: '2rem',  // Added padding for consistent spacing on smaller screens
+            boxSizing: 'border-box'
         }}>
             <img
                 src={`${process.env.PUBLIC_URL}/Images/laptop.png`}
@@ -68,52 +71,39 @@ const NewHero = () => {
                     transition: 'right 1s ease-in-out',
                 }}
             />
-            <h1 style={{
-                fontFamily: 'League Spartan, sans-serif',
-                fontSize: '5rem',
-                fontWeight: 700,
-                color: textColor, // Change color based on screen size
-                zIndex: 4,
-                lineHeight: '4.5rem',
-                margin: '0',
-                letterSpacing: '-0.2rem',
-                position: 'relative',
-                top: isVisible ? '0' : '-100px',
-                transition: 'top 1s ease-in-out, color 0.3s ease-in-out', // Add transition for color change
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'
-            }}>
-                Building Bridges
-            </h1>
 
             <h2 style={{
                 fontFamily: 'Nunito, sans-serif',
-                padding: '0.25rem 3rem',
-                fontSize: '3rem',
-                fontWeight: 700,
+                padding: '2rem 0rem',
+                paddingBottom: '0.25rem',
+                fontSize: headingFontSize,  // Use dynamic font size
+                fontWeight: 600,
                 color: '#a0d2eb',
-                margin: '1rem 0 1.5rem 0',
+                margin: '0 0 1.5rem 0',  // Consistent margin and padding
                 zIndex: 4,
-                position: 'relative',
-                bottom: isVisible ? '0' : '-100px',
-                transition: 'bottom 1s ease-in-out',
-                textShadow: '1px 2px 4px rgba(0, 0, 0, 0.1)'
+                transition: 'transform 1s ease-in-out, color 0.3s ease-in-out',
+                transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
+                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
             }}>
-                in small business digital marketing
+                Building bridges in small business marketing
             </h2>
+
             <p style={{
                 fontFamily: 'Nunito, sans-serif',
                 fontSize: '1rem',
                 color: textColor, // Change color based on screen size
                 letterSpacing: '0.1rem',
-                marginBottom: '2rem',
+                marginBottom: '2rem',  // Consistent margin bottom
+                padding: '0 1rem',  // Added padding for better readability on small screens
                 textTransform: 'uppercase',
                 zIndex: 4,
                 opacity: isVisible ? 1 : 0,
-                transition: 'opacity 1s ease-in-out 1s, color 0.3s ease-in-out', // Add transition for color change
-                textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
+                transition: 'opacity 1s ease-in-out 1s, color 0.3s ease-in-out',
+                textShadow: 'none',
             }}>
-                ONTARIO WEBSITES AND SEO
+                WEBSITES AND SEO
             </p>
+
             <button
                 style={{
                     fontFamily: 'Nunito, sans-serif',
@@ -128,7 +118,8 @@ const NewHero = () => {
                     transition: 'background-color 0.3s ease, opacity 1s ease-in-out 1s',
                     zIndex: 4,
                     opacity: isVisible ? 1 : 0,
-                    boxShadow: '3px 3px 6px rgba(0, 0, 0, 0.2)',
+                    boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.25)',
+                    marginTop: '1.5rem'  // Added margin-top for consistency
                 }}
                 onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f4e1d2'}
                 onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#bbd7ec'}

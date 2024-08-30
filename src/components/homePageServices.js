@@ -5,7 +5,7 @@ import SubmitButton from './SubmitButtonComponent';
 const TitleBanner = styled.h2`
   font-family: 'Nunito', sans-serif;
   font-weight: 300;
-  padding: 1rem;
+  padding: 20px;
   font-size: 2rem;
   color: #3a3a3a;
   text-align: center;
@@ -133,7 +133,7 @@ const CardContent = styled.div`
 const CardTitle = styled.h3`
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
-  font-weight: normal;
+  font-weight: 400;
   color: #3a3a3a;
   margin-bottom: 1rem;
 `;

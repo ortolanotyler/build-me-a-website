@@ -96,7 +96,6 @@ const Header = () => {
     marginRight: '1rem',
     fontFamily: "Merriweather, serif", // Apply Merriweather font
     fontSize: '1.25rem', // Increased font size
-    textShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
     display: isMobile ? 'none' : 'flex',
     justifyContent: 'center',
     alignItems: 'center',

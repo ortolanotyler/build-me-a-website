@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import ParallaxSection from './Parallax';
 import HomeServices from '../components/homePageServices';
 import NewHero from '../components/NewHero';
+import Hero from '../components/HomeSection2';
+import ComponentA from '../components/HomeSection2';
 
 function HomePage() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -102,6 +104,7 @@ function HomePage() {
       
       {/* Home Services Section */}
       <NewHero />
+      <ComponentA/>
       <HomeServices />
     </div>
   );

@@ -2,40 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import SubmitButton from './SubmitButtonComponent';
 
-const TitleBanner = styled.h2`
-  font-family: 'Nunito', sans-serif;
-  font-weight: 300;
-  padding: 1rem;
-  font-size: 2rem;
-  color: #3a3a3a;
-  text-align: center;
-  margin-bottom: 1rem;
-  background-color: #fcfaf4;
-  width: 100%;
-  box-sizing: border-box;
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    padding: 1rem 1rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-    padding: 1rem;
-  }
-`;
 
 const IntroParagraph = styled.p`
   font-family: 'League Spartan', sans-serif;
   font-size: 1.25rem;
   font-weight: 300;
-      padding: 1 2rem;
+      padding: 3rem 2rem;
 
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 2rem;
   line-height: 1.6;
-  max-width: 70%;
+  max-width: 60%;
   margin-left: auto;
   margin-right: auto;
 
@@ -159,10 +137,7 @@ const CardsSection = () => {
   return (
     <>
 
-      <TitleBanner
-      style = {{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1) '}}
-      >
-      Building bridges in digital marketing</TitleBanner>
+     
       <IntroParagraph>
      We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.     </IntroParagraph>
      <SubmitButton to='/consultation' text="Book a Free Consultation" />

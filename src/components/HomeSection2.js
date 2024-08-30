@@ -87,7 +87,7 @@ const ComponentA = () => {
   return (
     <Container>
       <ImagesWrapper>
-        <Image src={`${process.env.PUBLIC_URL}/Images/jackiewyers.png`} alt="hello 1" />
+        <Image src={`${process.env.PUBLIC_URL}/Images/JW.png`} alt="hello 1" />
         <Image src={`${process.env.PUBLIC_URL}/Images/image2.png`} alt="Image 2" />
         <Image src={`${process.env.PUBLIC_URL}/Images/image3.png`} alt="Image 3" />
         <Image src={`${process.env.PUBLIC_URL}/Images/image4.png`} alt="Image 4" />

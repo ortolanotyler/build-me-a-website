@@ -104,7 +104,6 @@ function HomePage() {
       
       {/* Home Services Section */}
       <NewHero />
-      <ComponentA/>
       <HomeServices />
     </div>
   );

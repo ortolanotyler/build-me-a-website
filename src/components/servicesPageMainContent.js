@@ -11,7 +11,7 @@ const TitleBanner = styled.h2`  /* Updated to H2 for consistency */
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 1rem; /* Space between the title and the cards */
-  background-color: #f8f8f8; /* Light background for the title */
+  background-color: #fcfaf4; /* Light background for the title */
   width: 100%;
   box-sizing: border-box;
 
@@ -51,7 +51,7 @@ const IntroParagraph = styled.p`
 
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
-  background-color: #f8f8f8;
+  background-color: #fcfaf4;
   font-weight: 300;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,7 @@ const CardContainer = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: #f8f8f8;
+  background-color: #fcfaf4;
   max-width: 70%;
   font-family: 'Nunito', sans-serif;
   margin: 0 auto 2.5rem auto;

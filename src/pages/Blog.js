@@ -61,7 +61,7 @@ function BlogPage() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: '#f8f8f8', minHeight: '100vh' }}
+      style={{ backgroundColor: '#fcfaf4', minHeight: '100vh' }}
     >
       <Helmet>
         <title>
@@ -96,7 +96,7 @@ function BlogPage() {
           gap: '10px',
           justifyContent: 'center',
           margin: '5rem 0 2rem 0',
-          padding: '0 2rem',
+          padding: '1rem 2rem',
         }}
       >
         {blogPosts.map((post) => (
@@ -108,8 +108,8 @@ function BlogPage() {
               padding: '10px 20px',
               borderRadius: '20px',
               backgroundColor:
-                currentPost === post.label ? '#3a3a3a' : '#f8f8f8',
-              color: currentPost === post.label ? '#f8f8f8' : '#3a3a3a',
+                currentPost === post.label ? '#3a3a3a' : '#fcfaf4',
+              color: currentPost === post.label ? '#fcfaf4' : '#3a3a3a',
               border: '1px solid #3a3a3a',
               width: '100%',
               boxSizing: 'border-box',

@@ -1,21 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
 import SubmitButton from './SubmitButtonComponent';
+import ParallaxSection from '../pages/Parallax';
 
+const TitleBanner = styled.h2`
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #3a3a3a;
+  text-align: center;
+  margin-bottom: 1rem;
+  background-color: transparent; /* Make the background transparent */
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    padding: 1rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+`;
 
 const IntroParagraph = styled.p`
   font-family: 'League Spartan', sans-serif;
   font-size: 1.25rem;
   font-weight: 300;
-      padding: 3rem 2rem;
-
+  padding: 1 2rem;
   color: #3a3a3a;
   text-align: center;
   margin-bottom: 2rem;
   line-height: 1.6;
-  max-width: 60%;
+  max-width: 70%;
   margin-left: auto;
   margin-right: auto;
+  background-color: transparent; /* Make the background transparent */
 
   @media (max-width: 768px) {
     font-size: 1.1rem;
@@ -30,7 +53,7 @@ const IntroParagraph = styled.p`
 
 const CardContainer = styled.div`
   font-family: 'Nunito', sans-serif;
-  background-color: #fcfaf4;
+  background-color: transparent; /* Make the background transparent */
   font-weight: 300;
   display: flex;
   margin-right: 1rem;
@@ -50,7 +73,7 @@ const CardContainer = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: #fcfaf4;
+  background-color: transparent; /* Make the background transparent */
   max-width: 70%; /* Ensure the card does not exceed the viewport width */
   margin: 0 auto 1rem auto; /* Center the card with auto margins */
   padding: 2rem; /* Padding inside the card */
@@ -92,7 +115,6 @@ const CardImage = styled.img`
   width: 100%;
   height: auto;
   border-radius: 10px;
-  alt: "Description of the image for SEO";
 `;
 
 const CardContent = styled.div`
@@ -135,32 +157,33 @@ const CardsSection = () => {
   ];
 
   return (
-    <>
-
-     
-      <IntroParagraph>
-     We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.     </IntroParagraph>
-     <SubmitButton to='/consultation' text="Book a Free Consultation" />
-
-
-      <CardContainer>
-        {cards.map((card, index) => (
-          <Card key={index} reversed={index % 2 !== 0}>
-            <CardImageWrapper>
-              <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.description} />
-            </CardImageWrapper>
-            <CardContent>
-              <CardTitle>{card.title}</CardTitle>
-              <CardDescription>{card.description}</CardDescription>
-            </CardContent>
-          </Card>
-        ))}
-      </CardContainer>
-      <div style = {{paddingBottom: '10rem'}}>
-      <SubmitButton to='/consultation' text="Book a Free Consultation" />
-
+    <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/bridgebg.png`}>
+      <div style={{ width: '100%' }}> {/* Ensure full-width to contain the parallax */}
+        <TitleBanner style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)' }}>
+          Building bridges in digital marketing
+        </TitleBanner>
+        <IntroParagraph>
+          We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.
+        </IntroParagraph>
+        <SubmitButton to='/consultation' text="Book a Free Consultation" />
+        <CardContainer>
+          {cards.map((card, index) => (
+            <Card key={index} reversed={index % 2 !== 0}>
+              <CardImageWrapper>
+                <CardImage src={process.env.PUBLIC_URL + card.image} alt={card.description} />
+              </CardImageWrapper>
+              <CardContent>
+                <CardTitle>{card.title}</CardTitle>
+                <CardDescription>{card.description}</CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </CardContainer>
+        <div style={{ paddingBottom: '10rem' }}>
+          <SubmitButton to='/consultation' text="Book a Free Consultation" />
+        </div>
       </div>
-    </>
+    </ParallaxSection>
   );
 };
 

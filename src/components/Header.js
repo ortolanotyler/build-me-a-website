@@ -17,7 +17,7 @@ const StyledLink = styledComponents(Link)`
   font-size: 1.25rem; /* Increased font size */
   font-weight: 100;
   transition: color 0.3s ease-in-out;
-  cursor: pointer; /* Show hand cursor on hover */
+  cursor: pointer; /* Ensure the hand cursor is always visible on hover */
 
   &:hover {
     color: #a0d2eb; /* Pastel blue */
@@ -101,13 +101,14 @@ const Header = () => {
   };
 
   const navContainerStyle = {
+    marginRight: '1rem',
     fontFamily: "Merriweather, serif", // Apply Merriweather font
     fontSize: '1.25rem', // Increased font size
     textShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
     display: isMobile ? 'none' : 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '1.5rem',
+    gap: '1rem',
   };
 
   const mobileMenuIconStyle = {
@@ -145,7 +146,7 @@ const Header = () => {
 
   return (
     <header style={headerStyle}>
-      <Link to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: 'none', cursor: 'pointer' }}>
         <img src={logo} alt="Logo" style={{ height: '80px' }} /> {/* Adjust the height as needed */}
       </Link>
       <nav style={navContainerStyle}>
@@ -163,6 +164,7 @@ const Header = () => {
         onClick={toggleDrawer(true)}
         onMouseEnter={(e) => e.currentTarget.style.color = '#a0d2eb'}
         onMouseLeave={(e) => e.currentTarget.style.color = textColor}
+        style={{ cursor: 'pointer' }}
       >
         <MenuIcon />
       </IconButton>

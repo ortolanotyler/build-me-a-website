@@ -28,14 +28,22 @@ const NewHero = () => {
         };
     }, []);
 
-    const textColor = isSmallScreen ? '#f4e1d2' : '#3a3a3a';
-    const headingFontSize = isSmallScreen ? '2rem' : '3.5rem';
+    const textColor = isSmallScreen ? '#f4e1d2' : '#f4e1d2';
+    const headingFontSize = isSmallScreen ? '2.5rem' : '4.5rem';
 
     return (
-        <div style={{
-            ...styles.heroContainer,
-            paddingTop: isSmallScreen ? '150px' : '200px', // Increase padding on small screens
-        }}>
+        <div style={styles.heroContainer}>
+            {/* Background video */}
+            <video
+                autoPlay
+                loop
+                muted
+                style={styles.videoBackground}
+            >
+                <source src={`${process.env.PUBLIC_URL}/Images/background1.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
             {/* Laptop image slides in from the left */}
             <img
                 src={`${process.env.PUBLIC_URL}/Images/laptop.png`}
@@ -43,8 +51,8 @@ const NewHero = () => {
                 style={{
                     ...styles.image,
                     left: isVisible && scrollY < 100 ? '-150px' : '-100%',
-                    top: '40%',
-                    maxWidth: isSmallScreen ? '450px': '500px',
+                    top: '30%',
+                    maxWidth: isSmallScreen ? '450px': '650px',
                     minWidth: '250px',
                 }}
             />
@@ -56,8 +64,8 @@ const NewHero = () => {
                 style={{
                     ...styles.image,
                     right: isVisible && scrollY < 100 ? '-150px' : '-100%',
-                    top: '30%',
-                    maxWidth: isSmallScreen ? '400px' : '600px',
+                    top: '50%',
+                    maxWidth: isSmallScreen ? '400px' : '650px',
                     minWidth: '200px',
                     transform: 'rotate(-90deg)',
                 }}
@@ -83,8 +91,8 @@ const NewHero = () => {
             <button
                 style={{
                     ...styles.button,
-                    backgroundColor: isPressed ? '#f4e1d2' : '#bbd7ec',
-                    boxShadow: isPressed ? '0px 1px 2px rgba(0, 0, 0, 0.25)' : '0px 2px 3px rgba(0, 0, 0, 0.25)',
+                    backgroundColor: isPressed ? '#f4e1d2' : '#f4e1d2',
+                    boxShadow: isPressed ? '0px 1px 2px rgba(0, 0, 0, 0.1)' : '0px 2px 3px rgba(0, 0, 0, 0.25)',
                     transform: isPressed ? 'translateY(2px)' : 'translateY(0)',
                     opacity: isVisible ? 1 : 0, // Fade-in effect for the button
                 }}
@@ -107,36 +115,47 @@ const styles = {
         alignItems: 'center',
         textAlign: 'center',
         minHeight: '100vh',
-        paddingLeft: '5rem',
-        paddingRight: '5rem',
+        paddingTop: '125px', // Adjust padding for the hero section
+        paddingLeft: '3rem',
+        paddingRight: '3rem',
         backgroundColor: '#fcfaf4',
         position: 'relative',
         boxSizing: 'border-box',
         overflow: 'hidden', // Prevents scrollbars
+    },
+    videoBackground: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover', // Ensure the video covers the entire hero section
+        zIndex: 0, // Ensure the video is behind all other elements
     },
     image: {
         position: 'absolute',
         height: 'auto',
         zIndex: 1,
         transition: 'all 1s ease-in-out',
-        maxHeight: '80vh', // Limit the height so it doesn't overflow the container
+        maxHeight: '90vh', // Limit the height so it doesn't overflow the container
     },
     heading: {
         fontFamily: 'Lora, sans-serif',
         fontWeight: 'normal',
-        padding: '2rem 1rem', // Removed large padding, added small padding for responsiveness
+        padding: '1rem 1rem', // Removed large padding, added small padding for responsiveness
+        marginBottom: '0rem', //
         color: '#a0d2eb',
         zIndex: 2,
         transition: 'opacity 1s ease-in-out', // Transition for fade-in effect
-        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)',
+        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
         lineHeight: '1.2', // Adjust line-height for better spacing
     },
     subtitle: {
         fontFamily: 'Nunito, sans-serif',
-        fontSize: '1rem',
-        letterSpacing: '0.1rem',
+        fontSize: '15px',
+        letterSpacing: '0.01rem',
         textTransform: 'uppercase',
-        marginBottom: '2rem',
+        marginBottom: '1rem',
         padding: '0 1rem',
         zIndex: 2,
         opacity: 1,
@@ -147,7 +166,8 @@ const styles = {
         fontSize: '1rem',
         fontWeight: '300',
         color: '#3a3a3a',
-        padding: '0.75rem 2rem',
+        backgroundColor: '#fcfad4',
+        padding: '0.75rem 1rem',
         borderRadius: '50px',
         border: 'none',
         zIndex: 2,

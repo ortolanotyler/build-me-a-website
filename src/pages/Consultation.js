@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import ParallaxSection from './Parallax';
 import ContactForm from '../components/ContactForm';
 
 function ConsultationPage() {
@@ -89,13 +88,7 @@ function ConsultationPage() {
         </script>
       </Helmet>
 
-      {/* Parallax Section with Images */}
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
-
-      {!isMobile && (
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/freeconsultation.jpg`} />
-
-        )}
+    
 
 <ContactForm />
  

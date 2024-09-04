@@ -175,12 +175,12 @@ const styles = {
     padding: '10px 0',
   },
   logoContainer: {
-    marginBottom: '0.25rem',
+    
     display: 'flex',
     justifyContent: 'center',
   },
   logo: {
-    height: '75px',
+    height: '100px',
   },
   navMenu: {
     color: '#ffffff',

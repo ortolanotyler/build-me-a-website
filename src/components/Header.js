@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import Drawer from '@mui/material/Drawer';
 import styledComponents from 'styled-components';
 
 // Import logo image
@@ -20,6 +21,7 @@ const StyledLink = styledComponents(Link)`
 
 const NavigationMenuBar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,6 +34,27 @@ const NavigationMenuBar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const toggleDrawer = (open) => () => {
+    setDrawerOpen(open);
+  };
+
+  const renderDrawerList = () => (
+    <div style={styles.drawerList}>
+      <StyledLink to="/" onClick={toggleDrawer(false)}>
+        Home
+      </StyledLink>
+      <StyledLink to="/about" onClick={toggleDrawer(false)}>
+        About
+      </StyledLink>
+      <StyledLink to="/blog" onClick={toggleDrawer(false)}>
+        Blog
+      </StyledLink>
+      <StyledLink to="/consultation" onClick={toggleDrawer(false)}>
+        Free Consultation
+      </StyledLink>
+    </div>
+  );
 
   return (
     <header style={styles.header}>
@@ -59,21 +82,37 @@ const NavigationMenuBar = () => {
       {/* Main Navigation Bar */}
       <AppBar position="static" style={styles.appBar}>
         <Toolbar style={isMobile ? styles.mobileToolbar : styles.toolbar}>
+          <div style={styles.logoContainer}>
+            <Link
+              to="#"
+              style={{ textDecoration: 'none' }}
+              onClick={isMobile ? toggleDrawer(true) : null}
+            >
+              <img src={logo} alt="BuildMe Logo" style={styles.logo} />
+            </Link>
+          </div>
           {!isMobile && (
-            <div style={styles.logoContainer}>
-              <Link to="/" style={{ textDecoration: 'none' }}>
-                <img src={logo} alt="BuildMe Logo" style={styles.logo} />
-              </Link>
-            </div>
+            <nav style={styles.navMenu}>
+              <StyledLink to="/">Home</StyledLink>
+              <StyledLink to="/about">About</StyledLink>
+              <StyledLink to="/blog">Blog</StyledLink>
+              <StyledLink to="/consultation">Free Consultation</StyledLink>
+            </nav>
           )}
-          <nav style={styles.navMenu}>
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/about">About</StyledLink>
-            <StyledLink to="/blog">Blog</StyledLink>
-            <StyledLink to="/consultation">Free Consultation</StyledLink>
-          </nav>
         </Toolbar>
       </AppBar>
+
+      {/* Drawer for mobile view */}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        PaperProps={{
+          style: styles.drawerPaper,
+        }}
+      >
+        {renderDrawerList()}
+      </Drawer>
     </header>
   );
 };
@@ -132,8 +171,8 @@ const styles = {
   mobileToolbar: {
     width: '100%',
     display: 'flex',
-    justifyContent: 'center', // Align navigation links centrally
-    padding: '10px 0', // Reduced padding on mobile
+    justifyContent: 'center',
+    padding: '10px 0',
   },
   logoContainer: {
     marginBottom: '0.25rem',
@@ -148,6 +187,19 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     gap: '1.5rem',
+  },
+  drawerPaper: {
+    background: 'rgba(255, 255, 255, 0.8)',
+    backdropFilter: 'blur(20px)',
+    color: '#ffffff',
+    padding: '2rem',
+    width: '250px',
+  },
+  drawerList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem',
+    fontSize: '1.25rem',
   },
 };
 

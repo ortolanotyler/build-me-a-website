@@ -18,7 +18,7 @@ function AboutPage() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" style = {{paddingTop: '250px'}}>
       <Helmet>
         {/* Title Tag */}
         <title>About Us - Build Me A Website</title>
@@ -91,16 +91,11 @@ function AboutPage() {
       </Helmet>
 
       {/* Parallax Section with Images */}
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`} />
-      {!isMobile && (
-        <>
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/About.jpg`} />
-        </>
-      )}
+
+      <AboutPageMainContent />
+
 
       {/* About Page Main Content */}
-      <AboutPageMainContent />
     </div>
   );
 }

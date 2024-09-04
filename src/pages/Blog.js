@@ -61,7 +61,7 @@ function BlogPage() {
   return (
     <div
       className="App"
-      style={{ backgroundColor: '#fcfaf4', minHeight: '100vh' }}
+      style={{ backgroundColor: '#fcfaf4', minHeight: '100vh',  paddingTop: '10rem'}}
     >
       <Helmet>
         <title>
@@ -78,14 +78,7 @@ function BlogPage() {
         {/* Add other meta tags and scripts as needed */}
       </Helmet>
 
-      <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`} />
-
-      {!isMobile && (
-        <>
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`} />
-          <ParallaxSection image={`${process.env.PUBLIC_URL}/Images/Blog.jpg`} />
-        </>
-      )}
+   
 
       <div
         style={{
@@ -96,7 +89,7 @@ function BlogPage() {
           gap: '10px',
           justifyContent: 'center',
           margin: '5rem 0 2rem 0',
-          padding: '1rem 2rem',
+          padding: '5rem 2rem',
         }}
       >
         {blogPosts.map((post) => (

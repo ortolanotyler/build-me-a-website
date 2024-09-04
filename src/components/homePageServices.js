@@ -26,7 +26,7 @@ const TitleBanner = styled.h2`
 `;
 
 const IntroParagraph = styled.p`
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.25rem;
   font-weight: 300;
       padding: 1 2rem;
@@ -82,6 +82,7 @@ const Card = styled.div`
   text-align: left;
   overflow: hidden; /* Prevent content from overflowing */
 
+
   @media (max-width: 768px) {
     flex-direction: column; /* Stack items on smaller screens */
     text-align: center;
@@ -111,6 +112,8 @@ const CardImageWrapper = styled.div`
 `;
 
 const CardImage = styled.img`
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 1px 3px rgba(0, 0, 0, 0.08); /* Professional, subtle box-shadow */
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -148,7 +151,7 @@ const CardDescription = styled.p`
 
 const CardsSection = () => {
   const cards = [
-    { description: 'We are a digital marketing company from Ontario. We consult with small business owners to provide them expertise in the fields of web development, digital marketing, search engine optimization, and more.', href: '#card1', image: '/Images/websites1.jpg' },
+    { description: 'We consult with small business owners to provide them expertise in the fields of web development, digital marketing, search engine optimization, and more.', href: '#card1', image: '/Images/websites1.jpg' },
     { description: "We recognize the immense time and effort it takes to turn your idea into a profitable business, because we've been there ourselves", href: '#card2', image: '/Images/seo1.jpg' },
     { description: 'Our aim is to build lasting relationships with the people we work with and support them on their journey to small-business success.', href: '#card3', image: '/Images/sem1.jpg' },
     { description: "Whether your small business is your life's work or just beginning, we can help you to increase your revenue both online and in person.", href: '#card4', image: '/Images/19.jpg' },
@@ -159,13 +162,9 @@ const CardsSection = () => {
   return (
     <>
 
-      <TitleBanner
-      style = {{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1) '}}
-      >
-      Building bridges in digital marketing</TitleBanner>
+      
       <IntroParagraph>
      We’re a small business just like you. We understand the challenges you face and are dedicated to providing a personalized, hands-on digital solution that will help your business grow. Your success is our success.     </IntroParagraph>
-     <SubmitButton to='/consultation' text="Book a Free Consultation" />
 
 
       <CardContainer>
